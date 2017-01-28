@@ -30,7 +30,6 @@
 				</div>
 				
 				<div class="header-container">
-					
 					<div class="menu-right-block">
 						<?php //secondary_menu(); ?>
 						<nav id="site-navigation" class="main-navigation" role="navigation">

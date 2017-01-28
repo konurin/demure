@@ -1070,14 +1070,6 @@ pre {
 .admin-color-light .ui-widget-content .ui-state-default,
 .admin-color-light .ui-widget-header .ui-state-default {
     background-color: #f5f5f5 !important;
-    background-image: -khtml-gradient(linear, left top, left bottom, from(#f8f8f8), to(#f5f5f5)) !important;
-    background-image: -moz-linear-gradient(top, #f8f8f8, #f5f5f5) !important;
-    background-image: -ms-linear-gradient(top, #f8f8f8, #f5f5f5) !important;
-    background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #f8f8f8), color-stop(100%, #f5f5f5)) !important;
-    background-image: -webkit-linear-gradient(top, #f8f8f8, #f5f5f5) !important;
-    background-image: -o-linear-gradient(top, #f8f8f8, #f5f5f5) !important;
-    background-image: -linear-gradient(top, #f8f8f8, #f5f5f5) !important;
-    filter: progid: DXImageTransform.Microsoft.gradient(startColorstr='#f8f8f8', endColorstr='#f5f5f5', GradientType=0) !important;
     border-color: #ccc !important
 }
 .admin-color-light .ui-datepicker td .ui-state-active {
@@ -3038,10 +3030,26 @@ textarea:focus {
 
 .redux-main .select2-container .select2-choice {
     background-image: none;
-    background-image: none;
-    background-image: none;
     filter: none;
-    background-image: none;
-    background-color: #f7f7f7;
+    background-color: #fff;
     height: 30px;
+}
+
+.redux-main .select2-container.select2-allowclear .select2-choice .select2-chosen {
+    margin-right: 42px;
+    height: 100%;
+    line-height: 29px;
+}
+
+.redux-main .select2-container .select2-choice .select2-arrow {
+    background: transparent;
+}
+
+.redux-main .select2-container .select2-choice > .select2-chosen {
+    height: 100%;
+    line-height: 30px;
+}
+
+.redux-main .redux-container-background .select2-container {
+    margin-right: 20px;
 }

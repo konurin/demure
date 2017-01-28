@@ -165,7 +165,7 @@
             }).done(function(data){
                 $(trigger).find('.notification').remove();
                 $(data).appendTo($(trigger));
-                console.log(data);
+                //console.log(data);
                 if ($(trigger).find('.notification-success').length > 0) {
                     setTimeout(function(){
                         location.reload();
@@ -178,7 +178,6 @@
          
          function readURL(input, preview) {
             if (input.files && input.files[0]) {
-                console.log(input.files);
                 var reader = new FileReader();
                 reader.onload = function (e) {
                     $(preview).attr('src', e.target.result);
@@ -190,6 +189,8 @@
          // fileuploader
          $('.fileupload').filer({
              limit: 1,
+             maxSize: 2,
+             fileMaxSize: 2,
              extensions: ["jpg", "png", "gif"],
              templates: {
                 box: null, //Thumbnail's box element {null, String}
@@ -232,6 +233,7 @@
             var upload = $(this).find('input[name="user_avatar"]');
             var remove = $(this).find('input[name="remove_profile_avatar"]');
             var form = $(this).find('form[name="update_user_avatar"]');
+            
              
             $(upload).on( 'change', function(event){
                 
@@ -245,9 +247,11 @@
 
                 var error = 0;
                 var this_input = $( 'input[type="file"]' );
-                if (this_input[0] != undefined && this_input[0].files != undefined) {
+                if (this_input[0] != undefined && this_input[0].files != undefined && $(this_input[0].files).length > 0) {
                     var file = $(this_input)[0].files;
                     data.append( 'avatar', file[0], file[0].name );
+                } else {
+                    return;
                 }
 
                 var xhr = new XMLHttpRequest();
@@ -256,7 +260,7 @@
                 xhr.send(data);
                 xhr.onreadystatechange = function() {
                     if (xhr.readyState == XMLHttpRequest.DONE) {
-                        // console.log(JSON.parse(xhr.response));
+                        console.log(JSON.parse(xhr.response));
                     }
                 }
             });

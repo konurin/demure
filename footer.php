@@ -18,6 +18,7 @@
 			<?php get_footer_columns(); ?>
 			<div class="site-info">
 				<?php footer_text(); ?>
+				<?php get_demure_social(); ?>
 			</div><!-- .site-info -->
 		</div>
 	</footer><!-- #colophon -->

@@ -811,7 +811,7 @@ if ( ! function_exists( 'demure_user_avatar' ) ) {
 if ( ! function_exists( 'demure_update_avatar' ) ) {
     function demure_update_avatar(){
         if ( $_POST['action'] == 'demure_update_avatar' ) {
-            if ( !empty( $_FILES['avatar'] ) ) {        
+            if ( !empty( $_FILES['avatar'] ) ) {
                 $file_arr = wp_handle_upload( $_FILES['avatar'], array( 'test_form' => FALSE ) );
                 update_user_meta( get_current_user_id(), 'demure_avatar', $file_arr['url'] );
                 echo json_encode( esc_html__( 'Avatar updated', 'demure' ) );
@@ -947,10 +947,12 @@ if ( ! function_exists( 'footer_text' ) ) {
     function footer_text() {
         global $demure;
         if ( empty( $demure['footer-text'] ) ) return false;
-        
+        $out = '';
         $allowed_tags = wp_kses_allowed_html( 'post' );
-        $footer_text = wp_kses( stripslashes( $demure['footer-text'] ), $allowed_tags );
-        echo $footer_text;
+		$out .= '<div class="site-info-text">';
+        	$out .= wp_kses( stripslashes( $demure['footer-text'] ), $allowed_tags );
+		$out .= '</div>';
+        echo $out;
     }
 }
 
@@ -1071,5 +1073,28 @@ if ( ! function_exists( 'get_footer_columns' ) ) {
 				break;
 		}
 		?></div></div><?php
+	}
+}
+if ( ! function_exists( 'get_demure_social' ) ) {
+	function get_demure_social() {
+		global $demure;
+		$out = '';
+		$out .= '<div class="social-links-wrapper">';
+			if ( !empty( $demure['facebook'] ) ) $out .= '<a href="'.esc_url( $demure['facebook'] ).'" target="_blank" class="demure-icon"><i class="fa fa-facebook"></i></a>';
+			if ( !empty( $demure['twitter'] ) ) $out .= '<a href="'.esc_url( $demure['twitter'] ).'" target="_blank" class="demure-icon"><i class="fa fa-twitter"></i></a>';
+			if ( !empty( $demure['vkontakte'] ) ) $out .= '<a href="'.esc_url( $demure['vkontakte'] ).'" target="_blank" class="demure-icon"><i class="fa fa-vk"></i></a>';
+			if ( !empty( $demure['linkedin'] ) ) $out .= '<a href="'.esc_url( $demure['linkedin'] ).'" target="_blank" class="demure-icon"><i class="fa fa-linkedin"></i></a>';
+			if ( !empty( $demure['pinterest'] ) ) $out .= '<a href="'.esc_url( $demure['pinterest'] ).'" target="_blank" class="demure-icon"><i class="fa fa-pinterest"></i></a>';
+			if ( !empty( $demure['youtube'] ) ) $out .= '<a href="'.esc_url( $demure['youtube'] ).'" target="_blank" class="demure-icon"><i class="fa fa-youtube"></i></a>';
+			if ( !empty( $demure['instagram'] ) ) $out .= '<a href="'.esc_url( $demure['instagram'] ).'" target="_blank" class="demure-icon"><i class="fa fa-instagram"></i></a>';
+			if ( !empty( $demure['googleplus'] ) ) $out .= '<a href="'.esc_url( $demure['googleplus'] ).'" target="_blank" class="demure-icon"><i class="fa fa-google-plus"></i></a>';
+			if ( !empty( $demure['behance'] ) ) $out .= '<a href="'.esc_url( $demure['behance'] ).'" target="_blank" class="demure-icon"><i class="fa fa-behance"></i></a>';
+			if ( !empty( $demure['flickr'] ) ) $out .= '<a href="'.esc_url( $demure['flickr'] ).'" target="_blank" class="demure-icon"><i class="fa fa-flickr"></i></a>';
+			if ( !empty( $demure['skype'] ) ) $out .= '<a href="call:'.sanitize_text_field( $demure['skype'] ).'" target="_blank" class="demure-icon"><i class="fa fa-skype"></i></a>';
+			if ( !empty( $demure['dribble'] ) ) $out .= '<a href="'.esc_url( $demure['dribble'] ).'" target="_blank" class="demure-icon"><i class="fa fa-dribble"></i></a>';
+			if ( !empty( $demure['email'] ) ) $out .= '<a href="mailto:'.sanitize_email( $demure['email'] ).'" target="_blank" class="demure-icon"><i class="fa fa-facebook"></i></a>';
+		$out .= '</div>';
+		
+		echo $out;
 	}
 }

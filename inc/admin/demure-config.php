@@ -237,7 +237,7 @@
                 'output'   => array('#masthead .wrapper'),
                 'width'    => false,
                 'default'  => array(
-                    'height'  => '150'
+                    'height'  => '150px'
                 ),
             ),
             array(
@@ -312,6 +312,94 @@
                 'validate' => 'color',
                 'transparent' => false
             ),
+        )
+    ) );
+    
+    // -> START Social section
+    Redux::setSection( $opt_name, array(
+        'title'            => esc_html__( 'Social', 'demure' ),
+        'id'               => 'social',
+        'customizer_width' => '400px',
+        'icon'             => 'el el-bullhorn',
+        'fields'           => array(
+            array(
+                'id'       => 'social-links-color',
+                'type'     => 'link_color',
+                'output'   => '.social-links-wrapper .demure-icon i',
+                'title'    => esc_html__('Social Links Color', 'demure'), 
+                'subtitle' => esc_html__('Pick a social links color for the theme (default: #fff).', 'demure'),
+                'active'   => false,
+                'default'  => array(
+                    'regular'  => '#fff',
+                    'hover' => '#aaaaaa'
+                )
+            ),
+            array(
+                'id'       => 'facebook',
+                'type'     => 'text',
+                'title'    => esc_html__( 'Facebook', 'demure' ),
+            ),
+            array(
+                'id'       => 'twitter',
+                'type'     => 'text',
+                'title'    => esc_html__( 'Twitter', 'demure' ),
+            ),
+            array(
+                'id'       => 'vkontakte',
+                'type'     => 'text',
+                'title'    => esc_html__( 'Vkontakte', 'demure' ),
+            ),
+            array(
+                'id'       => 'linkedin',
+                'type'     => 'text',
+                'title'    => esc_html__( 'LinkedIn', 'demure' ),
+            ),
+            array(
+                'id'       => 'pinterest',
+                'type'     => 'text',
+                'title'    => esc_html__( 'Pinterest', 'demure' ),
+            ),
+            array(
+                'id'       => 'youtube',
+                'type'     => 'text',
+                'title'    => esc_html__( 'YouTube', 'demure' ),
+            ),
+            array(
+                'id'       => 'instagram',
+                'type'     => 'text',
+                'title'    => esc_html__( 'Instagram', 'demure' ),
+            ),
+            array(
+                'id'       => 'googleplus',
+                'type'     => 'text',
+                'title'    => esc_html__( 'Google+', 'demure' ),
+            ),
+            array(
+                'id'       => 'behance',
+                'type'     => 'text',
+                'title'    => esc_html__( 'Behance', 'demure' ),
+            ),
+            array(
+                'id'       => 'flickr',
+                'type'     => 'text',
+                'title'    => esc_html__( 'Flickr', 'demure' ),
+            ),
+            array(
+                'id'       => 'skype',
+                'type'     => 'text',
+                'title'    => esc_html__( 'Skype', 'demure' ),
+            ),
+            array(
+                'id'       => 'email',
+                'type'     => 'text',
+                'title'    => esc_html__( 'E-mail', 'demure' ),
+            ),
+            array(
+                'id'       => 'dribble',
+                'type'     => 'text',
+                'title'    => esc_html__( 'Dribbble', 'demure' ),
+            ),
+            
         )
     ) );
 
@@ -508,7 +596,7 @@
                 'transparent'           => true,
                 'preview'               => false,
                 'default'  => array(
-                    'background-color' => '#fff',
+                    'background-color' => '#f9f9f9',
                 )
             )
         )
@@ -528,7 +616,7 @@
                 'output'                => 'body',
                 'transparent'           => false,
                 'default'               => array(
-                    'background-color' => '#f5f5f5',
+                    'background-color' => '#edeef0',
                 )
             ),
             array(
@@ -569,7 +657,7 @@
                 'transparent'           => true,
                 'preview'               => false,
                 'default'  => array(
-                    'background-color' => '#fff',
+                    'background-color' => '#f9f9f9',
                 )
             )
         )
@@ -695,7 +783,7 @@
                 'transparent'           => true,
                 'preview'               => false,
                 'default'  => array(
-                    'background-color' => '#fff',
+                    'background-color' => '#f9f9f9',
                 )
             )
         ),

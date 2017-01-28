@@ -26,7 +26,6 @@
 					<?php get_all_user_posts(); ?>
 				</div>
 			<?php endif; ?>
-			
 		</div>
 
 		

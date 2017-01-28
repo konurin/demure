@@ -88,7 +88,6 @@ if ( ! function_exists( 'secondary_menu' ) ) {
 if ( ! function_exists( 'get_demure_search_heading' ) ) {
 	function get_demure_search_heading() {
 		$search_result = get_search_query();
-		
 		?>
 			<div class="search-section-heading"><h1><?php esc_html_e( 'Search result for', 'demure' ); ?>: <?php echo $search_result; ?></h1></div>
 		<?php
