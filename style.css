@@ -213,7 +213,10 @@ input[type="submit"],
     display: inline-block;
     text-align: center;
     transition: .3s;
-	cursor: pointer;
+    cursor: pointer;
+    font-weight: 400;
+    opacity: 1;
+	margin: 0;
 }
 
 .notification {
@@ -1310,11 +1313,23 @@ footer .footer-wrap .widget_calendar caption {
 }
 
 .profile-avatar form .button-container {
+	display: -webkit-flex;
+	display: -ms-flex;
 	display: flex;
 	clear: both;
+    align-items: baseline;
 }
 
-.profile-avatar form .button-container > .jFiler,
+.profile-avatar .input-file-container label {
+	width: 100%;
+}
+
+.profile-avatar .input-file-container input[type="file"] {
+	position: absolute;
+	display: none;
+}
+
+.profile-avatar form .input-file-container,
 .profile-avatar form .button-container input[type="button"] {
 	width: 50%;
 }

@@ -185,47 +185,9 @@
                 reader.readAsDataURL(input.files[0]);
             }
         }
-                 
-         // fileuploader
-         $('.fileupload').filer({
-             limit: 1,
-             maxSize: 2,
-             fileMaxSize: 2,
-             extensions: ["jpg", "png", "gif"],
-             templates: {
-                box: null, //Thumbnail's box element {null, String}
-                item: null, //File item element {String(use Filer Variables), Function}
-                itemAppend: null, //File item element for edit mode {String(use Filer Variables), Function}
-                progressBar: null, //File upload progress bar element {String}
-                itemAppendToEnd: false, //Append the new file item to the end of the list {Boolean}
-                removeConfirmation: true, //Remove file confirmation {Boolean}
-                canvasImage: true, //Resize and crop the image thumbnail to item element size
-                _selectors: {
-                    list: null, //List selector {String}
-                    item: null, //Item selector {String}
-                    progressBar: null, //Progress bar selector {String}
-                    remove: null //Remove button selector {String}
-                }
-            },
-             captions: {
-                button: "Upload",
-                feedback: "Choose files To Upload",
-                feedback2: "files were chosen",
-                drop: "Drop file here to Upload",
-                removeConfirmation: "Are you sure you want to remove this file?",
-                errors: {
-                    filesLimit: "Only {{fi-limit}} files are allowed to be uploaded.",
-                    filesType: "Only Images are allowed to be uploaded.",
-                    filesSize: "{{fi-name}} is too large! Please upload file up to {{fi-fileMaxSize}} MB.",
-                    filesSizeAll: "Files you've choosed are too large! Please upload files up to {{fi-maxSize}} MB.",
-                    folderUpload: "You are not allowed to upload folders."
-                }
-            }
-         });
          
          $(window).on("load", function(){
              $('.demure-preloader').fadeOut();
-             $('input[type="file"]').css('opacity', '1');
          });
          
          if ($('.profile-avatar').length > 0) {
@@ -239,7 +201,6 @@
                 
                 event.stopPropagation();
                 event.preventDefault();
-                readURL(this, $('.profile-avatar form img'));
                 
                 //  -------------------------XHR request-------------------------
                 var data = new FormData();
@@ -249,7 +210,13 @@
                 var this_input = $( 'input[type="file"]' );
                 if (this_input[0] != undefined && this_input[0].files != undefined && $(this_input[0].files).length > 0) {
                     var file = $(this_input)[0].files;
-                    data.append( 'avatar', file[0], file[0].name );
+                    if (file[0].size > 2000000) {
+                        alert('File size should be less than 2 mb');
+                        return;
+                    } else {
+                        data.append( 'avatar', file[0], file[0].name );
+                        readURL(this, $('.profile-avatar form img'));
+                    }
                 } else {
                     return;
                 }
@@ -260,7 +227,15 @@
                 xhr.send(data);
                 xhr.onreadystatechange = function() {
                     if (xhr.readyState == XMLHttpRequest.DONE) {
-                        console.log(JSON.parse(xhr.response));
+                        var response = JSON.parse(xhr.response);
+                        switch (response) {
+                            case 1:
+                                alert("File type must be jpeg or png");
+                                break;
+                            case 2:
+                                alert("File size should be less than 2 mb");
+                                break;
+                        }
                     }
                 }
             });
@@ -277,7 +252,6 @@
                 xhr.send(data);
                 xhr.onreadystatechange = function() {
                   if (xhr.readyState == XMLHttpRequest.DONE) {
-                     console.log(JSON.parse(xhr.response));
                      $(trigger).find('form img').attr('src', 'http://0.gravatar.com/avatar/081b4d55627f2996caa3c76d2cc014d6?s=456&d=mm&r=g');
                      $(upload).val('');
                   }

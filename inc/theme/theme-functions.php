@@ -798,8 +798,11 @@ if ( ! function_exists( 'demure_user_avatar' ) ) {
                 
                 <?php if ( is_user_logged_in() ): ?>
                     <div class="button-container">
-                        <input type="file" accept='image/*' id="avatar" class="fileupload button" name="user_avatar" data-jfiler-limit="1" value="" />
-                        <input type="button" name="remove_profile_avatar" class="button delete-demure-avatar" value="<?php esc_html_e( 'Remove', 'demure' ); ?>">
+						<div class="input-file-container">
+							<label class="button" for="avatar"><?php esc_html_e( 'Upload', 'demure' ); ?></label>
+                        	<input type="file" accept='image/*' id="avatar" class="fileupload button" name="user_avatar" data-jfiler-limit="1" value="" />
+                        </div>
+						<input type="button" name="remove_profile_avatar" class="button delete-demure-avatar" value="<?php esc_html_e( 'Remove', 'demure' ); ?>">
                     </div>
                 <?php endif; ?>
             </form>
@@ -810,11 +813,21 @@ if ( ! function_exists( 'demure_user_avatar' ) ) {
 
 if ( ! function_exists( 'demure_update_avatar' ) ) {
     function demure_update_avatar(){
+		$error = '';
         if ( $_POST['action'] == 'demure_update_avatar' ) {
             if ( !empty( $_FILES['avatar'] ) ) {
                 $file_arr = wp_handle_upload( $_FILES['avatar'], array( 'test_form' => FALSE ) );
-                update_user_meta( get_current_user_id(), 'demure_avatar', $file_arr['url'] );
-                echo json_encode( esc_html__( 'Avatar updated', 'demure' ) );
+				if ( $_FILES['avatar']['type'] != "image/jpeg" && $_FILES['avatar']['type'] != "image/png" ) {
+					$error = 1;
+				} elseif ( $_FILES['avatar']['size'] > 2000000 ) {
+					$error = 2;
+				} else {
+					$file_arr = wp_handle_upload( $_FILES['avatar'], array( 'test_form' => FALSE ) );
+					update_user_meta( get_current_user_id(), 'demure_avatar', $file_arr['url'] );
+					$error = 0;
+				}
+
+				echo json_encode( $error );
             }
         }
         die();
