@@ -16,4 +16,6 @@ Demure is creative Multi Page template with modern flat, minimalistic and clean 
 **Custom Metaboxes** – https://github.com/webdevstudios Licensed under GPL licenses<br />
 **Bootstrap Framework** – http://getbootstrap.com Code licensed MIT, docs CC BY 3.0.<br />
 **OWL Carousel**  - https://github.com/OwlFonk/OwlCarousel Licensed under MIT<br />
-**Font Awesome** - http://fortawesome.github.io/Font-Awesome/  ver. 4.7.0 · Code licensed MIT, docs CC BY 3.0<br />
+**Font Awesome** - http://fortawesome.github.io/Font-Awesome  ver. 4.7.0 · Code licensed MIT, docs CC BY 3.0<br />
+**Colorbox** - http://www.jacklmoore.com/colorbox ver. 1.6.4 · Code licensed MIT<br />
+**Holder.js** - http://holderjs.com ver. 2.9.0 · Code licensed MIT<br />
