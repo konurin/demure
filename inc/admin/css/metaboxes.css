@@ -1,0 +1,14 @@
+#demure-page-metaboxes > h2 {
+    background: #536d86;
+    color: #fff;
+}
+
+#demure-page-metaboxes .rwmb-label label {
+    color: #333;
+    font-size: 16px;
+}
+
+#demure-page-metaboxes .rwmb-field {
+    padding: 20px;
+    border: 1px solid #eeeeee!important;
+}

@@ -307,8 +307,12 @@ function addAndOverridePanelCSS() {
     'redux-demure-css',
     get_template_directory_uri() . '/inc/admin/css/redux.css',
     array( 'farbtastic' ) // Notice redux-admin-css is removed and the wordpress standard farbtastic is included instead
-
   );    
   wp_enqueue_style('redux-demure-css');
 }
 add_action( 'redux/page/demure/enqueue', 'addAndOverridePanelCSS' );
+
+function add_metaboxes_css() {
+	wp_enqueue_style( 'demure-metaboxes', get_template_directory_uri() . '/inc/admin/css/metaboxes.css' );
+}
+add_action( 'admin_enqueue_scripts', 'add_metaboxes_css' );

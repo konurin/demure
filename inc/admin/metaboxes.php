@@ -2,6 +2,7 @@
 add_filter( 'rwmb_meta_boxes', 'demure_meta_boxes' );
 function demure_meta_boxes( $meta_boxes ) {
     $meta_boxes['page_options'] = array(
+        'id'         => 'demure-page-metaboxes',
         'title'      => esc_html__( 'Page options', 'demure' ),
         'post_types' => 'page',
         'fields'     => array(
@@ -59,6 +60,13 @@ function demure_meta_boxes( $meta_boxes ) {
             array(
                 'id'        => 'container_transparent',
                 'name'      => esc_html__( 'Transparent background', 'demure' ),
+                'type'      => 'checkbox',
+                'default'   => 0,
+                'std' => 0
+            ),
+            array(
+                'id'        => 'no_paddings',
+                'name'      => esc_html__( 'Disable paddings', 'demure' ),
                 'type'      => 'checkbox',
                 'default'   => 0,
                 'std' => 0

@@ -52,13 +52,23 @@ if ( ! function_exists( 'demure_before_content' ) ) {
 			$layout = 'container';
 		}
 		
-		if ( ! empty( $transparent_bg ) ) {
+		if ( ! empty( $transparent_bg ) && $transparent_bg == 1 ) {
 			$transparent_bg = 'transparent-container';
 		}
 		
 		echo '<div id="content" ' . $style . ' class="site-content '.$layout.' '.$transparent_bg.'">';
 	}
 }
+
+function add_custom_styles() {
+	global $post;
+	$no_all_padding = rwmb_meta( 'no_paddings', null, $post->ID );
+	if ( !empty( $no_all_padding ) && $no_all_padding == 1 ) {
+		$styles_custom = ".page article, .page article header h3, .page .entry-content { padding: 0!important; }";
+		wp_add_inline_style( 'demure-style', $styles_custom );	
+	}
+}
+add_action( 'wp_enqueue_scripts', 'add_custom_styles', 99 );
 
 function is_blog() {
 	global  $post;
@@ -322,12 +332,6 @@ if ( ! function_exists( 'demure_post_header' ) ) {
         global $post;
         $out_header = $page_title = $out = '';
         $page_title = rwmb_meta( 'page_title');
-        
-        if ( $page_title == 'off' ) {
-			$out .= '<div class="empty-space-no-title"></div>';
-			echo $out;
-			return;
-		}
         
         if (!is_single()) {
             $out_header .= '<h3><a href="' . get_the_permalink( $post_id ) . '">' . get_the_title( $post_id ) . '</a></h3>';
@@ -1029,8 +1033,8 @@ if ( ! function_exists( 'get_demure_social' ) ) {
 	}
 }
 
-if ( ! function_exists( 'anaglyph_add_favicon' ) ) {				
-	function anaglyph_add_favicon() {
+if ( ! function_exists( 'demure_add_favicon' ) ) {				
+	function demure_add_favicon() {
 		global $demure;
 		
 		if( !empty($demure['favicon'])) 				echo '<link rel="shortcut icon" href="' .  	esc_url($demure['favicon']['url'])  . '"/>' . "\n";
@@ -1040,5 +1044,5 @@ if ( ! function_exists( 'anaglyph_add_favicon' ) ) {
 		if( !empty($demure['favicon-ipad-retina']))		echo '<link rel="apple-touch-icon" sizes="144x144" 	href="'. esc_url($demure['favicon-ipad-retina']['url'])  .'"> '. "\n";  
 	 
 	}
-	add_action('wp_head', 'anaglyph_add_favicon', 100);
+	add_action('wp_head', 'demure_add_favicon', 100);
 }
