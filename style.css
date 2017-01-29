@@ -1,6 +1,6 @@
 /*
 Theme Name: demure
-Theme URI: http://konurin.tk
+Theme URI: http://konurin.tk/demure
 Author: Vitaliy Konurin
 Author URI: http://konurin.tk
 Description: Demure is creative Multi Page template with modern flat, minimalistic and clean look. Impress your clients with new three dimensional look of your page.
@@ -331,7 +331,6 @@ blockquote p {
 	display: flex;
 	flex-direction: row;
 	flex-wrap: wrap;
-	margin-top: 10px;
 }
 
 .tag-list .tag-title,
@@ -344,7 +343,10 @@ blockquote p {
 .tag-list a,
 .categories-list a {
 	transition: .3s;
-	margin: 2px 5px;
+    margin: 5px 5px 5px 0px;
+    border: 1px solid #3c5267;
+    padding: 3px 9px;
+    font-size: 0.9em;
 }
 
 /* #header */
@@ -575,6 +577,10 @@ article {
 	background: #fff;
 }
 
+.blog article {
+	border: 1px solid #efefef;
+}
+
 article .empty-space-no-title {
 	padding-top: 15px;
 }
@@ -605,7 +611,7 @@ article .thumbnail {
 	display: block;
 }
 
-article .thumbnail.thumbnail-single {
+article a.thumbnail {
 	cursor: pointer;
 }
 
@@ -645,6 +651,22 @@ article .entry-content {
 	padding: 0 20px;
 }
 
+article .entry-meta {
+	display: -webkit-flex;
+	display: -ms-flex;
+	display: flex;
+    padding: 0 20px 20px 20px;
+	font-size: 0.9em;
+}
+
+article .entry-meta .author {
+	margin-right: 10px;
+}
+
+article .entry-meta .date i {
+	margin-right: 5px;
+}
+
 .page article .entry-content {
 	padding-bottom: 20px;
 }
@@ -656,8 +678,7 @@ article .entry-content {
 article .entry-footer {
 	color: #737373;
 	display: block;
-	padding: 20px;
-	border-top: 1px solid #efefef;
+	padding: 0 20px 20px 20px;
 	margin-top: 5px;
 }
 
@@ -667,9 +688,9 @@ article .entry-footer span.date {
 
 article .entry-content a.read_more {
 	font-weight: 600;
-	display: block;
-	margin-top: 10px;
-	color: #444;
+    margin-top: 10px;
+    color: #444;
+    padding-left: 10px;
 }
 
 #loadmore {
@@ -947,11 +968,18 @@ form.search-form button::before {
 	margin-right: 10px;
 	max-width: 100px;
 	min-width: 100px;
+	border-radius: 3px;
+	overflow: hidden;
+}
+
+.widget_demure_popular_widget .demure-popular-item .image-block img {
+	height: 100%;
+	width: 100%;
+	object-fit: cover;
 }
 
 .widget_demure_popular_widget .demure-popular-item .title-section {
-	font-size: 18px;
-	font-weight: 600;
+	font-size: 1em;
 	overflow: hidden;
 	text-overflow: ellipsis;
 }
@@ -1337,6 +1365,7 @@ footer .footer-wrap .widget_calendar caption {
 .profile-avatar form img {
 	object-fit: cover;
 	height: 100%;
+	width: 100%;
 }
 
 .tabs-menu {

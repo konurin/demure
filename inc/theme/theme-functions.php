@@ -333,7 +333,7 @@ if ( ! function_exists( 'demure_post_header' ) ) {
         $out_header = $page_title = $out = '';
         $page_title = rwmb_meta( 'page_title');
         
-        if (!is_single()) {
+        if ( !is_single() && !is_page() ) {
             $out_header .= '<h3><a href="' . get_the_permalink( $post_id ) . '">' . get_the_title( $post_id ) . '</a></h3>';
         } else {
             $out_header .= '<h1>' . get_the_title( $post_id ) . '</h1>';
@@ -369,41 +369,57 @@ if ( ! function_exists( 'demure_post_thumbnail' ) ) {
     function demure_post_thumbnail( $post_id = '' ) {
         global $post;
         if ( !has_post_thumbnail( $post_id ) ) return false;
-        $thumbnail_id = get_post_thumbnail_id( $post_id );
-        if ( empty( $thumbnail_id ) ) return false;
-        $thumbnail = wp_get_attachment_image_url( $thumbnail_id, 'full' );
+
         if ( is_single() || is_page() ) {
-            $out = '<div class="thumbnail thumbnail-single">';
-                $out .= '<img src="' . $thumbnail . '" />';
-                $out .= '<div class="overlay"></div>';
-            $out .= '</div>';
+			?>
+            <div class="thumbnail thumbnail-single">
+                <?php the_post_thumbnail(); ?>
+                <div class="overlay"></div>
+            </div>
+			<?php
         } else {
-            $out = '<a href="' . get_the_permalink( $post_id ) . '" class="thumbnail">';
-                $out .= '<img src="' . $thumbnail . '" />';
-                $out .= '<div class="overlay"></div>';
-            $out .= '</a>';
+			?>
+            <a href="<?php get_the_permalink( $post_id ); ?>" class="thumbnail">
+                <?php the_post_thumbnail(); ?>
+                <div class="overlay"></div>
+            </a>
+			<?php
         }
-        
-        
-        echo $out;
     }
+}
+
+if ( ! function_exists( 'gemure_get_post_meta' ) ) {
+	function gemure_get_post_meta() {
+		global $demure, $post;
+		$out = '';
+		if ( $demure['display_author'] != 1 && $demure['display_date'] != 1 ) return false;
+		$out .= '<div class="entry-meta">';
+			if ( isset( $demure['display_author'] ) && $demure['display_author'] == 1 ) {
+					$out .= '<div class="author">';
+						$out .= '<span class="author_label"><i class="fa fa-user" aria-hidden="true"></i></span><a href="' . get_author_posts_url( get_the_author_meta( "ID" ) ) . '"> ' . get_the_author() . '</a>';
+					$out .= '</div>';
+			}
+			
+			if ( isset( $demure['display_date'] ) && $demure['display_date'] == 1 ) {
+				$out .= '<div class="date">';
+					$out .= '<i class="fa fa-clock-o" aria-hidden="true"></i>' . get_the_date( null, $post->ID );
+				$out .= '</div>';
+			}
+		$out .= '</div>';
+		echo $out;
+	}
 }
 
 if ( ! function_exists( 'demure_post_footer' ) ) {
     function demure_post_footer( $post_id = '' ) {
         global $demure, $post;
         $out = '<footer class="entry-footer">';
-            $out .= '<div class="author">';
-                if ( isset( $demure['display_author'] ) && $demure['display_author'] == '1' ) {
-                    $out .= '<span class="author_label">' . esc_html__( 'author', 'demure' ) . ':</span><a href="' . get_author_posts_url( get_the_author_meta( "ID" ) ) . '"> ' . get_the_author() . '</a><span class="date">' . esc_html__( 'Posted ', 'demure' ) . get_the_date( null, $post_id ) . '</span>';
-                }
-                
+            
                 if ( isset( $demure['display_categories'] ) && $demure['display_categories'] == '1' ) {
                     $all_categories = get_the_category( $post->ID );
                     
                     if ( !empty( $all_categories ) ) {
                         $out .= '<div class="categories-list">';
-                            $out .= '<span class="categories-title">' . esc_html__( 'categories: ', 'demure' ) . '</span>';
                             foreach ( $all_categories as $key => $cat ) {
                                 $out .= '<a href="'.get_term_link( $cat->term_id ).'">' . $cat->name . '</a>';
                             }
@@ -416,14 +432,12 @@ if ( ! function_exists( 'demure_post_footer' ) ) {
                     
                     if ( !empty( $all_tags ) ) {
                         $out .= '<div class="tag-list">';
-                            $out .= '<span class="tag-title">' . esc_html__( 'tags: ', 'demure' ) . '</span>';
                             foreach ( $all_tags as $key => $tag ) {
                                 $out .= '<a href="'.get_term_link( $tag->term_id ).'">' . $tag->name . '</a>';
                             }
                         $out .= '</div>';
                     }    
                 }
-            $out .= '</div>';
             
         $out .= '</footer><!-- .entry-footer -->';
         
@@ -820,7 +834,6 @@ if ( ! function_exists( 'demure_update_avatar' ) ) {
 		$error = '';
         if ( $_POST['action'] == 'demure_update_avatar' ) {
             if ( !empty( $_FILES['avatar'] ) ) {
-                $file_arr = wp_handle_upload( $_FILES['avatar'], array( 'test_form' => FALSE ) );
 				if ( $_FILES['avatar']['type'] != "image/jpeg" && $_FILES['avatar']['type'] != "image/png" ) {
 					$error = 1;
 				} elseif ( $_FILES['avatar']['size'] > 2000000 ) {
@@ -830,7 +843,6 @@ if ( ! function_exists( 'demure_update_avatar' ) ) {
 					update_user_meta( get_current_user_id(), 'demure_avatar', $file_arr['url'] );
 					$error = 0;
 				}
-
 				echo json_encode( $error );
             }
         }

@@ -610,6 +610,13 @@
                 'std'     => '1'
             ),
             array(
+                'id'      => 'display_date',
+                'type'    => 'checkbox',
+                'title'   => esc_html__( 'Display date for posts', 'demure' ),
+                'default' => '1',
+                'std'     => '1'
+            ),
+            array(
                 'id'      => 'display_categories',
                 'type'    => 'checkbox',
                 'title'   => esc_html__( 'Display categories for posts', 'demure' ),
@@ -1131,7 +1138,7 @@
                                         'font-weight'  => '400', 
                                         'font-family' => 'Open Sans', 
                                         'google'      => true,
-                                        'font-size'   => '1.1',
+                                        'font-size'   => '1',
                                         'line-height' => '1.5',
                                         'text-align'  => 'inherit'
                                         

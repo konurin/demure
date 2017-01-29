@@ -11,7 +11,7 @@ class demure_popular_widget extends WP_Widget {
         esc_html__('Demure Popular Widget', 'demure'), 
 
         // Widget description
-        array( 'description' => __( 'Your site’s most recent Posts with thumbnails.', 'demure' ), ) 
+        array( 'description' => esc_html__( 'Most recent Posts with thumbnails.', 'demure' ), ) 
         );
     }
 

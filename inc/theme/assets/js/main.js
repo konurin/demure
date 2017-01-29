@@ -179,16 +179,18 @@
          function readURL(input, preview) {
             if (input.files && input.files[0]) {
                 var reader = new FileReader();
+                reader.readAsDataURL(input.files[0]);
                 reader.onload = function (e) {
                     $(preview).attr('src', e.target.result);
                 }
-                reader.readAsDataURL(input.files[0]);
             }
         }
+         if ($('.demure-preloader').length > 0) {
+             $(window).on("load", function(){
+                 $('.demure-preloader').fadeOut();
+             });
+         }
          
-         $(window).on("load", function(){
-             $('.demure-preloader').fadeOut();
-         });
          
          if ($('.profile-avatar').length > 0) {
             var trigger = $(this);
@@ -213,31 +215,45 @@
                     if (file[0].size > 2000000) {
                         alert('File size should be less than 2 mb');
                         return;
+                    } else if ( !file[0].type.match("image/jpeg") && !file[0].type.match("image/png") ) {
+                        alert('File type must be jpeg or png');
+                        return;
                     } else {
-                        data.append( 'avatar', file[0], file[0].name );
-                        readURL(this, $('.profile-avatar form img'));
+                        var reader = new FileReader();
+                        reader.readAsDataURL(this.files[0]);
+                        reader.onload = function (e) {
+                            $('.profile-avatar form img').attr('src', e.target.result);
+                        }
+                        
+                        setTimeout(function(){
+                            data.append( 'avatar', file[0], file[0].name );
+                            sendaAjax();
+                        }, 2000);
                     }
                 } else {
-                    return;
+                    return false;
                 }
-
-                var xhr = new XMLHttpRequest();
-                // Create a new XMLHttpRequest
-                xhr.open('POST', ajax_url, true); 
-                xhr.send(data);
-                xhr.onreadystatechange = function() {
-                    if (xhr.readyState == XMLHttpRequest.DONE) {
-                        var response = JSON.parse(xhr.response);
-                        switch (response) {
-                            case 1:
-                                alert("File type must be jpeg or png");
-                                break;
-                            case 2:
-                                alert("File size should be less than 2 mb");
-                                break;
+                
+                function sendaAjax() {
+                    var xhr = new XMLHttpRequest();
+                    // Create a new XMLHttpRequest
+                    xhr.open('POST', ajax_url, true); 
+                    xhr.send(data);
+                    xhr.onreadystatechange = function() {
+                        if (xhr.readyState == XMLHttpRequest.DONE) {
+                            var response = JSON.parse(xhr.response);
+                            switch (response) {
+                                case 1:
+                                    alert("File type must be jpeg or png");
+                                    break;
+                                case 2:
+                                    alert("File size should be less than 2 mb");
+                                    break;
+                            }
                         }
                     }
                 }
+                
             });
             
             $(form).find('input[name="remove_profile_avatar"]').click(function(event){
