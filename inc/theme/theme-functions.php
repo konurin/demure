@@ -860,89 +860,6 @@ if ( !empty( $_POST['update_user_info'] ) ) {
     exit;
 }
 
-add_action('init', 'replace_default_gallery');
-function replace_default_gallery() {
-    remove_shortcode('gallery');
-    add_shortcode('gallery', 'demure_gallery');
-}
-
-function demure_gallery($atts) {
-	global $post;
-	$pid = $post->ID;
-	$gallery = "";
-
-	if ( empty( $pid ) ) { 
-        $pid = $post['ID'];
-    }
-
-	if (!empty( $atts['ids'] ) ) {
-	   	$atts['orderby'] = 'post__in';
-	   	$atts['include'] = $atts['ids'];
-	}
-    
-
-	extract( shortcode_atts( array(
-        'orderby' => 'menu_order ASC, ID ASC', 
-        'include' => '', 
-        'id' => $pid, 
-        'itemtag' => 'dl', 
-        'icontag' => 'dt', 
-        'captiontag' => 'dd', 
-        'columns' => 3, 
-        'size' => 'large', 
-        'link' => 'file'
-    ), $atts, 'gallery' ) );
-
-	$args = array(
-        'post_type' => 'attachment', 
-        'post_status' => 'inherit', 
-        'post_mime_type' => 'image', 
-        'orderby' => $orderby
-    );
-
-	if ( !empty($include ) ) {
-        $args['include'] = $include;
-    } else {
-	   	$args['post_parent'] = $id;
-		$args['numberposts'] = -1;
-	}
-
-	if ( $args['include'] == "" ) { 
-        $args['orderby'] = 'date'; 
-        $args['order'] = 'asc';
-    }
-
-	$images = get_posts( $args );
-    
-    $unic_id = uniqid('gallery_');
-    
-    $out = '<div id="'.$unic_id.'" class="gallery gallery-columns-'.$columns.' size-'.$size.'">';
-    
-    if ( !empty($images) ) {
-        foreach ( $images as $image ) {
-    		
-    		$thumbnail = wp_get_attachment_image_src( $image->ID, $size );
-    		$thumbnail = $thumbnail[0];
-            
-            $full_image = wp_get_attachment_image_src( $image->ID, 'full' );
-            $full_image = $full_image[0];
-            
-            $out .= '<a href="'.$full_image.'" class="gallery-item" rel="group_'.$unic_id.'">';
-                $out .= '<figure>';
-                $out .= '<img src="'.$thumbnail.'" />';
-                    $out .= '<figcaption class="gallery-caption">';
-                        $out .= '<div class="img-title">'.$image->post_title.'</div>';
-                        $out .= '<div class="img-caption">'.$image->post_excerpt.'</div>';
-                    $out .= '</figcaption>';
-                $out .= '</figure>';
-            $out .= '</a>';
-    	}
-    }
-	
-    $out .= '</div>';
-	
-	return $out;
-}
 if ( ! function_exists( 'footer_text' ) ) {
     function footer_text() {
         global $demure;
@@ -1097,4 +1014,18 @@ if ( ! function_exists( 'get_demure_social' ) ) {
 		
 		echo $out;
 	}
+}
+
+if ( ! function_exists( 'anaglyph_add_favicon' ) ) {				
+	function anaglyph_add_favicon() {
+		global $demure;
+		
+		if( !empty($demure['favicon'])) 				echo '<link rel="shortcut icon" href="' .  	esc_url($demure['favicon']['url'])  . '"/>' . "\n";
+		if( !empty($demure['favicon-iphone'])) 			echo '<link rel="apple-touch-icon" href="'. esc_url($demure['favicon-iphone']['url']) .'"> '. "\n"; 
+		if( !empty($demure['favicon-iphone-retina'])) 	echo '<link rel="apple-touch-icon" sizes="114x114" 	href="'.  esc_url($demure['favicon-iphone-retina']['url']) .' "> '. "\n"; 
+		if( !empty($demure['favicon-ipad'])) 			echo '<link rel="apple-touch-icon" sizes="72x72" 	href="'. esc_url($demure['favicon-ipad']['url']) .'"> '. "\n"; 
+		if( !empty($demure['favicon-ipad-retina']))		echo '<link rel="apple-touch-icon" sizes="144x144" 	href="'. esc_url($demure['favicon-ipad-retina']['url'])  .'"> '. "\n";  
+	 
+	}
+	add_action('wp_head', 'anaglyph_add_favicon', 100);
 }

@@ -20,8 +20,8 @@
 
 
     // Background Patterns Reader
-    $sample_patterns_path = ReduxFramework::$_dir . '../sample/patterns/';
-    $sample_patterns_url  = ReduxFramework::$_url . '../sample/patterns/';
+    $sample_patterns_path = get_template_directory_uri() . '/inc/admin/patterns/';
+    $sample_patterns_url  = get_template_directory_uri() . '/inc/admin/patterns/';
     $sample_patterns      = array();
     
     $demure_img_path = get_template_directory_uri() . '/inc/theme/assets/img/';
@@ -312,6 +312,60 @@
                 'validate' => 'color',
                 'transparent' => false
             ),
+        )
+    ) );
+    
+    // -> START Favicon section
+    Redux::setSection( $opt_name, array(
+        'title'            => esc_html__( 'Favicons', 'demure' ),
+        'id'               => 'favicon',
+        'customizer_width' => '400px',
+        'icon'             => 'el el-picture',
+        'fields'           => array(
+            array(
+				'id'        => 'favicon',
+				'type'      => 'media',
+				'url'       => false,
+				'title'     => __('Favicon', 'demure'),
+				'subtitle'  => __('A favicon is a 16x16 pixel icon that represents your site; upload your custom Favicon here.', 'demure'),
+				'default'   => array('url' => $sample_patterns_url . 'favicon-16x16.png'),
+			),
+			
+			array(
+				'id'        => 'favicon-iphone',
+				'type'      => 'media',
+				'url'       => false,
+				'title'     => __('Favicon iPhone', 'demure'),
+				'subtitle'  => __('Upload a custom favicon for iPhone (57x57 pixel png).', 'demure'),
+				'default'   => array('url' => $sample_patterns_url . 'favicon-57x57.png'),
+			),
+			
+			array(
+				'id'        => 'favicon-iphone-retina',
+				'type'      => 'media',
+				'url'       => false,
+				'title'     => __('Favicon iPhone Retina', 'demure'),
+				'subtitle'  => __('Upload a custom favicon for iPhone retina (114x114 pixel png).', 'demure'),
+				'default'   => array('url' => $sample_patterns_url . 'favicon-114x114.png'),
+			),
+			
+			array(
+				'id'        => 'favicon-ipad',
+				'type'      => 'media',
+				'url'       => false,
+				'title'     => __('Favicon iPad', 'demure'),
+				'subtitle'  => __('Upload a custom favicon for iPad (72x72 pixel png).', 'demure'),
+				'default'   => array('url' => $sample_patterns_url . 'favicon-72x72.png'),
+			),
+			
+			array(
+				'id'        => 'favicon-ipad-retina',
+				'type'      => 'media',
+				'url'       => false,
+				'title'     => __('Favicon iPad Retina', 'demure'),
+				'subtitle'  => __('Upload a custom favicon for iPhone retina (144x144 pixel png).', 'demure'),
+				'default'   => array('url' => $sample_patterns_url . 'favicon-144x144.png'),
+			),
         )
     ) );
     

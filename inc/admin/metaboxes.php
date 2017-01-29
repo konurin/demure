@@ -33,7 +33,7 @@ function demure_meta_boxes( $meta_boxes ) {
             array(
                 'id'        => 'margin_top',
                 'name'      => esc_html__( 'Margin top (px)', 'demure' ),
-                'desc'      => esc_html__( 'Default: 30' ),
+                'desc'      => esc_html__( 'Default: 30', 'demure' ),
                 'type'      => 'number',
                 'default'   => '30',
                 'std'       => '30'
@@ -41,7 +41,7 @@ function demure_meta_boxes( $meta_boxes ) {
             array(
                 'id'        => 'margin_bottom',
                 'name'      => esc_html__( 'Margin bottom (px)', 'demure' ),
-                'desc'      => esc_html__( 'Default: 30' ),
+                'desc'      => esc_html__( 'Default: 30', 'demure' ),
                 'type'      => 'number',
                 'default'   => '30',
                 'std'       => '30'
