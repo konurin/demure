@@ -57,7 +57,7 @@ function demure_setup() {
 	/*
 	* TGM
 	*/
-	require_once '/inc/admin/TGM/init.php';
+	require_once get_template_directory() . '/inc/admin/TGM/init.php';
 	
 	/*
 	 * Make theme available for translation.
