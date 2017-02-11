@@ -29,11 +29,20 @@ if ( ! function_exists( 'get_demure_header_buttons' ) ) {
 if ( ! function_exists( 'demure_before_content' ) ) {
 	function demure_before_content() {
 		global $post;
-		$style = $transparent_bg = '';
-		$margin_top = rwmb_meta( 'margin_top', null, $post->ID );
-		$margin_bottom = rwmb_meta( 'margin_bottom', null, $post->ID );
-		$full_width = rwmb_meta( 'full_width', null, $post->ID );
-		$transparent_bg = rwmb_meta( 'container_transparent', null, $post->ID );
+		$style = $transparent_bg = $margin_top = $margin_bottom = $transparent_bg = $full_width = '';
+		$layout = 'container';
+		
+		if ( isset( $post->ID ) ) {
+			$margin_top = rwmb_meta( 'margin_top', null, $post->ID );
+			$margin_bottom = rwmb_meta( 'margin_bottom', null, $post->ID );
+			$full_width = rwmb_meta( 'full_width', null, $post->ID );
+			$transparent_bg = rwmb_meta( 'container_transparent', null, $post->ID );
+			$no_all_padding = rwmb_meta( 'no_paddings', null, $post->ID );
+			if ( !empty( $no_all_padding ) && $no_all_padding == 1 ) {
+				add_action( 'wp_enqueue_scripts', 'add_custom_styles', 99 );
+			}
+		}
+	
 		if ( $margin_top != '' ) {
 			$margin_top = 'margin-top:' . $margin_top . 'px;';
 		}
@@ -48,8 +57,6 @@ if ( ! function_exists( 'demure_before_content' ) ) {
 		
 		if ( $full_width == 'on' ) {
 			$layout = 'container-fluid';
-		} else {
-			$layout = 'container';
 		}
 		
 		if ( ! empty( $transparent_bg ) && $transparent_bg == 1 ) {
@@ -61,14 +68,9 @@ if ( ! function_exists( 'demure_before_content' ) ) {
 }
 
 function add_custom_styles() {
-	global $post;
-	$no_all_padding = rwmb_meta( 'no_paddings', null, $post->ID );
-	if ( !empty( $no_all_padding ) && $no_all_padding == 1 ) {
-		$styles_custom = ".page article, .page article header h3, .page .entry-content { padding: 0!important; }";
-		wp_add_inline_style( 'demure-style', $styles_custom );	
-	}
+	$styles_custom = ".page article, .page article header h3, .page .entry-content { padding: 0!important; }";
+	wp_add_inline_style( 'demure-style', $styles_custom );	
 }
-add_action( 'wp_enqueue_scripts', 'add_custom_styles', 99 );
 
 function is_blog() {
 	global  $post;
@@ -271,7 +273,7 @@ if ( ! function_exists( 'get_demure_content' ) ) {
                             </div>
                         <?php } ?>
                     <?php endif;
-                } elseif ( $demure['post_navigation'] == '1' ) {
+                } else {
                     the_posts_pagination( array( 'screen_reader_text' => ' ' ) );
                 }
                 
@@ -289,10 +291,11 @@ if ( ! function_exists( 'get_demure_content' ) ) {
 if ( ! function_exists( 'get_demure_branding' ) ) {
     function get_demure_branding() {
         global $demure;
-        $out = $type = $site_branding = $site_description = '';
+        $out = $site_branding = $site_description = '';
+		$type = 1;
         $type = $demure['header_logo_type'];
     
-        if ( $type == 0 ) {
+        if ( $type === 0 ) {
             $heading_text = $demure['header_text_heading'];
             $tagline = $demure['header_text_tagline'];
 
@@ -309,17 +312,19 @@ if ( ! function_exists( 'get_demure_branding' ) ) {
             $out .= '</div>';
         } else {
             $logotype = $demure['logotype'];
-            if ( !empty( $logotype['url'] ) ) {
+			$logotype_url = $logotype['url'];
+			if ( ! isset( $demure ) ) {
+				$logotype_url = get_template_directory_uri() . '/inc/theme/assets/img/logo.png';
+			}
+            if ( !empty( $logotype_url ) ) {
                 $out = '<div class="branding branding-image">';
 					$out .= '<div class="container-branding-image">';
-	                    $out .= '<img src="' . $logotype['url'] . '" />';
+	                    $out .= '<img src="' . $logotype_url . '" />';
 	                    $out .= '<a class="logotype-link" href="' . home_url() . '"></a>';
 					$out .= '</div>';
                 $out .= '</div>';
             }
         }
-        
-        
         
         echo $out;
     }
@@ -392,15 +397,20 @@ if ( ! function_exists( 'gemure_get_post_meta' ) ) {
 	function gemure_get_post_meta() {
 		global $demure, $post;
 		$out = '';
-		if ( $demure['display_author'] != 1 && $demure['display_date'] != 1 ) return false;
+		$display_date = $display_author = 1;
+		if ( isset( $demure ) ) {
+			$display_date = $demure['display_date'];
+			$display_author = $demure['display_author'];
+		}
+		if ( $display_author != 1 && $display_date != 1 ) return false;
 		$out .= '<div class="entry-meta">';
-			if ( isset( $demure['display_author'] ) && $demure['display_author'] == 1 ) {
-					$out .= '<div class="author">';
-						$out .= '<span class="author_label"><i class="fa fa-user" aria-hidden="true"></i></span><a href="' . get_author_posts_url( get_the_author_meta( "ID" ) ) . '"> ' . get_the_author() . '</a>';
-					$out .= '</div>';
+			if ( isset( $display_author ) && $display_author == 1 ) {
+				$out .= '<div class="author">';
+					$out .= '<span class="author_label"><i class="fa fa-user" aria-hidden="true"></i></span><a href="' . get_author_posts_url( get_the_author_meta( "ID" ) ) . '"> ' . get_the_author() . '</a>';
+				$out .= '</div>';
 			}
 			
-			if ( isset( $demure['display_date'] ) && $demure['display_date'] == 1 ) {
+			if ( isset( $display_date ) && $display_date == 1 ) {
 				$out .= '<div class="date">';
 					$out .= '<i class="fa fa-clock-o" aria-hidden="true"></i>' . get_the_date( null, $post->ID );
 				$out .= '</div>';
@@ -413,9 +423,16 @@ if ( ! function_exists( 'gemure_get_post_meta' ) ) {
 if ( ! function_exists( 'demure_post_footer' ) ) {
     function demure_post_footer( $post_id = '' ) {
         global $demure, $post;
+		$display_categories = $display_tags = 1;
+		
+		if ( isset( $demure ) ) {
+			$display_categories = $demure['display_categories'];
+			$display_tags = $demure['display_tags'];
+		}
+		
         $out = '<footer class="entry-footer">';
             
-                if ( isset( $demure['display_categories'] ) && $demure['display_categories'] == '1' ) {
+                if ( isset( $display_categories ) && $display_categories == '1' ) {
                     $all_categories = get_the_category( $post->ID );
                     
                     if ( !empty( $all_categories ) ) {
@@ -427,7 +444,7 @@ if ( ! function_exists( 'demure_post_footer' ) ) {
                     }    
                 }
                 
-                if ( isset( $demure['display_tags'] ) && $demure['display_tags'] == '1' ) {
+                if ( isset( $display_tags ) && $display_tags == '1' ) {
                     $all_tags = get_the_tags( $post->ID );
                     
                     if ( !empty( $all_tags ) ) {
@@ -469,12 +486,12 @@ if ( ! function_exists( 'demure_reorder_comment_fields' ) ) {
 }
 
 function ajax_load_posts(){
-    $args = unserialize(stripslashes($_POST['query']));
+    $args = unserialize( stripslashes( $_POST['query'] ) );
     $args['paged'] = $_POST['page'] + 1;
     $args['post_status'] = 'publish';
     $q = new WP_Query($args);
     if( $q->have_posts() ):
-        while($q->have_posts()): $q->the_post();
+        while( $q->have_posts() ): $q->the_post();
             get_template_part( 'template-parts/content', get_post_format() );
         endwhile;
     endif;
@@ -501,7 +518,6 @@ if ( ! function_exists( 'demure_user_authenticate' ) ) {
                 }
             } else {
                 $result = '<div class="notification notification-success"><p>'.esc_html__( 'Success!','demure' ).'</p></div>';
-
             }
 
         }

@@ -647,7 +647,7 @@
                 'id'                    => 'article-background',
                 'type'                  => 'background',
                 'title'                 => esc_html__( 'Post container background', 'demure' ),
-                'output'                => array( '.blog article, .single-post article' ),
+                'output'                => array( '.blog article, .single-post article, .archive article' ),
                 'subtitle'              => esc_html__( 'Set custom background color for post container', 'demure' ),
                 'background-image'      => false,
                 'background-repeat'     => false,
@@ -1114,7 +1114,7 @@
                                         'font-weight'  => '800', 
                                         'font-family' => 'Open Sans', 
                                         'google'      => true,
-                                        'font-size'   => '14px',
+                                        'font-size'   => '1.4',
                                         'text-transform' => 'none'
                                 ),
                 'preview' => array('text' => 'sample text'),                

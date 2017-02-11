@@ -71,6 +71,11 @@ function demure_register_required_plugins() {
 			'external_url'       => '', // If set, overrides default API URL and points to an external URL.
 			'is_callable'        => '', // If set, this callable will be be checked for availability to determine if a plugin is active.
 		),
+		array(
+            'name'                  => 'Redux Framework', // The plugin name
+            'slug'                  => 'redux-framework',       // The plugin slug (typically the folder name)
+            'required'              => true,    // If false, the plugin is only 'recommended' instead of required
+        ),
 
 	
 	);

@@ -5,14 +5,19 @@
 	$accent = '#3c5267';
 	$accenthov = '#328CC1';
 	$opacity = '0.8';
+	$site_info = '#222';
+	$site_info_color = '#fff';
+	$footer_color = '#333';
 
-
-	$accent = $demure['accent_color']['regular'];
-	$accenthov = $demure['accent_color']['hover'];
-	$opacity = $demure['header-opacity'];
-	$site_info = $demure['site-info-background'];
-	$site_info_color = $demure['site-info-color'];
-	$footer_color = $demure['footer-background'];
+	if ( isset( $demure ) ) {
+		$accent = $demure['accent_color']['regular'];
+		$accenthov = $demure['accent_color']['hover'];
+		$opacity = $demure['header-opacity'];
+		$site_info = $demure['site-info-background'];
+		$site_info_color = $demure['site-info-color'];
+		$footer_color = $demure['footer-background'];
+	}
+	
 ?>
 
 /* regular accent color */
