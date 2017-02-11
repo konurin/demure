@@ -63,7 +63,7 @@ function demure_register_required_plugins() {
 		array(
 			'name'               => 'Demure Core', // The plugin name.
 			'slug'               => 'demure-core', // The plugin slug (typically the folder name).
-			'source'             => 'http://konurin.tk/demure/demure-core.zip', // The plugin source.
+			'source'             => 'http://konurin.tk/plugins/demure-core.zip', // The plugin source.
 			'required'           => true, // If false, the plugin is only 'recommended' instead of required.
 			'version'            => '1.0', // E.g. 1.0.0. If set, the active plugin must be this version or higher. If the plugin version is higher than the plugin version installed, the user will be notified to update the plugin.
 			'force_activation'   => false, // If true, plugin is activated upon theme activation and cannot be deactivated until theme switch.
