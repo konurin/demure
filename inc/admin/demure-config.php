@@ -7,6 +7,16 @@
     if ( ! class_exists( 'Redux' ) ) {
         return;
     }
+    
+    function removeDemoModeLink() { // Be sure to rename this function to something more unique
+        if ( class_exists('ReduxFrameworkPlugin') ) {
+            remove_filter( 'plugin_row_meta', array( ReduxFrameworkPlugin::get_instance(), 'plugin_metalinks'), null, 2 );
+        }
+        if ( class_exists('ReduxFrameworkPlugin') ) {
+            remove_action('admin_notices', array( ReduxFrameworkPlugin::get_instance(), 'admin_notices' ) );    
+        }
+    }
+    add_action('init', 'removeDemoModeLink');
 
 
     // This is your option name where all the Redux data is stored.
