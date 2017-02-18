@@ -371,9 +371,9 @@ if ( ! function_exists( 'demure_post_content' ) ) {
 }
 
 if ( ! function_exists( 'demure_post_thumbnail' ) ) {
-    function demure_post_thumbnail( $post_id = '' ) {
+    function demure_post_thumbnail() {
         global $post;
-        if ( !has_post_thumbnail( $post_id ) ) return false;
+        if ( ! has_post_thumbnail( $post ) ) return false;
 
         if ( is_single() || is_page() ) {
 			?>
@@ -384,7 +384,7 @@ if ( ! function_exists( 'demure_post_thumbnail' ) ) {
 			<?php
         } else {
 			?>
-            <a href="<?php get_the_permalink( $post_id ); ?>" class="thumbnail">
+            <a href="<?php the_permalink( $post->ID ); ?>" class="thumbnail">
                 <?php the_post_thumbnail(); ?>
                 <div class="overlay"></div>
             </a>

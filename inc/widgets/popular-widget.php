@@ -68,9 +68,15 @@ class demure_popular_widget extends WP_Widget {
         } else {
             $title = esc_html__( 'Popular posts', 'demure' );
         }
-        $orderby = $instance[ 'orderby' ];
-        $order = $instance[ 'order' ];
-        $numberposts = $instance['numberposts'];
+        $numberposts = 5;
+        $orderby = 'none';
+        $order = 'DESC';
+        
+        
+        if ( ! empty( $instance[ 'orderby' ] ) ) $orderby = $instance[ 'orderby' ];
+        if ( ! empty( $instance[ 'order' ] ) ) $order = $instance[ 'order' ];
+        if ( ! empty( $instance['numberposts'] ) ) $numberposts = $instance['numberposts'];
+        
         
         // Widget admin form
         ?>

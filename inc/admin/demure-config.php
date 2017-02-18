@@ -239,18 +239,6 @@
                 )
             ),
             array(
-                'id'       => 'header-height',
-                'type'     => 'dimensions',
-                'units'    => array('px'),
-                'title'    => esc_html__('Header height', 'demure'),
-                'subtitle' => esc_html__('Choose height for header', 'demure'),
-                'output'   => array('#masthead .wrapper'),
-                'width'    => false,
-                'default'  => array(
-                    'height'  => '150px'
-                ),
-            ),
-            array(
                 'id'            => 'header-opacity',
                 'type'          => 'slider',
                 'title'         => esc_html__('Transparency for header items', 'demure'),
