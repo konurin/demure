@@ -37,11 +37,30 @@
             $(gallery).addClass('colorbox-activated');
         }
     }
-    $(window).load(setColorbox);
-    $(window).scroll(setColorbox);
+    function setCarouselHeight(){
+        if ($(".homepage-slider").length > 0) {
+            var wpAdminBar = 0;
+            var screenHeight = $(window).height();
+            var headerHeight = $('#masthead').height();
+            if ($('body').hasClass('admin-bar')) {
+                var wpAdminBar = $('#wpadminbar').height();
+            }
+            $(".homepage-slider").height(screenHeight - headerHeight - wpAdminBar);
+        }
+    }
+    
+    $(window).load(function(){
+        setColorbox();
+    });
+    $(window).scroll(function(){
+        setColorbox();
+    });
+    $(window).resize(function(){
+        setCarouselHeight();
+    });
 
     $(document).ready(function() {
-        
+        setCarouselHeight();
         // navigation 
         $('#site-navigation ul li').each(function(){
             if ($(this).hasClass('menu-item-has-children') && $(this).not().find('> div.open-sub-menu')) {
@@ -107,12 +126,13 @@
         
          // init owl-carousel
          if ($(".homepage-slider").length > 0) {
-            $(".homepage-slider").owlCarousel({
+            var carousel = $('.owl-carousel');
+            $(carousel).owlCarousel({
                 navigation: true, // Show next and prev buttons
                 singleItem: true,
                 navigationText: ['<i class="fa fa-angle-left" aria-hidden="true"></i>','<i class="fa fa-angle-right" aria-hidden="true"></i>'],
                 slideSpeed : 300,
-                items: 1
+                items: 1,
             });
          }
          

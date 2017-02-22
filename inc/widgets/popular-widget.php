@@ -41,7 +41,7 @@ class demure_popular_widget extends WP_Widget {
         // This is where you run the code and display the output
         if ( ! empty( $posts ) ) {
             foreach ( $posts as $key => $post ) {
-                $id_ = $post->ID;
+                $id_ = (int)$post->ID;
                 $out .= '<a href="'.get_the_permalink( $id_ ).'" class="demure-popular-item">';
                     $out .= '<div class="image-block">';
                         

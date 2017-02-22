@@ -106,6 +106,12 @@ function demure_setup() {
 endif;
 add_action( 'after_setup_theme', 'demure_setup' );
 
+
+function demure_add_editor_styles() {
+	add_editor_style( 'editor-styles.css' );
+}
+add_action( 'current_screen', 'demure_add_editor_styles' );
+
 /**
  * Register widget area.
  *
@@ -242,7 +248,7 @@ add_action( 'widgets_init', 'demure_widgets_init' );
  * Enqueue scripts and styles.
  */
 function demure_scripts() {
-	global $demure;
+	global $demure_config;
 
 	// magnific popup
 	wp_enqueue_script( 'colorbox', get_template_directory_uri() . '/inc/theme/assets/js/jquery.colorbox-min.js', array('jquery'), false, true );
@@ -251,7 +257,7 @@ function demure_scripts() {
 	wp_enqueue_script( 'holder', get_template_directory_uri() . '/inc/theme/assets/js/holder.min.js', array('jquery'), false, true );
 
 	// owl carousel
-	if ( ( isset( $demure['home_slider'] ) && !empty( $demure['home_slider'] ) ) && is_front_page() && !is_home() ) {
+	if ( ( isset( $demure_config['home_slider'] ) && !empty( $demure_config['home_slider'] ) ) && is_front_page() && !is_home() ) {
 		wp_enqueue_script( 'owl-carousel', get_template_directory_uri() . '/inc/theme/assets/js/owl.carousel.min.js', array('jquery'), false, true );
 		wp_enqueue_style( 'owl-carousel', get_template_directory_uri() . '/inc/theme/assets/css/owl.carousel.css' );
 		wp_enqueue_style( 'owl-transitions', get_template_directory_uri() . '/inc/theme/assets/css/owl.transitions.css' );
@@ -259,7 +265,7 @@ function demure_scripts() {
 	}
 	
 	// comments reply
-	if ( is_singular() ) wp_enqueue_script( "comment-reply" );
+	if ( is_singular() ) wp_enqueue_script( 'comment-reply' );
 	
 	// profile page tabs
 	if ( is_author() ) {
@@ -267,52 +273,50 @@ function demure_scripts() {
 	}
 	
 	// main script
-	wp_enqueue_script( 'main', get_template_directory_uri() . '/inc/theme/assets/js/main.js', array('jquery'), false, true );
+	wp_enqueue_script( 'demure-main', get_template_directory_uri() . '/inc/theme/assets/js/demure-main.js', array('jquery'), false, true );
 	
 	// ajax settings
 	$blog_nav = 1;
-	if ( !empty( $demure['post_navigation'] ) ) {
-		$blog_nav =  $demure['post_navigation'];
+	if ( !empty( $demure_config['post_navigation'] ) ) {
+		$blog_nav =  $demure_config['post_navigation'];
 	}
 	
-	wp_localize_script( 'main', 'DemureGlobal',
+	wp_localize_script( 'demure-main', 'DemureGlobal',
             array( 'ajaxurl' => admin_url( 'admin-ajax.php' ),
 				   'blognav'  => $blog_nav
 			 ) );
 
-	wp_enqueue_style( 'demure-bootstrap', get_template_directory_uri() . '/inc/theme/assets/css/bootstrap.min.css' );
-	wp_enqueue_style( 'demure-font-awesome', get_template_directory_uri() . '/inc/theme/assets/css/fonts/font-awesome.min.css' );
+	wp_enqueue_style( 'bootstrap', get_template_directory_uri() . '/inc/theme/assets/css/bootstrap.min.css' );
+	wp_enqueue_style( 'font-awesome', get_template_directory_uri() . '/inc/theme/assets/css/fonts/font-awesome.min.css' );
 	wp_enqueue_style( 'colorbox', get_template_directory_uri() . '/inc/theme/assets/css/colorbox.css' );
 
 
 	wp_enqueue_style( 'demure-style', get_stylesheet_uri() );
 }
 add_action( 'wp_enqueue_scripts', 'demure_scripts' );
-
-add_action( 'wp_enqueue_scripts', 'include_dynamic_css', 11 );
-function include_dynamic_css() {
-	wp_enqueue_style( 'dynamic-css', admin_url('admin-ajax.php').'?action=dynamic_css' );
+add_action( 'wp_enqueue_scripts', 'demure_include_dynamic_css' );
+function demure_include_dynamic_css() {
+	wp_enqueue_style( 'demure-dynamic', admin_url('admin-ajax.php').'?action=demure_dynamic_css' );
 }
 
-add_action('wp_ajax_dynamic_css', 'dynamic_css');
-add_action('wp_ajax_nopriv_dynamic_css', 'dynamic_css');
-function dynamic_css() {
+add_action('wp_ajax_demure_dynamic_css', 'demure_dynamic_css');
+add_action('wp_ajax_nopriv_demure_dynamic_css', 'demure_dynamic_css');
+function demure_dynamic_css() {
 	require( get_template_directory().'/inc/theme/assets/style.css.php' );
 	exit;
 }
 
 function addAndOverridePanelCSS() {
-  wp_dequeue_style( 'redux-admin-css' );
+  wp_deregister_style( 'redux-admin-css' );
   wp_register_style(
-    'redux-demure-css',
-    get_template_directory_uri() . '/inc/admin/css/redux.css',
-    array( 'farbtastic' ) // Notice redux-admin-css is removed and the wordpress standard farbtastic is included instead
+    'demure-redux',
+    get_template_directory_uri() . '/inc/admin/css/redux.css'
   );    
-  wp_enqueue_style('redux-demure-css');
+  wp_enqueue_style('demure-redux');
 }
-add_action( 'redux/page/demure/enqueue', 'addAndOverridePanelCSS' );
+add_action( 'redux/page/demure_config/enqueue', 'addAndOverridePanelCSS' );
 
-function add_metaboxes_css() {
+function demure_add_metaboxes_css() {
 	wp_enqueue_style( 'demure-metaboxes', get_template_directory_uri() . '/inc/admin/css/metaboxes.css' );
 }
-add_action( 'admin_enqueue_scripts', 'add_metaboxes_css' );
+add_action( 'admin_enqueue_scripts', 'demure_add_metaboxes_css' );

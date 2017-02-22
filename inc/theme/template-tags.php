@@ -1,6 +1,6 @@
 <?php
-if ( ! function_exists( 'get_user_login_form' ) ) {
-	function get_user_login_form() {
+if ( ! function_exists( 'demure_get_user_login_form' ) ) {
+	function demure_get_user_login_form() {
 		?>
 		<div data-name="login-form" class="de_modal">
 			<div class="form-wrap">
@@ -25,8 +25,8 @@ if ( ! function_exists( 'get_user_login_form' ) ) {
 	}
 }
 
-if ( ! function_exists( 'get_register_form' ) ) {
-	function get_register_form() {
+if ( ! function_exists( 'demure_get_register_form' ) ) {
+	function demure_get_register_form() {
 		?>
 		<div data-name="register-form" class="de_modal">
 			<div class="form-wrap">
@@ -63,15 +63,15 @@ if ( ! function_exists( 'get_register_form' ) ) {
 	}
 }
 
-if ( ! function_exists( 'secondary_menu' ) ) {
-	function secondary_menu() {
+if ( ! function_exists( 'demure_secondary_menu' ) ) {
+	function demure_secondary_menu() {
 		?>
 			<nav class="main-navigation" id="secondary-menu">
 				<?php if ( is_user_logged_in() ): 
 					$profile_link = get_author_posts_url( get_current_user_id() );
 					?>
 					<ul>
-						<li><a href="<?php echo $profile_link; ?>"><?php esc_html_e( 'My profile', 'demure' ) ?></a></li>
+						<li><a href="<?php echo esc_url( $profile_link ); ?>"><?php esc_html_e( 'My profile', 'demure' ) ?></a></li>
 						<li><a href="<?php echo wp_logout_url( home_url() ); ?>"><?php esc_html_e( 'Logout', 'demure' ) ?></a></li>
 					</ul>
 				<?php else : ?>
@@ -85,11 +85,11 @@ if ( ! function_exists( 'secondary_menu' ) ) {
 	}
 }
 
-if ( ! function_exists( 'get_demure_search_heading' ) ) {
-	function get_demure_search_heading() {
+if ( ! function_exists( 'demure_get_search_heading' ) ) {
+	function demure_get_search_heading() {
 		$search_result = get_search_query();
 		?>
-			<div class="search-section-heading"><h1><?php esc_html_e( 'Search result for', 'demure' ); ?>: <?php echo $search_result; ?></h1></div>
+			<div class="search-section-heading"><h1><?php esc_html_e( 'Search result for', 'demure' ); ?>: <?php echo esc_html( $search_result ); ?></h1></div>
 		<?php
 	}
 }

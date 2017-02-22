@@ -15,7 +15,7 @@
  * the visitor has not yet entered the password we will
  * return early without loading the comments.
  */
- global $demure, $post;
+ global $demure_config, $post;
  $out = '';
  $display = 1;
  $post_type = get_post_type( $post->ID );
@@ -23,8 +23,8 @@ if ( post_password_required() ) {
 	return;
 }
 
-if ( !empty( $demure['display-comments'] ) ) {
-    $display = $demure['display-comments'];
+if ( !empty( $demure_config['display-comments'] ) ) {
+    $display = $demure_config['display-comments'];
 }
 
 if ( $display == 1 ) {
@@ -77,7 +77,7 @@ if ( $display == 1 ) {
 					wp_list_comments(
 						array(
 							'style' => 'div',
-							'callback' => 'get_demure_comment'
+							'callback' => 'demure_get_comment'
 						)
 					);
 				?>

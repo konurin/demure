@@ -25,13 +25,13 @@
 		<div class="container">
 			<div class="wrapper">
 				<div class="top-container">
-					<?php get_demure_branding(); ?>
-					<?php get_demure_header_buttons(); ?>
+					<?php demure_get_branding(); ?>
+					<?php demure_get_header_buttons(); ?>
 				</div>
 				
 				<div class="header-container">
 					<div class="menu-right-block">
-						<?php //secondary_menu(); ?>
+						<?php //demure_secondary_menu(); ?>
 						<nav id="site-navigation" class="main-navigation" role="navigation">
 							<?php wp_nav_menu( array( 'theme_location' => 'primary', 'menu_id' => 'primary-menu' ) ); ?>
 						</nav><!-- #site-navigation -->
@@ -41,14 +41,14 @@
 							<span class="line"></span>
 						</div>
 					</div>
-					<?php get_user_login_form(); ?>
-					<?php get_register_form(); ?>
+					<?php demure_get_user_login_form(); ?>
+					<?php demure_get_register_form(); ?>
 				</div>
 			</div>
 		</div>	
 	</header><!-- #masthead -->
 
-	<?php get_homepage_slider(); ?>
+	<?php demure_get_homepage_slider(); ?>
 	
 	<?php demure_before_content(); ?>
 		<div class="row">

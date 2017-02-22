@@ -1,7 +1,7 @@
 <?php 
 
-if ( ! function_exists( 'get_demure_header_buttons' ) ) {
-	function get_demure_header_buttons() {
+if ( ! function_exists( 'demure_get_header_buttons' ) ) {
+	function demure_get_header_buttons() {
 		if ( !is_user_logged_in() ) {
 			?>
 			<div class="profile-navigation">
@@ -19,7 +19,7 @@ if ( ! function_exists( 'get_demure_header_buttons' ) ) {
 			
 			?>
 			<div class="profile-navigation">
-				<a href="<?php echo get_author_posts_url( $user_id ); ?>"><?php esc_html_e( 'My profile', 'demure' ); ?></a>
+				<a href="<?php echo esc_url( get_author_posts_url( $user_id ) ); ?>"><?php esc_html_e( 'My profile', 'demure' ); ?></a>
 			</div>
 			<?php
 		}
@@ -39,7 +39,7 @@ if ( ! function_exists( 'demure_before_content' ) ) {
 			$transparent_bg = rwmb_meta( 'container_transparent', null, $post->ID );
 			$no_all_padding = rwmb_meta( 'no_paddings', null, $post->ID );
 			if ( !empty( $no_all_padding ) && $no_all_padding == 1 ) {
-				add_action( 'wp_enqueue_scripts', 'add_custom_styles', 99 );
+				add_action( 'wp_enqueue_scripts', 'demure_add_custom_styles', 99 );
 			}
 		}
 	
@@ -63,11 +63,11 @@ if ( ! function_exists( 'demure_before_content' ) ) {
 			$transparent_bg = 'transparent-container';
 		}
 		
-		echo '<div id="content" ' . $style . ' class="site-content '.$layout.' '.$transparent_bg.'">';
+		echo '<div id="content" ' . esc_attr( $style ) . ' class="site-content ' . esc_attr( $layout ) . ' ' . esc_attr( $transparent_bg ) . '">';
 	}
 }
 
-function add_custom_styles() {
+function demure_add_custom_styles() {
 	$styles_custom = ".page article, .page article header h3, .page .entry-content { padding: 0!important; }";
 	wp_add_inline_style( 'demure-style', $styles_custom );	
 }
@@ -78,8 +78,8 @@ function is_blog() {
 	return ( ((is_archive()) || (is_author()) || (is_category()) || (is_home()) || (is_single()) || (is_tag())) && ( $posttype == 'post')  ) ? true : false ;
 }
 
-if ( ! function_exists( 'get_demure_sidebar' ) ) {
-    function get_demure_sidebar( $order ) {
+if ( ! function_exists( 'demure_get_sidebar' ) ) {
+    function demure_get_sidebar( $order ) {
         if ( is_front_page() ) {
             dynamic_sidebar( 'main-' . $order );
         } elseif ( !is_single() && is_blog() ) {
@@ -90,48 +90,48 @@ if ( ! function_exists( 'get_demure_sidebar' ) ) {
     }
 }
 
-if ( ! function_exists( 'get_demure_sidebar_layout' ) ) {
-    function get_demure_sidebar_layout( $main_layout, $order ) {
+if ( ! function_exists( 'demure_get_sidebar_layout' ) ) {
+    function demure_get_sidebar_layout( $main_layout, $order ) {
         switch ( $main_layout ) {
             case 1:
                 ?>
                 <aside class="sidebar widget-area col-lg-4 col-md-4 col-sm-4 col-xs-12" role="complementary"> 
-                    <?php get_demure_sidebar( $order ); ?>
+                    <?php demure_get_sidebar( $order ); ?>
                 </aside><!-- #secondary -->
                 <?php
                 break;
             case 2:
                 ?>
                 <aside class="sidebar widget-area col-lg-4 col-md-4 col-sm-4 col-xs-12" role="complementary"> 
-                    <?php get_demure_sidebar( $order ); ?>
+                    <?php demure_get_sidebar( $order ); ?>
                 </aside><!-- #secondary -->
                 <?php
                 break;
             case 3:
                 ?>
                 <aside class="sidebar widget-area col-lg-4 col-md-4 col-sm-4 col-xs-12" role="complementary"> 
-                    <?php get_demure_sidebar( $order ); ?>
+                    <?php demure_get_sidebar( $order ); ?>
                 </aside><!-- #secondary -->
                 <?php
                 break;
             case 4:
                 ?>
                 <aside class="sidebar widget-area col-lg-3 col-md-3 col-sm-3 col-xs-12" role="complementary"> 
-                    <?php get_demure_sidebar( $order ); ?>
+                    <?php demure_get_sidebar( $order ); ?>
                 </aside><!-- #secondary -->
                 <?php
                 break;
             case 5:
                 ?>
                 <aside class="sidebar widget-area col-lg-3 col-md-3 col-sm-3 col-xs-12" role="complementary"> 
-                    <?php get_demure_sidebar( $order ); ?>
+                    <?php demure_get_sidebar( $order ); ?>
                 </aside><!-- #secondary -->
                 <?php
                 break;
             case 6:
                 ?>
                 <aside class="sidebar widget-area col-lg-3 col-md-3 col-sm-3 col-xs-12" role="complementary"> 
-                    <?php get_demure_sidebar( $order ); ?>
+                    <?php demure_get_sidebar( $order ); ?>
                 </aside><!-- #secondary -->
                 <?php
                 break;
@@ -139,18 +139,18 @@ if ( ! function_exists( 'get_demure_sidebar_layout' ) ) {
     }
 }
 
-if ( ! function_exists( 'get_main_content' ) ) {
-    function get_main_content() {
-        global $demure;
+if ( ! function_exists( 'demure_get_main_content' ) ) {
+    function demure_get_main_content() {
+        global $demure_config;
         $main_layout = 1;
 		
 		$page_layout_option = rwmb_meta( 'page_layout' );
         
-        if ( is_front_page() && !empty( $demure['main_layout'] ) ) $main_layout = $demure['main_layout'];
+        if ( is_front_page() && !empty( $demure_config['main_layout'] ) ) $main_layout = $demure_config['main_layout'];
 
-        if ( !is_single() && is_blog() && !empty( $demure['blog_layout'] ) ) $main_layout = $demure['blog_layout'];
+        if ( !is_single() && is_blog() && !empty( $demure_config['blog_layout'] ) ) $main_layout = $demure_config['blog_layout'];
         
-        if ( is_single() && is_blog() && !empty( $demure['single_blog_layout'] ) ) $main_layout = $demure['single_blog_layout'];
+        if ( is_single() && is_blog() && !empty( $demure_config['single_blog_layout'] ) ) $main_layout = $demure_config['single_blog_layout'];
         
         if ( ( isset( $page_layout_option ) && !empty( $page_layout_option ) ) && ( ( !is_single() && is_blog() ) || ( is_single() && is_blog() ) || ( !is_front_page() ) ) ) $main_layout = $page_layout_option;
 
@@ -159,17 +159,17 @@ if ( ! function_exists( 'get_main_content' ) ) {
                 ?>
                 <div id="primary" class="content-area col-xs-12 col-sm-12 col-md-12 col-lg-12">
                     <main id="main" class="site-main" role="main">
-                         <?php get_demure_content(); ?>
+                         <?php demure_get_content(); ?>
                     </main>
                 </div>
                 <?php
                 break;
             case 2:
-                get_demure_sidebar_layout( $main_layout, 'primary' );
+                demure_get_sidebar_layout( $main_layout, 'primary' );
                 ?>
                 <div id="primary" class="content-area col-xs-12 col-sm-8 col-md-8 col-lg-8">
                     <main id="main" class="site-main" role="main">
-                         <?php get_demure_content(); ?>
+                         <?php demure_get_content(); ?>
                     </main>
                 </div>
                 <?php
@@ -178,30 +178,30 @@ if ( ! function_exists( 'get_main_content' ) ) {
                 ?>
                 <div id="primary" class="content-area col-xs-12 col-sm-8 col-md-8 col-lg-8">
                     <main id="main" class="site-main" role="main">
-                         <?php get_demure_content(); ?>
+                         <?php demure_get_content(); ?>
                     </main>
                 </div>
                 <?php
-                get_demure_sidebar_layout( $main_layout, 'primary' );
+                demure_get_sidebar_layout( $main_layout, 'primary' );
                 break;
             case 4:
-                get_demure_sidebar_layout( $main_layout, 'primary' );
+                demure_get_sidebar_layout( $main_layout, 'primary' );
                 ?>
                 <div id="primary" class="content-area col-xs-12 col-sm-6 col-md-6 col-lg-6">
                     <main id="main" class="site-main" role="main">
-                         <?php get_demure_content(); ?>
+                         <?php demure_get_content(); ?>
                     </main>
                 </div>
                 <?php
-                get_demure_sidebar_layout( $main_layout, 'secondary' );
+                demure_get_sidebar_layout( $main_layout, 'secondary' );
                 break;
             case 5:
-                get_demure_sidebar_layout( $main_layout, 'primary' );
-                get_demure_sidebar_layout( $main_layout, 'secondary' );
+                demure_get_sidebar_layout( $main_layout, 'primary' );
+                demure_get_sidebar_layout( $main_layout, 'secondary' );
                 ?>
                 <div id="primary" class="content-area col-xs-12 col-sm-6 col-md-6 col-lg-6">
                     <main id="main" class="site-main" role="main">
-                         <?php get_demure_content(); ?>
+                         <?php demure_get_content(); ?>
                     </main>
                 </div>
                 <?php
@@ -210,27 +210,27 @@ if ( ! function_exists( 'get_main_content' ) ) {
                 ?>
                 <div id="primary" class="content-area col-xs-12 col-sm-6 col-md-6 col-lg-6">
                     <main id="main" class="site-main" role="main">
-                         <?php get_demure_content(); ?>
+                         <?php demure_get_content(); ?>
                     </main>
                 </div>
                 <?php
-                get_demure_sidebar_layout( $main_layout, 'primary' );
-                get_demure_sidebar_layout( $main_layout, 'secondary' );
+                demure_get_sidebar_layout( $main_layout, 'primary' );
+                demure_get_sidebar_layout( $main_layout, 'secondary' );
                 break;
         }
     }
 }
 
-if ( ! function_exists( 'get_demure_content' ) ) {
-    function get_demure_content() {
-        global $demure, $wp_query;
+if ( ! function_exists( 'demure_get_content' ) ) {
+    function demure_get_content() {
+        global $demure_config, $wp_query;
         if ( is_archive() ) {
             the_archive_title( '<h1 class="page-title">', '</h1>' );
             the_archive_description( '<div class="archive-description">', '</div>' );
         }
 
         if ( is_search() ) {
-            get_demure_search_heading();
+            demure_get_search_heading();
         }
 
         if ( have_posts() ) :
@@ -259,15 +259,15 @@ if ( ! function_exists( 'get_demure_content' ) ) {
             endif;
 
             if ( is_tag() || is_category() || is_archive() || is_front_page() || ( is_home() && !is_front_page() ) ):
-                if ( $demure['post_navigation'] == '2' || $demure['post_navigation'] == '3' ) {
+                if ( $demure_config['post_navigation'] == '2' || $demure_config['post_navigation'] == '3' ) {
                     if (  $wp_query->max_num_pages > 1 ) : ?>
                         <script id="true_loadmore">
                         var ajaxurl = '<?php echo site_url() ?>/wp-admin/admin-ajax.php';
-                        var true_posts = '<?php echo serialize($wp_query->query_vars); ?>';
+                        var true_posts = '<?php echo serialize( $wp_query->query_vars ); ?>';
                         var current_page = <?php echo ( get_query_var( 'paged' ) ) ? get_query_var( 'paged' ) : 1; ?>;
                         var max_pages = '<?php echo $wp_query->max_num_pages; ?>';
                         </script>
-                        <?php if ( $demure['post_navigation'] == '2' ) { ?>
+                        <?php if ( $demure_config['post_navigation'] == '2' ) { ?>
                             <div id="loadmore">
                                 <span data-loading="<?php esc_html_e( 'Loading ...', 'demure' ); ?>" data-load-more="<?php esc_html_e( 'Load More', 'demure' ); ?>" class="button"><?php esc_html_e( 'Load More', 'demure' ); ?></span>
                             </div>
@@ -288,38 +288,38 @@ if ( ! function_exists( 'get_demure_content' ) ) {
 }
 
 // get header 
-if ( ! function_exists( 'get_demure_branding' ) ) {
-    function get_demure_branding() {
-        global $demure;
+if ( ! function_exists( 'demure_get_branding' ) ) {
+    function demure_get_branding() {
+        global $demure_config;
         $out = $site_branding = $site_description = '';
 		$type = 1;
-        $type = $demure['header_logo_type'];
-    
-        if ( $type === 0 ) {
-            $heading_text = $demure['header_text_heading'];
-            $tagline = $demure['header_text_tagline'];
+        $type = $demure_config['header_logo_type'];
+		
+        if ( $type == 0 ) {
+            $heading_text = $demure_config['header_text_heading'];
+            $tagline = $demure_config['header_text_tagline'];
 
             if( !empty( $heading_text ) ) {
-                $site_branding = '<h1><a href="' . site_url() . '">' . $heading_text . '</a></h1>';
+                $site_branding = '<h1><a href="' . site_url() . '">' . esc_html( $heading_text ) . '</a></h1>';
             }
 
             if( !empty( $tagline ) ) {
-                $site_description = '<span>' . $tagline . '</span>';
+                $site_description = '<span>' . esc_html(  $tagline ) . '</span>';
             }
-            $out = '<div class="branding branding-text">';
+            $out .= '<div class="branding branding-text">';
                 $out .= $site_branding;
                 $out .= $site_description;
             $out .= '</div>';
         } else {
-            $logotype = $demure['logotype'];
-			$logotype_url = $logotype['url'];
-			if ( ! isset( $demure ) ) {
+            $logotype = $demure_config['logotype'];
+			$logotype_url = esc_url( $logotype['url'] );
+			if ( ! isset( $demure_config ) ) {
 				$logotype_url = get_template_directory_uri() . '/inc/theme/assets/img/logo.png';
 			}
             if ( !empty( $logotype_url ) ) {
-                $out = '<div class="branding branding-image">';
+                $out .= '<div class="branding branding-image">';
 					$out .= '<div class="container-branding-image">';
-	                    $out .= '<img src="' . $logotype_url . '" />';
+	                    $out .= '<img src="' . esc_url( $logotype_url ) . '" />';
 	                    $out .= '<a class="logotype-link" href="' . home_url() . '"></a>';
 					$out .= '</div>';
                 $out .= '</div>';
@@ -353,10 +353,10 @@ if ( ! function_exists( 'demure_post_header' ) ) {
 
 // get post content
 if ( ! function_exists( 'demure_post_content' ) ) {
-    function demure_post_content( $post_id = '' ) {
-        $content = get_the_content( $post_id );
+    function demure_post_content() {
+        $content = get_the_content( get_the_ID() );
         if ( ( !is_front_page() && is_home() ) || ( is_home() ) || is_author() ) {
-            $content = wp_trim_words( get_the_content( $post_id ), 55, '<a class="read_more" href="'. get_permalink( $post_id ) .'">'.esc_html__('Read More', 'demure').'</a>' );
+            $content = wp_trim_words( get_the_content( get_the_ID() ), 55, '<a class="read_more" href="' . get_permalink( get_the_ID() ) . '">' . esc_html__('Read More', 'demure') . '</a>' );
         }
         
         $post_content = apply_filters( 'the_content', $content );
@@ -393,20 +393,20 @@ if ( ! function_exists( 'demure_post_thumbnail' ) ) {
     }
 }
 
-if ( ! function_exists( 'gemure_get_post_meta' ) ) {
-	function gemure_get_post_meta() {
-		global $demure, $post;
+if ( ! function_exists( 'demure_get_post_meta' ) ) {
+	function demure_get_post_meta() {
+		global $demure_config, $post;
 		$out = '';
 		$display_date = $display_author = 1;
-		if ( isset( $demure ) ) {
-			$display_date = $demure['display_date'];
-			$display_author = $demure['display_author'];
+		if ( isset( $demure_config ) ) {
+			$display_date = $demure_config['display_date'];
+			$display_author = $demure_config['display_author'];
 		}
 		if ( $display_author != 1 && $display_date != 1 ) return false;
 		$out .= '<div class="entry-meta">';
 			if ( isset( $display_author ) && $display_author == 1 ) {
 				$out .= '<div class="author">';
-					$out .= '<span class="author_label"><i class="fa fa-user" aria-hidden="true"></i></span><a href="' . get_author_posts_url( get_the_author_meta( "ID" ) ) . '"> ' . get_the_author() . '</a>';
+					$out .= '<span class="author_label"><i class="fa fa-user" aria-hidden="true"></i></span><a href="' . esc_url( get_author_posts_url( get_the_author_meta( "ID" ) ) ) . '"> ' . get_the_author() . '</a>';
 				$out .= '</div>';
 			}
 			
@@ -421,13 +421,13 @@ if ( ! function_exists( 'gemure_get_post_meta' ) ) {
 }
 
 if ( ! function_exists( 'demure_post_footer' ) ) {
-    function demure_post_footer( $post_id = '' ) {
-        global $demure, $post;
+    function demure_post_footer() {
+        global $demure_config, $post;
 		$display_categories = $display_tags = 1;
 		
-		if ( isset( $demure ) ) {
-			$display_categories = $demure['display_categories'];
-			$display_tags = $demure['display_tags'];
+		if ( isset( $demure_config ) ) {
+			$display_categories = $demure_config['display_categories'];
+			$display_tags = $demure_config['display_tags'];
 		}
 		
         $out = '<footer class="entry-footer">';
@@ -438,7 +438,7 @@ if ( ! function_exists( 'demure_post_footer' ) ) {
                     if ( !empty( $all_categories ) ) {
                         $out .= '<div class="categories-list">';
                             foreach ( $all_categories as $key => $cat ) {
-                                $out .= '<a href="'.get_term_link( $cat->term_id ).'">' . $cat->name . '</a>';
+                                $out .= '<a href="' . get_term_link( $cat->term_id ) . '">' . esc_html( $cat->name ) . '</a>';
                             }
                         $out .= '</div>';
                     }    
@@ -450,7 +450,7 @@ if ( ! function_exists( 'demure_post_footer' ) ) {
                     if ( !empty( $all_tags ) ) {
                         $out .= '<div class="tag-list">';
                             foreach ( $all_tags as $key => $tag ) {
-                                $out .= '<a href="'.get_term_link( $tag->term_id ).'">' . $tag->name . '</a>';
+                                $out .= '<a href="' . get_term_link( $tag->term_id ) . '">' . esc_html( $tag->name ) . '</a>';
                             }
                         $out .= '</div>';
                     }    
@@ -485,7 +485,7 @@ if ( ! function_exists( 'demure_reorder_comment_fields' ) ) {
     }
 }
 
-function ajax_load_posts(){
+function demure_ajax_load_posts(){
     $args = unserialize( stripslashes( $_POST['query'] ) );
     $args['paged'] = $_POST['page'] + 1;
     $args['post_status'] = 'publish';
@@ -498,15 +498,15 @@ function ajax_load_posts(){
     wp_reset_postdata();
     die();
 }
-add_action('wp_ajax_loadposts', 'ajax_load_posts');
-add_action('wp_ajax_nopriv_loadposts', 'ajax_load_posts');
+add_action('wp_ajax_loadposts', 'demure_ajax_load_posts');
+add_action('wp_ajax_nopriv_loadposts', 'demure_ajax_load_posts');
 
 if ( ! function_exists( 'demure_user_authenticate' ) ) {
     function demure_user_authenticate(){
-        if ( !empty($_POST['form']) ) {
-            parse_str($_POST['form'], $data);
+        if ( !empty( $_POST['form'] ) ) {
+            parse_str( $_POST['form'], $data );
             $user_data = array();
-            $user_data['user_login'] = $data['user_login'];
+            $user_data['user_login'] =  sanitize_user( $data['user_login'] );
             $user_data['user_password'] = $data['user_pass'];
 
             $auth = wp_signon( $user_data, false );
@@ -514,10 +514,10 @@ if ( ! function_exists( 'demure_user_authenticate' ) ) {
             if ( is_wp_error( $auth ) ) {
                 $error_string = $auth->get_error_message();
                 if ( !empty( $error_string ) ) {
-                    $result = '<div class="notification notification-warning"><p>' . $error_string . '</p></div>';
+					$result = sprintf( '<div class="notification notification-warning"><p>%s</p></div>', $error_string );
                 }
             } else {
-                $result = '<div class="notification notification-success"><p>'.esc_html__( 'Success!','demure' ).'</p></div>';
+                $result = '<div class="notification notification-success"><p>' . esc_html__( 'Success!','demure' ) . '</p></div>';
             }
 
         }
@@ -530,17 +530,17 @@ add_action('wp_ajax_nopriv_user_authenticate', 'demure_user_authenticate');
 
 if ( ! function_exists( 'demure_user_registration' ) ) {
     function demure_user_registration(){
-        $username = $password = $email = $first_name = $last_name = "";
-        if ( !empty($_POST['form']) && !empty($_POST['action']) && $_POST['action'] == 'user_registration' ) {
-            parse_str($_POST['form'], $data);
+        if ( !empty( $_POST['form'] ) && !empty( $_POST['action'] ) && $_POST['action'] == 'user_registration' ) {
+			$username = $password = $email = $first_name = $last_name = "";
+            parse_str( $_POST['form'], $data );
             
             $errors = new WP_Error;
 
             $username   =   sanitize_user( $data['username'] );
-            $password   =   esc_attr( $data['password'] );
+            $password   =   $data['password'];
             $email      =   sanitize_email( $data['email'] );
-            $first_name =   sanitize_text_field( $data['first_name'] );
-            $last_name  =   sanitize_text_field( $data['last_name'] );
+            $first_name =   sanitize_meta( 'first_name', $data['first_name'], 'user' );
+            $last_name  =   sanitize_meta( 'last_name', $data['last_name'], 'user' );
 
             if ( empty( $username ) || empty( $password ) || empty( $email ) ) {
                 $errors->add( 'missing_field', esc_html__( 'Required form field is missing', 'demure' ) );
@@ -588,9 +588,8 @@ if ( ! function_exists( 'demure_user_registration' ) ) {
                 $user_id = wp_insert_user( $userdata );
                 $result = '<div class="notification notification-success"><p>'.esc_html__( 'Success!','demure' ).'</p></div>';
             } else {
-                
                 if ( !empty( $error_string ) ) {
-                    $result = '<div class="notification notification-warning"><p>' . $error_string . '</p></div>';
+                    $result = sprintf( '<div class="notification notification-warning"><p>%s</p></div>', $error_string );
                 }
             } 
 
@@ -604,12 +603,12 @@ if ( ! function_exists( 'demure_user_registration' ) ) {
 add_action('wp_ajax_user_registration', 'demure_user_registration');
 add_action('wp_ajax_nopriv_user_registration', 'demure_user_registration');
 
-if ( ! function_exists( 'get_homepage_slider' ) ) {
-    function get_homepage_slider(){
-        global $demure;
-        if ( ( !empty( $demure['switch_slider'] ) && $demure['switch_slider']  == '1' ) && ( !is_home() && is_front_page() ) ) {
+if ( ! function_exists( 'demure_get_homepage_slider' ) ) {
+    function demure_get_homepage_slider(){
+        global $demure_config;
+        if ( ( !empty( $demure_config['switch_slider'] ) && $demure_config['switch_slider']  == '1' ) && ( !is_home() && is_front_page() ) ) {
 
-            $slides = $demure['home_slider'];
+            $slides = $demure_config['home_slider'];
             ?>
             <div class="homepage-slider-wrapper">
                 <div class="homepage-slider owl-carousel">
@@ -618,10 +617,10 @@ if ( ! function_exists( 'get_homepage_slider' ) ) {
                             <?php if ( !empty( $slide['title'] ) || !empty( $slide['description'] ) ): ?>
                                 <div class="slide-information">
                                     <?php if ( !empty( $slide['title'] ) ): ?>
-                                        <h3><?php echo $slide['title']; ?></h3>
+                                        <h3><?php echo esc_html( $slide['title'] ); ?></h3>
                                     <?php endif ?>
                                     <?php if ( !empty( $slide['description'] ) ): ?>
-                                        <div class="description"><?php echo $slide['description']; ?></div>
+                                        <div class="description"><?php echo esc_textarea( $slide['description'] ); ?></div>
                                     <?php endif ?>   
                                 </div>
                                
@@ -629,7 +628,7 @@ if ( ! function_exists( 'get_homepage_slider' ) ) {
                             <?php endif ?>
                             
                             
-                            <img data-src="holder.js/1980x1080?text=image" src="<?php echo $slide['image']; ?>" alt="">
+                            <img data-src="holder.js/1980x1080?text=image" src="<?php echo esc_url( $slide['image'] ); ?>" alt="">
                             <?php if ( !empty( $slide['url'] ) ): ?>
                                 <a class="slide_link" href="<?php echo esc_url( $slide['url'] ); ?>"></a>
                             <?php endif ?>
@@ -643,9 +642,9 @@ if ( ! function_exists( 'get_homepage_slider' ) ) {
     }
 }
 
-if ( ! function_exists( 'get_all_user_posts' ) ) {
-    function get_all_user_posts() {
-        global $demure;
+if ( ! function_exists( 'demure_get_all_user_posts' ) ) {
+    function demure_get_all_user_posts() {
+        global $demure_config;
         wp_reset_postdata();
         if ( have_posts() ) {
             
@@ -657,22 +656,22 @@ if ( ! function_exists( 'get_all_user_posts' ) ) {
                 get_template_part( 'template-parts/content', get_post_format() );
             endwhile;
 
-            if ( $demure['post_navigation'] == '2' || $demure['post_navigation'] == '3' ) {
+            if ( $demure_config['post_navigation'] == '2' || $demure_config['post_navigation'] == '3' ) {
                 global $wp_query;
                 if (  $wp_query->max_num_pages > 1 ) : ?>
                     <script id="true_loadmore">
                     var ajaxurl = '<?php echo site_url() ?>/wp-admin/admin-ajax.php';
-                    var true_posts = '<?php echo serialize($wp_query->query_vars); ?>';
-                    var current_page = <?php echo (get_query_var('paged')) ? get_query_var('paged') : 1; ?>;
+                    var true_posts = '<?php echo serialize( $wp_query->query_vars ); ?>';
+                    var current_page = <?php echo ( get_query_var('paged') ) ? get_query_var('paged') : 1; ?>;
                     var max_pages = '<?php echo $wp_query->max_num_pages; ?>';
                     </script>
-                    <?php if ( $demure['post_navigation'] == '2' ) { ?>
+                    <?php if ( $demure_config['post_navigation'] == '2' ) { ?>
                         <div id="loadmore">
                             <span data-loading="<?php esc_html_e( 'Loading ...', 'demure' ); ?>" data-load-more="<?php esc_html_e( 'Load More', 'demure' ); ?>" class="button"><?php esc_html_e( 'Load More', 'demure' ); ?></span>
                         </div>
                     <?php } ?>
                 <?php endif;
-            } elseif ( $demure['post_navigation'] == '1' ) {
+            } elseif ( $demure_config['post_navigation'] == '1' ) {
                 the_posts_pagination( array( 'screen_reader_text' => ' ' ) );
             }
 
@@ -684,10 +683,10 @@ if ( ! function_exists( 'get_all_user_posts' ) ) {
     }
 }
 
-if ( ! function_exists( 'get_author_info' ) ) {
-    function get_author_info() {
+if ( ! function_exists( 'demure_get_author_info' ) ) {
+    function demure_get_author_info() {
         if ( is_user_logged_in() ) {
-            $user_id = get_current_user_id();
+            $user_id = (int)get_current_user_id();
             $user_info = get_userdata( $user_id );
             
             $user_email = $user_info->data->user_email;
@@ -698,43 +697,43 @@ if ( ! function_exists( 'get_author_info' ) ) {
                     <form action="" method="post">
                         <div class="form-group">
                             <label for="nickname"><?php esc_html_e( 'Nickname', 'demure' ); ?></label>
-                            <input type="text" id="nickname" name="nickname" required value="<?php echo $display_name; ?>">
+                            <input type="text" id="nickname" name="nickname" required value="<?php echo sanitize_text_field( $display_name ); ?>">
                         </div>
                         <div class="form-group">
                             <label for="firstname"><?php esc_html_e( 'First Name', 'demure' ); ?></label>
-                            <input type="text" id="firstname" name="firstname" value="<?php echo get_user_meta( $user_id, 'first_name', true ); ?>">
+                            <input type="text" id="firstname" name="firstname" value="<?php echo sanitize_text_field( get_user_meta( $user_id, 'first_name', true ) ); ?>">
                         </div>
                         <div class="form-group">
                             <label for="lastname"><?php esc_html_e( 'Last Name', 'demure' ); ?></label>
-                            <input type="text" id="lastname" name="lastname" value="<?php echo get_user_meta( $user_id, 'last_name', true ); ?>">
+                            <input type="text" id="lastname" name="lastname" value="<?php echo sanitize_text_field( get_user_meta( $user_id, 'last_name', true ) ); ?>">
                         </div>
                         <div class="form-group">
                             <label for="email"><?php esc_html_e( 'Email', 'demure' ); ?></label>
-                            <input type="email" id="email" name="email" value="<?php echo $user_email; ?>">
+                            <input type="email" id="email" name="email" value="<?php echo sanitize_email( $user_email ); ?>">
                         </div>
                         <div class="form-group">
                             <label for="website"><?php esc_html_e( 'Website', 'demure' ); ?></label>
-                            <input type="url" id="website" name="website" value="<?php echo $user_url; ?>">
+                            <input type="url" id="website" name="website" value="<?php echo esc_url( $user_url ); ?>">
                         </div>
                         <div class="form-group">
                             <label for="biographical"><?php esc_html_e( 'Biographical Info', 'demure' ); ?></label>
-                            <textarea id="biographical" name="biographical" rows="8" cols="80"><?php echo get_user_meta( $user_id, 'description', true ); ?></textarea>
+                            <textarea id="biographical" name="biographical" rows="8" cols="80"><?php echo esc_textarea( get_user_meta( $user_id, 'description', true ) ); ?></textarea>
                         </div>
                         <div class="form-group">
-                            <input type="submit" name="update_user_info" value="<?php esc_html_e( 'Save changes', 'demure' ); ?>" />
+                            <input type="submit" name="demure_update_user_info" value="<?php esc_html_e( 'Save changes', 'demure' ); ?>" />
                         </div>
                     </form>
                 </div>
         <?php } else { 
             $user_id = get_the_author_meta('ID');
-            $user_info = get_userdata( $user_id );
+            $user_info = get_userdata( (int)$user_id );
             
             $user_email = $user_info->data->user_email;
             $user_url = $user_info->data->user_url;
             $display_name = $user_info->data->display_name;
-            $firstname = get_user_meta( $user_id, 'first_name', true );
-            $lastname = get_user_meta( $user_id, 'last_name', true );
-            $bio = get_user_meta( $user_id, 'description', true );
+            $firstname = get_user_meta( (int)$user_id, 'first_name', true );
+            $lastname = get_user_meta( (int)$user_id, 'last_name', true );
+            $bio = get_user_meta( (int)$user_id, 'description', true );
             ?>
             <div class="user-info">
                 <div class="profile-page-block">
@@ -745,35 +744,35 @@ if ( ! function_exists( 'get_author_info' ) ) {
                                 <?php if ( !empty( $display_name ) ): ?>
                                     <div>
                                         <dt><?php esc_html_e( 'Nickname:', 'demure' ); ?></dt>
-                                        <dd><?php echo $display_name; ?></dd>
+                                        <dd><?php echo sanitize_text_field( $display_name ); ?></dd>
                                     </div>
                                 <?php endif; ?>
                                 
                                 <?php if ( !empty( $firstname ) ): ?>
                                     <div>
                                         <dt><?php esc_html_e( 'First name:', 'demure' ); ?></dt>
-                                        <dd><?php echo $firstname; ?></dd>
+                                        <dd><?php echo sanitize_text_field( $firstname ); ?></dd>
                                     </div>
                                 <?php endif; ?>
                                 
                                 <?php if ( !empty( $lastname ) ): ?>
                                     <div>
                                         <dt><?php esc_html_e( 'Last Name:', 'demure' ); ?></dt>
-                                        <dd><?php echo $lastname; ?></dd>
+                                        <dd><?php echo sanitize_text_field( $lastname ); ?></dd>
                                     </div>
                                 <?php endif; ?>
                                 
                                 <?php if ( !empty( $user_email ) ): ?>
                                     <div>
                                         <dt><?php esc_html_e( 'Email:', 'demure' ); ?></dt>
-                                        <dd><a href="mailto:<?php echo $user_email; ?>"><?php echo $user_email; ?></a></dd>
+                                        <dd><a href="mailto:<?php echo sanitize_email( $user_email ); ?>"><?php echo sanitize_email( $user_email ); ?></a></dd>
                                     </div>
                                 <?php endif; ?>
                                 
                                 <?php if ( !empty( $user_url ) ): ?>
                                     <div>
                                         <dt><?php esc_html_e( 'Website:', 'demure' ); ?></dt>
-                                        <dd><a href="<?php echo $user_url; ?>"><?php echo $user_url; ?></a></dd>
+                                        <dd><a href="<?php echo esc_url( $user_url ); ?>"><?php echo esc_url( $user_url ); ?></a></dd>
                                     </div>
                                 <?php endif; ?>
                             </dl>
@@ -782,7 +781,7 @@ if ( ! function_exists( 'get_author_info' ) ) {
                             <dl>
                                 <?php if ( !empty( $bio ) ): ?>
                                     <dt><?php esc_html_e( 'About Me', 'demure' ); ?></dt>
-                                    <dd><?php echo $bio; ?></dd>
+                                    <dd><?php echo esc_textarea( $bio ); ?></dd>
                                 <?php endif; ?>
                             </dl>
                         </div>
@@ -795,17 +794,17 @@ if ( ! function_exists( 'get_author_info' ) ) {
 
 if ( ! function_exists( 'demure_preloader' ) ) {
     function demure_preloader() {
-        global $demure;
-        if ( !empty($demure['preloader']) && $demure['preloader'] == '1' ) {
+        global $demure_config;
+        if ( !empty($demure_config['preloader']) && $demure_config['preloader'] == '1' ) {
             $out = '<div class="demure-preloader"></div>';
             echo $out;
         }
     }
 }
 
-add_filter( 'get_avatar' , 'custom_demure_avatar' , 1 , 5 );
-if ( ! function_exists( 'custom_demure_avatar' ) ) {
-    function custom_demure_avatar( $avatar, $id_or_email, $size, $default, $alt ) {
+add_filter( 'get_avatar' , 'demure_custom_avatar' , 1 , 5 );
+if ( ! function_exists( 'demure_custom_avatar' ) ) {
+    function demure_custom_avatar( $avatar, $id_or_email, $size, $default, $alt ) {
         $user_id = $id_or_email;
         $user_avatar = get_user_meta( $user_id, 'demure_avatar', true );
 
@@ -856,7 +855,7 @@ if ( ! function_exists( 'demure_update_avatar' ) ) {
 					$error = 2;
 				} else {
 					$file_arr = wp_handle_upload( $_FILES['avatar'], array( 'test_form' => FALSE ) );
-					update_user_meta( get_current_user_id(), 'demure_avatar', $file_arr['url'] );
+					update_user_meta( get_current_user_id(), 'demure_avatar', esc_url( $file_arr['url'] ) );
 					$error = 0;
 				}
 				echo json_encode( $error );
@@ -877,15 +876,16 @@ if ( ! function_exists( 'demure_delete_avatar' ) ) {
         die();
     }
 }
+
 add_action('wp_ajax_demure_delete_avatar', 'demure_delete_avatar');
 add_action('wp_ajax_nopriv_demure_delete_avatar', 'demure_delete_avatar');
 
-if ( !empty( $_POST['update_user_info'] ) ) {
-    $user_id = get_current_user_id();
+if ( !empty( $_POST['demure_update_user_info'] ) ) {
+    $user_id = (int)get_current_user_id();
     
-    $name = sanitize_text_field( $_POST['nickname'] );
-    $firstname = sanitize_text_field( $_POST['firstname'] );
-    $lastname = sanitize_text_field( $_POST['lastname'] );
+    $name = sanitize_user( $_POST['nickname'] );
+    $firstname = sanitize_meta( 'first_name', $_POST['firstname'], 'user' );
+    $lastname = sanitize_meta( 'last_name', $_POST['lastname'], 'user' );
     $email = sanitize_email( $_POST['email'] ); 
     $website = esc_url( $_POST['website'] ); 
     $biographical = esc_textarea( $_POST['biographical'] );
@@ -905,21 +905,21 @@ if ( !empty( $_POST['update_user_info'] ) ) {
     exit;
 }
 
-if ( ! function_exists( 'footer_text' ) ) {
-    function footer_text() {
-        global $demure;
-        if ( empty( $demure['footer-text'] ) ) return false;
+if ( ! function_exists( 'demure_footer_text' ) ) {
+    function demure_footer_text() {
+        global $demure_config;
+        if ( empty( $demure_config['footer-text'] ) ) return false;
         $out = '';
         $allowed_tags = wp_kses_allowed_html( 'post' );
 		$out .= '<div class="site-info-text">';
-        	$out .= wp_kses( stripslashes( $demure['footer-text'] ), $allowed_tags );
+        	$out .= wp_kses( stripslashes( $demure_config['footer-text'] ), $allowed_tags );
 		$out .= '</div>';
         echo $out;
     }
 }
 
-if ( ! function_exists( 'get_demure_comment' ) ) {
-	function get_demure_comment( $comment, $args, $depth ) {
+if ( ! function_exists( 'demure_get_comment' ) ) {
+	function demure_get_comment( $comment, $args, $depth ) {
 		if ( !empty( $comment ) ) {
 			global $post;
 			
@@ -932,18 +932,18 @@ if ( ! function_exists( 'get_demure_comment' ) ) {
 			$args_reply = array( 'reply_text' => esc_html__( 'Reply to %s', 'demure' ) );
 			
 			$comment_content = apply_filters( 'comment_text', $comment->comment_content );
-			$out .= '<div class="'.implode(' ', $comment_class ).'">';
+			$out .= '<div class="' . implode(' ', $comment_class ) . '">';
 				$out .= '<div class="comment-wrap">';
 					$out .= '<div class="comment-author-block">';
 						$out .= '<div class="comment-author-avatar">'. get_avatar( $comment->user_id ) . '</div>';
 					$out .= '</div>';
 					$out .= '<div class="comment-content-block">';
 						$out .= '<div class="comment-header">';
-								$out .= '<div class="comment-author">' . $author . '</div>';
-							$out .= '<div class="date">' . $date . '</div>';
+								$out .= '<div class="comment-author">' . esc_html( $author ) . '</div>';
+							$out .= '<div class="date">' . esc_html( $date ) . '</div>';
 						$out .= '</div>';
-						$out .= '<div class="comment">' . $comment_content . '</div>';
-						$out .= '<div class="comment-footer">'.get_comment_reply_link(array_merge( $args, array('depth' => $depth, 'max_depth' => $args['max_depth'], 'reply_text' => __('Reply', 'demure')))).'</div>';
+						$out .= '<div class="comment">' . esc_textarea( $comment_content ) . '</div>';
+						$out .= '<div class="comment-footer">' . get_comment_reply_link( array_merge( $args, array('depth' => $depth, 'max_depth' => $args['max_depth'], 'reply_text' => esc_html__('Reply', 'demure') ) ) ) . '</div>';
 
 					$out .= '</div>';
 				$out .= '</div>';
@@ -954,11 +954,11 @@ if ( ! function_exists( 'get_demure_comment' ) ) {
 	}
 }
 
-if ( ! function_exists( 'get_footer_columns' ) ) {
-	function get_footer_columns() {
-		global $demure;
+if ( ! function_exists( 'demure_get_footer_columns' ) ) {
+	function demure_get_footer_columns() {
+		global $demure_config;
 		$columns = 4;
-		if ( ! empty( $demure['footer-columns'] ) ) $columns = $demure['footer-columns'];
+		if ( ! empty( $demure_config['footer-columns'] ) ) $columns = $demure_config['footer-columns'];
 		?>
 		<div class="footer-wrap">
 		<div class="row">
@@ -1037,40 +1037,106 @@ if ( ! function_exists( 'get_footer_columns' ) ) {
 		?></div></div><?php
 	}
 }
-if ( ! function_exists( 'get_demure_social' ) ) {
-	function get_demure_social() {
-		global $demure;
+
+if ( ! function_exists( 'demure_get_social' ) ) {
+	function demure_get_social() {
+		global $demure_config;
 		$out = '';
 		$out .= '<div class="social-links-wrapper">';
-			if ( !empty( $demure['facebook'] ) ) $out .= '<a href="'.esc_url( $demure['facebook'] ).'" target="_blank" class="demure-icon"><i class="fa fa-facebook"></i></a>';
-			if ( !empty( $demure['twitter'] ) ) $out .= '<a href="'.esc_url( $demure['twitter'] ).'" target="_blank" class="demure-icon"><i class="fa fa-twitter"></i></a>';
-			if ( !empty( $demure['vkontakte'] ) ) $out .= '<a href="'.esc_url( $demure['vkontakte'] ).'" target="_blank" class="demure-icon"><i class="fa fa-vk"></i></a>';
-			if ( !empty( $demure['linkedin'] ) ) $out .= '<a href="'.esc_url( $demure['linkedin'] ).'" target="_blank" class="demure-icon"><i class="fa fa-linkedin"></i></a>';
-			if ( !empty( $demure['pinterest'] ) ) $out .= '<a href="'.esc_url( $demure['pinterest'] ).'" target="_blank" class="demure-icon"><i class="fa fa-pinterest"></i></a>';
-			if ( !empty( $demure['youtube'] ) ) $out .= '<a href="'.esc_url( $demure['youtube'] ).'" target="_blank" class="demure-icon"><i class="fa fa-youtube"></i></a>';
-			if ( !empty( $demure['instagram'] ) ) $out .= '<a href="'.esc_url( $demure['instagram'] ).'" target="_blank" class="demure-icon"><i class="fa fa-instagram"></i></a>';
-			if ( !empty( $demure['googleplus'] ) ) $out .= '<a href="'.esc_url( $demure['googleplus'] ).'" target="_blank" class="demure-icon"><i class="fa fa-google-plus"></i></a>';
-			if ( !empty( $demure['behance'] ) ) $out .= '<a href="'.esc_url( $demure['behance'] ).'" target="_blank" class="demure-icon"><i class="fa fa-behance"></i></a>';
-			if ( !empty( $demure['flickr'] ) ) $out .= '<a href="'.esc_url( $demure['flickr'] ).'" target="_blank" class="demure-icon"><i class="fa fa-flickr"></i></a>';
-			if ( !empty( $demure['skype'] ) ) $out .= '<a href="call:'.sanitize_text_field( $demure['skype'] ).'" target="_blank" class="demure-icon"><i class="fa fa-skype"></i></a>';
-			if ( !empty( $demure['dribble'] ) ) $out .= '<a href="'.esc_url( $demure['dribble'] ).'" target="_blank" class="demure-icon"><i class="fa fa-dribble"></i></a>';
-			if ( !empty( $demure['email'] ) ) $out .= '<a href="mailto:'.sanitize_email( $demure['email'] ).'" target="_blank" class="demure-icon"><i class="fa fa-facebook"></i></a>';
+			if ( !empty( $demure_config['facebook'] ) ) $out .= '<a href="'.esc_url( $demure_config['facebook'] ).'" target="_blank" class="demure-icon"><i class="fa fa-facebook"></i></a>';
+			if ( !empty( $demure_config['twitter'] ) ) $out .= '<a href="'.esc_url( $demure_config['twitter'] ).'" target="_blank" class="demure-icon"><i class="fa fa-twitter"></i></a>';
+			if ( !empty( $demure_config['vkontakte'] ) ) $out .= '<a href="'.esc_url( $demure_config['vkontakte'] ).'" target="_blank" class="demure-icon"><i class="fa fa-vk"></i></a>';
+			if ( !empty( $demure_config['linkedin'] ) ) $out .= '<a href="'.esc_url( $demure_config['linkedin'] ).'" target="_blank" class="demure-icon"><i class="fa fa-linkedin"></i></a>';
+			if ( !empty( $demure_config['pinterest'] ) ) $out .= '<a href="'.esc_url( $demure_config['pinterest'] ).'" target="_blank" class="demure-icon"><i class="fa fa-pinterest"></i></a>';
+			if ( !empty( $demure_config['youtube'] ) ) $out .= '<a href="'.esc_url( $demure_config['youtube'] ).'" target="_blank" class="demure-icon"><i class="fa fa-youtube"></i></a>';
+			if ( !empty( $demure_config['instagram'] ) ) $out .= '<a href="'.esc_url( $demure_config['instagram'] ).'" target="_blank" class="demure-icon"><i class="fa fa-instagram"></i></a>';
+			if ( !empty( $demure_config['googleplus'] ) ) $out .= '<a href="'.esc_url( $demure_config['googleplus'] ).'" target="_blank" class="demure-icon"><i class="fa fa-google-plus"></i></a>';
+			if ( !empty( $demure_config['behance'] ) ) $out .= '<a href="'.esc_url( $demure_config['behance'] ).'" target="_blank" class="demure-icon"><i class="fa fa-behance"></i></a>';
+			if ( !empty( $demure_config['flickr'] ) ) $out .= '<a href="'.esc_url( $demure_config['flickr'] ).'" target="_blank" class="demure-icon"><i class="fa fa-flickr"></i></a>';
+			if ( !empty( $demure_config['skype'] ) ) $out .= '<a href="call:'.sanitize_text_field( $demure_config['skype'] ).'" target="_blank" class="demure-icon"><i class="fa fa-skype"></i></a>';
+			if ( !empty( $demure_config['dribble'] ) ) $out .= '<a href="'.esc_url( $demure_config['dribble'] ).'" target="_blank" class="demure-icon"><i class="fa fa-dribble"></i></a>';
+			if ( !empty( $demure_config['email'] ) ) $out .= '<a href="mailto:'.sanitize_email( $demure_config['email'] ).'" target="_blank" class="demure-icon"><i class="fa fa-facebook"></i></a>';
 		$out .= '</div>';
 		
 		echo $out;
 	}
 }
 
-if ( ! function_exists( 'demure_add_favicon' ) ) {				
-	function demure_add_favicon() {
-		global $demure;
-		
-		if( !empty($demure['favicon'])) 				echo '<link rel="shortcut icon" href="' .  	esc_url($demure['favicon']['url'])  . '"/>' . "\n";
-		if( !empty($demure['favicon-iphone'])) 			echo '<link rel="apple-touch-icon" href="'. esc_url($demure['favicon-iphone']['url']) .'"> '. "\n"; 
-		if( !empty($demure['favicon-iphone-retina'])) 	echo '<link rel="apple-touch-icon" sizes="114x114" 	href="'.  esc_url($demure['favicon-iphone-retina']['url']) .' "> '. "\n"; 
-		if( !empty($demure['favicon-ipad'])) 			echo '<link rel="apple-touch-icon" sizes="72x72" 	href="'. esc_url($demure['favicon-ipad']['url']) .'"> '. "\n"; 
-		if( !empty($demure['favicon-ipad-retina']))		echo '<link rel="apple-touch-icon" sizes="144x144" 	href="'. esc_url($demure['favicon-ipad-retina']['url'])  .'"> '. "\n";  
-	 
+function demure_gallery_shortcode( $output = '', $atts, $instance ) {
+	global $post;
+	$pid = $post->ID;
+	$gallery = $out = "";
+
+	if ( empty( $pid ) ) { 
+        $pid = (int)$post['ID'];
+    }
+
+	if (!empty( $atts['ids'] ) ) {
+	   	$atts['orderby'] = 'post__in';
+	   	$atts['include'] = $atts['ids'];
 	}
-	add_action('wp_head', 'demure_add_favicon', 100);
+    
+
+	extract( shortcode_atts( array(
+        'orderby' => 'menu_order ASC, ID ASC', 
+        'include' => '', 
+        'id' => $pid, 
+        'itemtag' => 'dl', 
+        'icontag' => 'dt', 
+        'captiontag' => 'dd', 
+        'columns' => 3, 
+        'size' => 'large', 
+        'link' => 'file'
+    ), $atts, 'gallery' ) );
+
+	$args = array(
+        'post_type' => 'attachment', 
+        'post_status' => 'inherit', 
+        'post_mime_type' => 'image', 
+        'orderby' => $orderby
+    );
+
+	if ( !empty($include ) ) {
+        $args['include'] = $include;
+    } else {
+	   	$args['post_parent'] = $id;
+		$args['numberposts'] = -1;
+	}
+
+	if ( $args['include'] == "" ) { 
+        $args['orderby'] = 'date'; 
+        $args['order'] = 'asc';
+    }
+
+	$images = get_posts( $args );
+    
+    $unic_id = uniqid('gallery_');
+    
+    $out .= '<div id="' . esc_attr( $unic_id ) . '" class="gallery gallery-columns-' . esc_attr( $columns ) . ' size-' . esc_attr( $size ) . '">';
+    
+    if ( !empty($images) ) {
+        foreach ( $images as $image ) {
+    		
+    		$thumbnail = wp_get_attachment_image_src( $image->ID, $size );
+    		$thumbnail = $thumbnail[0];
+            
+            $full_image = wp_get_attachment_image_src( $image->ID, 'full' );
+            $full_image = $full_image[0];
+            
+            $out .= '<a href="' . esc_url( $full_image ) . '" class="gallery-item" rel="group_' . esc_attr( $unic_id ).'">';
+                $out .= '<figure>';
+                $out .= '<img src="' . esc_url( $thumbnail ) . '" />';
+                    $out .= '<figcaption class="gallery-caption">';
+                        $out .= '<div class="img-title">' . esc_html( $image->post_title ) . '</div>';
+                        $out .= '<div class="img-caption">' . esc_html( $image->post_excerpt ) . '</div>';
+                    $out .= '</figcaption>';
+                $out .= '</figure>';
+            $out .= '</a>';
+    	}
+    }
+	
+    $out .= '</div>';
+	
+	return $out;
 }
+add_filter( 'post_gallery', 'demure_gallery_shortcode', 10, 3 );

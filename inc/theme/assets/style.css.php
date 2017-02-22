@@ -1,6 +1,6 @@
 <?php
 	header("Content-type: text/css; charset: UTF-8");
-	global $demure;
+	global $demure_config;
 
 	$accent = '#3c5267';
 	$accenthov = '#328CC1';
@@ -9,13 +9,13 @@
 	$site_info_color = '#fff';
 	$footer_color = '#333';
 
-	if ( isset( $demure ) ) {
-		$accent = $demure['accent_color']['regular'];
-		$accenthov = $demure['accent_color']['hover'];
-		$opacity = $demure['header-opacity'];
-		$site_info = $demure['site-info-background'];
-		$site_info_color = $demure['site-info-color'];
-		$footer_color = $demure['footer-background'];
+	if ( isset( $demure_config ) ) {
+		$accent = $demure_config['accent_color']['regular'];
+		$accenthov = $demure_config['accent_color']['hover'];
+		$opacity = $demure_config['header-opacity'];
+		$site_info = $demure_config['site-info-background'];
+		$site_info_color = $demure_config['site-info-color'];
+		$footer_color = $demure_config['footer-background'];
 	}
 	
 ?>

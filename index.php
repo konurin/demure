@@ -13,5 +13,5 @@
  */
 
 get_header();
-get_main_content();
+demure_get_main_content();
 get_footer();

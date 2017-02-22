@@ -11,10 +11,10 @@
 						<div class="col-md-12">
 							<div class="tabs-content">
 								<div id="author-info">
-									<?php get_author_info(); ?>
+									<?php demure_get_author_info(); ?>
 								</div>
 								<div id="author-posts">
-									<?php get_all_user_posts(); ?>
+									<?php demure_get_all_user_posts(); ?>
 								</div>
 							</div>
 						</div>
@@ -22,8 +22,8 @@
 				</div>
 			<?php else: ?>
 				<div class="profile-informations">
-					<?php get_author_info(); ?>
-					<?php get_all_user_posts(); ?>
+					<?php demure_get_author_info(); ?>
+					<?php demure_get_all_user_posts(); ?>
 				</div>
 			<?php endif; ?>
 		</div>

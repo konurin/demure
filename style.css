@@ -3,20 +3,14 @@ Theme Name: demure
 Theme URI: http://konurin.tk/demure
 Author: Vitaliy Konurin
 Author URI: http://konurin.tk
-Description: Demure is creative Multi Page template with modern flat, minimalistic and clean look. Impress your clients with new three dimensional look of your page.
+Description: Demure is creative and minimal theme for wordpress.
 Version: 1.0.0
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Text Domain: demure
-Tags: one-column, two-columns, right-sidebar, flexible-header, accessibility-ready, custom-colors, custom-header, custom-menu, custom-logo, editor-style, featured-images, footer-widgets, post-formats, rtl-language-support, sticky-post, theme-options, threaded-comments, translation-ready
+Tags: grid-layout, one-column, two-columns, three-columns, left-sidebar, right-sidebar, custom-colors, custom-header, featured-images, footer-widgets, sticky-post, theme-options, threaded-comments, translation-ready, accessibility-ready, blog, news
 This theme, like WordPress, is licensed under the GPL.
 Use it to make something cool, have fun, and share what you've learned with others.
-
-demure is based on Underscores http://underscores.me/, (C) 2012-2016 Automattic, Inc.
-Underscores is distributed under the terms of the GNU GPL v2 or later.
-
-Normalizing styles have been helped along thanks to the fine work of
-Nicolas Gallagher and Jonathan Neal http://necolas.github.com/normalize.css/
 */
 
 /* xdebug */
@@ -97,11 +91,6 @@ h6 {
 
 a {
 	text-decoration: none !important;
-	color: #3c5267;
-}
-
-a:hover, a:active, a:visited {
-	color: #005f98;
 }
 
 label {
@@ -201,6 +190,21 @@ pre {
     border: 1px solid #c1c1c1;
 }
 
+pre.xdebug-var-dump {
+	background: #2b2b2b;
+	color: #fff;
+	border: none;
+	letter-spacing: 1px;
+	font-family: monospace;
+	font-size: 12px;
+	z-index: 999;
+	padding: 10px;
+}
+
+pre.xdebug-var-dump font {
+	color: red!important;
+}
+
 .entry-content ul,
 .entry-content ol,
 .comment-content-block .comment ul,
@@ -234,11 +238,11 @@ input, button, select, textarea {
 }
 
 ::selection {
-  background: #a9d6fd; /* WebKit/Blink Browsers */
+  background: #a9d6fd;
 }
 
 ::-moz-selection {
-  background: #a9d6fd; /* Gecko Browsers */
+  background: #a9d6fd;
 }
 
 html input[type="button"],
@@ -447,6 +451,7 @@ blockquote p {
 #masthead .branding-image {
 	flex-direction: row;
 	justify-content: flex-start;
+    max-width: 90%;
 }
 
 #masthead .container-branding-image {
@@ -504,7 +509,7 @@ blockquote p {
 	display: flex;
 	list-style-type: none;
 	flex-wrap: wrap;
-	justify-content: flex-end;
+	justify-content: flex-start;
 }
 
 .main-navigation ul > li > a {
@@ -930,10 +935,11 @@ article.sticky header h3 a:before {
 
 .entry-content .gallery .gallery-item  .gallery-caption {
 	background: #333;
-	padding: 10px 15px;
+	padding: 6px 10px;
 	transition: all .2s ease-in-out;
 	position: relative;
 	top: -5px;
+	text-align: center;
 }
 
 .entry-content .gallery .gallery-item  .gallery-caption > div {
@@ -945,6 +951,7 @@ article.sticky header h3 a:before {
 	border-bottom: 1px solid #444;
 	padding-bottom: 5px;
 	margin-bottom: 5px;
+	font-weight: 600;
 }
 
 .entry-content .gallery .gallery-item  .gallery-caption > .img-caption {
@@ -1281,7 +1288,6 @@ body.admin-bar .de_modal {
 .homepage-slider .slide img {
 	display: block;
     width: 100%!important;
-    height: calc(100vh - 51px)!important;
     object-fit: cover;
 }
 
@@ -1362,6 +1368,7 @@ body.admin-bar .de_modal {
 	display: -o-flex;
 	display: flex;
 	align-items: flex-end;
+	height: 100%;
 }
 
 .homepage-slider .slide .slide-information h3 {
@@ -1690,7 +1697,7 @@ footer .footer-wrap .widget_calendar caption {
 
 }
 
-@media (max-width: 768px) {
+@media (max-width: 767px) {
 	.homepage-slider .slide .slide-information {
 		max-width: 70%;
     	left: 15%;
@@ -1700,6 +1707,9 @@ footer .footer-wrap .widget_calendar caption {
 	}
 	.homepage-slider .slide .slide-information .description {
 		font-size: 1em;
+	}
+	.sidebar {
+		margin-top: 15px;
 	}
 }
 

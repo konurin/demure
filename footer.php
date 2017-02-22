@@ -15,10 +15,10 @@
 
 	<footer id="colophon" class="site-footer" role="contentinfo">
 		<div class="container">
-			<?php get_footer_columns(); ?>
+			<?php demure_get_footer_columns(); ?>
 			<div class="site-info">
-				<?php footer_text(); ?>
-				<?php get_demure_social(); ?>
+				<?php demure_footer_text(); ?>
+				<?php demure_get_social(); ?>
 			</div><!-- .site-info -->
 		</div>
 	</footer><!-- #colophon -->
