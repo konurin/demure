@@ -6,6 +6,8 @@
         images: '.holder'
     });
     
+    smoothScroll.init();
+    
     function demureDisableScroll() {
         $('html, body').on('scroll touchmove mousewheel', function(e){
           e.preventDefault();
@@ -59,7 +61,7 @@
         setCarouselHeight();
     });
 
-    $(document).ready(function() {
+    $(document).ready(function() {        
         setCarouselHeight();
         // navigation 
         $('#site-navigation ul li').each(function(){
@@ -107,7 +109,7 @@
         });
         
         // modal 
-        $('.open-modal').on('click', function(e){
+        $('body').on('click', '.open-modal', function(e){
             e.preventDefault();
         	if ($('.de_modal').length > 0) {
         		var ModalName = $(this).attr('name');
@@ -121,7 +123,6 @@
         			});
         		}
         	}
-        	
         });
         
          // init owl-carousel
@@ -301,7 +302,7 @@
                 active: 2
             });
          }
-         
+         $('select').selectize();
     });
 
     // loadmore posts

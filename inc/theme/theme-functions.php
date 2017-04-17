@@ -224,7 +224,7 @@ if ( ! function_exists( 'demure_get_main_content' ) ) {
 if ( ! function_exists( 'demure_get_content' ) ) {
     function demure_get_content() {
         global $demure_config, $wp_query;
-        if ( is_archive() ) {
+        if ( !class_exists( 'WooCommerce' ) && is_archive() ) {
             the_archive_title( '<h1 class="page-title">', '</h1>' );
             the_archive_description( '<div class="archive-description">', '</div>' );
         }
@@ -232,6 +232,11 @@ if ( ! function_exists( 'demure_get_content' ) ) {
         if ( is_search() ) {
             demure_get_search_heading();
         }
+		
+		if ( class_exists( 'WooCommerce' ) && is_woocommerce() ) {
+			woocommerce_content();
+			return;
+		}
 
         if ( have_posts() ) :
 
@@ -468,7 +473,7 @@ if ( ! function_exists( 'demure_reorder_comment_fields' ) ) {
 
         $new_fields = array();
 
-        $demure_order = array('author','email','comment', 'url');
+        $demure_order = array('author','email','comment');
 
         foreach( $demure_order as $key ){
             $new_fields[ $key ] = $fields[ $key ];

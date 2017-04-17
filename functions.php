@@ -69,7 +69,13 @@ function demure_setup() {
 
 	// Add default posts and comments RSS feed links to head.
 	add_theme_support( 'automatic-feed-links' );
-
+	
+	// Add woocommerce support 
+	add_action( 'after_setup_theme', 'woocommerce_support' );
+	function woocommerce_support() {
+	    add_theme_support( 'woocommerce' );
+	}
+	
 	/*
 	 * Let WordPress manage the document title.
 	 * By adding theme support, we declare that this theme does not use a
@@ -105,7 +111,6 @@ function demure_setup() {
 }
 endif;
 add_action( 'after_setup_theme', 'demure_setup' );
-
 
 function demure_add_editor_styles() {
 	add_editor_style( 'editor-styles.css' );
@@ -261,8 +266,10 @@ function demure_scripts() {
 		wp_enqueue_script( 'owl-carousel', get_template_directory_uri() . '/inc/theme/assets/js/owl.carousel.min.js', array('jquery'), false, true );
 		wp_enqueue_style( 'owl-carousel', get_template_directory_uri() . '/inc/theme/assets/css/owl.carousel.css' );
 		wp_enqueue_style( 'owl-transitions', get_template_directory_uri() . '/inc/theme/assets/css/owl.transitions.css' );
-
 	}
+	
+	// smooth-scroll
+	wp_enqueue_script( 'smoothscroll', get_template_directory_uri() . '/inc/theme/assets/js/smooth-scroll.min.js', array( 'jquery' ), false, true );
 	
 	// comments reply
 	if ( is_singular() ) wp_enqueue_script( 'comment-reply' );
@@ -285,13 +292,21 @@ function demure_scripts() {
             array( 'ajaxurl' => admin_url( 'admin-ajax.php' ),
 				   'blognav'  => $blog_nav
 			 ) );
+			 
+	wp_enqueue_script( 'selectize', get_template_directory_uri() . '/inc/theme/assets/js/selectize.js', array( 'jquery' ), false, true );
 
 	wp_enqueue_style( 'bootstrap', get_template_directory_uri() . '/inc/theme/assets/css/bootstrap.min.css' );
 	wp_enqueue_style( 'font-awesome', get_template_directory_uri() . '/inc/theme/assets/css/fonts/font-awesome.min.css' );
 	wp_enqueue_style( 'colorbox', get_template_directory_uri() . '/inc/theme/assets/css/colorbox.css' );
+	wp_enqueue_style( 'selectize', get_template_directory_uri() . '/inc/theme/assets/css/selectize.css' );
 
 
 	wp_enqueue_style( 'demure-style', get_stylesheet_uri() );
+	
+	// load woocommerce styles
+	if ( class_exists( 'WooCommerce' ) && is_woocommerce() ) {
+		wp_enqueue_style( 'demure-woocommerce', get_template_directory_uri() . '/inc/theme/assets/css/demure-woocommerce.css' );
+	}
 }
 add_action( 'wp_enqueue_scripts', 'demure_scripts' );
 add_action( 'wp_enqueue_scripts', 'demure_include_dynamic_css' );
