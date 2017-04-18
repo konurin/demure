@@ -24,7 +24,7 @@
     margin-top: 7px
 }
 .form-table>tbody>tr>th {
-    width: 30%;
+    width: 400px;
     padding-right: 30px;
 }
 
@@ -3052,4 +3052,8 @@ textarea:focus {
 
 .redux-main .redux-container-background .select2-container {
     margin-right: 20px;
+}
+
+.redux-main .redux-select-item {
+    width: 100%!important;
 }

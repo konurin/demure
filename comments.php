@@ -17,7 +17,7 @@
  */
  global $demure_config, $post;
  $out = '';
- $display = 1;
+ $display = 2;
  $post_type = get_post_type( $post->ID );
 if ( post_password_required() ) {
 	return;

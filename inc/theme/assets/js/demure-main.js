@@ -208,7 +208,19 @@
         }
          if ($('.demure-preloader').length > 0) {
              $(window).on("load", function(){
-                 $('.demure-preloader').fadeOut();
+                 $('.demure-preloader').css({
+                     'opacity':'0',
+                     'visibility':'hidden'
+                 });
+             });
+             $('body a').on('click', function(){
+                 if ($(this).attr('href').indexOf('#') == -1 && $(this).attr('href').length > 0 ) {
+                     $('.demure-preloader').css({
+                         'opacity':'1',
+                         'visibility':'visible'
+                     });
+                 }
+                 
              });
          }
          

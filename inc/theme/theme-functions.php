@@ -801,7 +801,7 @@ if ( ! function_exists( 'demure_preloader' ) ) {
     function demure_preloader() {
         global $demure_config;
         if ( !empty($demure_config['preloader']) && $demure_config['preloader'] == '1' ) {
-            $out = '<div class="demure-preloader"></div>';
+            $out = '<div class="demure-preloader"><div class="uil-cube-css" style="-webkit-transform:scale(0.6)"><div></div><div></div><div></div><div></div></div></div>';
             echo $out;
         }
     }
@@ -935,7 +935,6 @@ if ( ! function_exists( 'demure_get_comment' ) ) {
 			$date_format = get_option('date_format');
 			$date = get_comment_date( $date_format, $id_ );
 			$args_reply = array( 'reply_text' => esc_html__( 'Reply to %s', 'demure' ) );
-			
 			$comment_content = apply_filters( 'comment_text', $comment->comment_content );
 			$out .= '<div class="' . implode(' ', $comment_class ) . '">';
 				$out .= '<div class="comment-wrap">';
@@ -944,10 +943,10 @@ if ( ! function_exists( 'demure_get_comment' ) ) {
 					$out .= '</div>';
 					$out .= '<div class="comment-content-block">';
 						$out .= '<div class="comment-header">';
-								$out .= '<div class="comment-author">' . esc_html( $author ) . '</div>';
+								$out .= '<div class="comment-author">' . $author . '</div>';
 							$out .= '<div class="date">' . esc_html( $date ) . '</div>';
 						$out .= '</div>';
-						$out .= '<div class="comment">' . esc_textarea( $comment_content ) . '</div>';
+						$out .= '<div class="comment">' . $comment_content . '</div>';
 						$out .= '<div class="comment-footer">' . get_comment_reply_link( array_merge( $args, array('depth' => $depth, 'max_depth' => $args['max_depth'], 'reply_text' => esc_html__('Reply', 'demure') ) ) ) . '</div>';
 
 					$out .= '</div>';
@@ -964,6 +963,7 @@ if ( ! function_exists( 'demure_get_footer_columns' ) ) {
 		global $demure_config;
 		$columns = 4;
 		if ( ! empty( $demure_config['footer-columns'] ) ) $columns = $demure_config['footer-columns'];
+		if ( !is_active_sidebar( 'footer-first' ) && !is_active_sidebar( 'footer-second' ) && !is_active_sidebar( 'footer-third' ) && !is_active_sidebar( 'footer-fourth' ) && !is_active_sidebar( 'footer-fifth' ) && !is_active_sidebar( 'footer-sixth' ) ) return false; 
 		?>
 		<div class="footer-wrap">
 		<div class="row">
@@ -1064,6 +1064,27 @@ if ( ! function_exists( 'demure_get_social' ) ) {
 		$out .= '</div>';
 		
 		echo $out;
+	}
+}
+
+if ( ! function_exists( 'footer_has_text_and_social' ) ) {
+	function footer_has_text_and_social() {
+		if ( ( 
+		!empty( $demure_config['facebook'] ) || 
+		!empty( $demure_config['facebook'] ) || 
+		!empty( $demure_config['facebook'] ) || 
+		!empty( $demure_config['facebook'] ) || 
+		!empty( $demure_config['facebook'] ) || 
+		!empty( $demure_config['facebook'] ) || 
+		!empty( $demure_config['facebook'] ) || 
+		!empty( $demure_config['facebook'] ) || 
+		!empty( $demure_config['facebook'] ) || 
+		!empty( $demure_config['facebook'] ) || 
+		!empty( $demure_config['facebook'] ) || 
+		!empty( $demure_config['facebook'] ) || 
+		!empty( $demure_config['facebook'] ) ) || ( !empty( $demure_config['footer-text'] ) ) ) {
+			return true;
+		}
 	}
 }
 
