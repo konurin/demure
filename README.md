@@ -5,7 +5,7 @@
 **Version:** 1.0<br />
 **License:** GPLv2 or later<br />
 **License URI:** http://www.gnu.org/licenses/gpl-2.0.html<br />
-**Tags:** one-column, two-columns, right-sidebar, flexible-header, accessibility-ready, custom-colors, custom-header, custom-menu, custom-logo, editor-style, featured-images, footer-widgets, post-formats, rtl-language-support, sticky-post, theme-options, threaded-comments, translation-ready
+**Tags:** grid-layout, one-column, two-columns, three-columns, left-sidebar, right-sidebar, custom-colors, custom-header, featured-images, footer-widgets, sticky-post, theme-options, threaded-comments, translation-ready, accessibility-ready, blog, news
 <br />
 
 # Description
@@ -19,3 +19,5 @@ Demure is creative Multi Page template with modern flat, minimalistic and clean 
 **Font Awesome** - http://fortawesome.github.io/Font-Awesome  ver. 4.7.0 · Code licensed MIT, docs CC BY 3.0<br />
 **Colorbox** - http://www.jacklmoore.com/colorbox ver. 1.6.4 · Code licensed MIT<br />
 **Holder.js** - http://holderjs.com ver. 2.9.0 · Code licensed MIT<br />
+**Selectize.js** - https://github.com/selectize/selectize.js ver. 0.12.4 · Licensed under the Apache License, Version 2.0<br />
+**smooth-scroll** - http://github.com/cferdinandi/smooth-scroll v10.2.1 · Code licensed MIT<br />

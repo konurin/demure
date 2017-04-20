@@ -188,41 +188,6 @@
         'icon'             => 'el el-hand-up',
         'fields'           => array(
             array(
-                'id'       => 'header_logo_type',
-                'type'     => 'switch',
-                'title'    => esc_html__( 'Logo type', 'demure' ),
-                'subtitle' => esc_html__( 'Select the type of logo', 'demure' ),
-                'on'       => esc_html__( 'Image', 'demure' ),
-                'off'      => esc_html__( 'Text', 'demure' ),
-                'default'  => true
-            ),
-            array(
-                'id'       => 'header_text_heading',
-                'type'     => 'text',
-                'title'    => esc_html__( 'Heading', 'demure' ),
-                'subtitle' => esc_html__( 'Enter a heading', 'demure' ),
-                'required' => array( 'header_logo_type', '=', false )
-            ),
-            array(
-                'id'       => 'header_text_tagline',
-                'type'     => 'text',
-                'title'    => esc_html__( 'Subeading', 'demure' ),
-                'subtitle' => esc_html__( 'Enter a subheading', 'demure' ),
-                'required' => array( 'header_logo_type', '=', false )
-            ),
-            array(
-                'id'       => 'logotype',
-                'type'     => 'media', 
-                'url'      => true,
-                'title'    => esc_html__('Logotype', 'demure'),
-                'desc'     => esc_html__('Select or upload a logo image.', 'demure'),
-                'subtitle' => esc_html__('Upload any media using the WordPress native uploader', 'demure'),
-                'required' => array( 'header_logo_type', '=', true ),
-                'default'  => array(
-                    'url' => $demure_img_path . 'logo.png',
-                ),
-            ),
-            array(
                 'id'                    => 'header-background',
                 'type'                  => 'background',
                 'title'                 => esc_html__('Header Background', 'demure'),

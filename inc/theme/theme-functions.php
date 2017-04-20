@@ -296,40 +296,30 @@ if ( ! function_exists( 'demure_get_content' ) ) {
 if ( ! function_exists( 'demure_get_branding' ) ) {
     function demure_get_branding() {
         global $demure_config;
-        $out = $site_branding = $site_description = '';
-		$type = 1;
-        $type = $demure_config['header_logo_type'];
+        $out = $site_branding = '';
+		$type = 0;
+		$type = get_theme_mod('header_text');
 		
-        if ( $type == 0 ) {
-            $heading_text = $demure_config['header_text_heading'];
-            $tagline = $demure_config['header_text_tagline'];
-
-            if( !empty( $heading_text ) ) {
-                $site_branding = '<h1><a href="' . site_url() . '">' . esc_html( $heading_text ) . '</a></h1>';
-            }
-
-            if( !empty( $tagline ) ) {
-                $site_description = '<span>' . esc_html(  $tagline ) . '</span>';
-            }
-            $out .= '<div class="branding branding-text">';
-                $out .= $site_branding;
-                $out .= $site_description;
+		if ( $type == 0 ) {
+			$custom_logo_id = get_theme_mod( 'custom_logo' );
+	        $image_arr = wp_get_attachment_image_src( $custom_logo_id , 'full' );
+			if ( !empty( $image_arr ) ) $image = $image_arr[0];
+	        if ( empty( $image ) ) {
+	            $image = get_template_directory_uri() . '/inc/theme/assets/img/logo.png';
+	        }
+	        $out .= '<div class="branding branding-image">';
+	            $out .= '<div class="container-branding-image">';
+	                    $out .= '<img src="' . esc_url( $image ) . '" />';
+	                $out .= '<a class="logotype-link" href="' . home_url() . '"></a>';
+	            $out .= '</div>';
+	        $out .= '</div>';
+		} else {
+			$out .= '<div class="branding branding-text">';
+                $out .= '<h1><a href="' . home_url() . '">' . get_bloginfo('name') . '</a></h1>';
+				$out .= '<span>' . get_bloginfo('description') . '</span>';
             $out .= '</div>';
-        } else {
-            $logotype = $demure_config['logotype'];
-			$logotype_url = esc_url( $logotype['url'] );
-			if ( ! isset( $demure_config ) ) {
-				$logotype_url = get_template_directory_uri() . '/inc/theme/assets/img/logo.png';
-			}
-            if ( !empty( $logotype_url ) ) {
-                $out .= '<div class="branding branding-image">';
-					$out .= '<div class="container-branding-image">';
-	                    $out .= '<img src="' . esc_url( $logotype_url ) . '" />';
-	                    $out .= '<a class="logotype-link" href="' . home_url() . '"></a>';
-					$out .= '</div>';
-                $out .= '</div>';
-            }
-        }
+		}
+        
         
         echo $out;
     }

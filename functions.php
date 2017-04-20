@@ -93,6 +93,14 @@ function demure_setup() {
 
 	add_theme_support( 'post-formats', array( 'image', 'gallery' ) );
 
+	add_theme_support( 'custom-logo', array(
+		'height'      => 60,
+		'width'       => 150,
+		'flex-height' => true,
+		'flex-width'  => true,
+		'header-text' => fasle,
+	) );
+
 	/*
 	 * Switch default core markup for search form, comment form, and comments
 	 * to output valid HTML5.
@@ -274,7 +282,7 @@ function demure_scripts() {
 	// comments reply
 	if ( is_singular() ) wp_enqueue_script( 'comment-reply' );
 	
-	// profile page tabs
+	// tabs js on author page
 	if ( is_author() ) {
 		wp_enqueue_script( 'jquery-ui-tabs' );
 	}
@@ -293,7 +301,7 @@ function demure_scripts() {
 				   'blognav'  => $blog_nav
 			 ) );
 			 
-	wp_enqueue_script( 'selectize', get_template_directory_uri() . '/inc/theme/assets/js/selectize.js', array( 'jquery' ), false, true );
+	wp_enqueue_script( 'selectize', get_template_directory_uri() . '/inc/theme/assets/js/selectize.min.js', array( 'jquery' ), false, true );
 
 	wp_enqueue_style( 'bootstrap', get_template_directory_uri() . '/inc/theme/assets/css/bootstrap.min.css' );
 	wp_enqueue_style( 'font-awesome', get_template_directory_uri() . '/inc/theme/assets/css/fonts/font-awesome.min.css' );

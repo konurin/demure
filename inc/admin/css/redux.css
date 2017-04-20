@@ -286,7 +286,7 @@
 }
 .redux-main {
     background: #fff;
-    margin-left: 213px;
+    margin-left: 125px;
     position: relative;
 }
 .redux-main #redux_ajax_overlay {
@@ -311,7 +311,7 @@
     border: 1px solid #eeeeee!important;
     padding: 20px;
     margin-bottom: 10px;
-    display: block;
+    display: block!important;
     box-sizing: border-box;
 }
 .redux-main .form-table tr:last-child {
@@ -347,8 +347,8 @@
 .redux-main input.large-text {
     width: 100%
 }
-.redux-main .hide {
-    display: none
+#redux-form-wrapper .redux-main .hide {
+    display: none!important;
 }
 .redux-main .redux-field-container {
     padding: 0;
@@ -486,8 +486,8 @@
     position: relative;
 }
 .redux-sidebar {
-    width: 202px;
-    float: left
+    width: 115px;
+    float: left;
 }
 .redux-sidebar .redux-group-menu {
     margin-top: 0px !important;
@@ -517,8 +517,8 @@
     border-top: none
 }
 .redux-sidebar .redux-group-menu li a {
-    display: block;
-    padding: 10px;
+    display: flex;
+    padding: 20px 10px;
     font-weight: 600;
     text-decoration: none;
     -webkit-transition: none;
@@ -526,6 +526,10 @@
     background: #435567;
     color: #fff;
     margin: 0;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-bottom: 1px solid rgba(51, 51, 51, 0.29);
 }
 .redux-sidebar .redux-group-menu li a.custom-tab {
     background: #f6f6f6
@@ -580,14 +584,12 @@
 .redux-sidebar .redux-group-tab-link-a i {
     vertical-align: middle;
     font-size: 1.35em;
-    position: absolute;
     /* color: #fff; */
 }
 .redux-sidebar .redux-group-tab-link-a span {
     display: block
 }
 .redux-sidebar .redux-group-tab-link-a span.group_title {
-    padding-left: 40px;
 }
 .redux-sidebar .redux-group-tab-link-li a.hasError span.group_title {
     padding-right: 25px
