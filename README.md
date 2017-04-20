@@ -9,7 +9,7 @@
 <br />
 
 # Description
-Demure is creative Multi Page template with modern flat, minimalistic and clean look. Impress your clients with new three dimensional look of your page.
+Demure is creative and minimal theme for wordpress.
 
 # Credits
 **Redux Framework** – http://reduxframework.com Licensed under the Version 2 of the GNU General Public License <br />

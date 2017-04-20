@@ -8,7 +8,7 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Tags: grid-layout, one-column, two-columns, three-columns, left-sidebar, right-sidebar, custom-colors, custom-header, featured-images, footer-widgets, sticky-post, theme-options, threaded-comments, translation-ready, accessibility-ready, blog, news
 
 === Description === 
-Demure is creative Multi Page template with modern flat, minimalistic and clean look. Impress your clients with new three dimensional look of your page.
+Demure is creative and minimal theme for wordpress.
 
 === Credits ===
 Redux Framework – http://reduxframework.com Licensed under the Version 2 of the GNU General Public License
