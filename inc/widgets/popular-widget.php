@@ -19,7 +19,7 @@ class demure_popular_widget extends WP_Widget {
     // This is where the action happens
     public function widget( $args, $instance ) {
         $out = '';
-        $title = apply_filters( 'widget_title', $instance['title'] );
+        $title = apply_filters( 'widget_title', empty( $instance['title'] ) ? '' : $instance['title'], $instance, $this->id_base );
         $orderby = $instance['orderby'];
         $order = $instance['order'];
         $numberposts = $instance['numberposts'];
@@ -112,9 +112,9 @@ class demure_popular_widget extends WP_Widget {
     public function update( $new_instance, $old_instance ) {
         $instance = array();
         $instance['title'] = ( ! empty( $new_instance['title'] ) ) ? strip_tags( $new_instance['title'] ) : '';
-        $instance['orderby'] = $new_instance['orderby'];
-        $instance['order'] = $new_instance['order'];
-        $instance['numberposts'] = $new_instance['numberposts'];
+        $instance['orderby'] = sanitize_text_field( $new_instance['orderby'] );
+        $instance['order'] = sanitize_text_field( $new_instance['order'] );
+        $instance['numberposts'] = absint( $new_instance['numberposts'] );
         return $instance;
     }
 } // Class wpb_widget ends here

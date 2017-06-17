@@ -22,12 +22,12 @@ function demure_meta_boxes( $meta_boxes ) {
                 'type'      => 'image_select',
                 'class'     => 'select-admin-container',
                 'options'   => array(
-                    '1'     => 'http://localhost/merri/wp-content/plugins/redux-framework/ReduxCore/assets/img/1col.png',
-                    '2'     => 'http://localhost/merri/wp-content/plugins/redux-framework/ReduxCore/assets/img/2cl.png',
-                    '3'     => 'http://localhost/merri/wp-content/plugins/redux-framework/ReduxCore/assets/img/2cr.png',
-                    '4'     => 'http://localhost/merri/wp-content/plugins/redux-framework/ReduxCore/assets/img/3cm.png',
-                    '5'     => 'http://localhost/merri/wp-content/plugins/redux-framework/ReduxCore/assets/img/3cl.png',
-                    '6'     => 'http://localhost/merri/wp-content/plugins/redux-framework/ReduxCore/assets/img/3cr.png',
+                    '1'     => get_template_directory_uri() . '/inc/admin/img/1col.png',
+                    '2'     => get_template_directory_uri() . '/inc/admin/img/2cl.png',
+                    '3'     => get_template_directory_uri() . '/inc/admin/img/2cr.png',
+                    '4'     => get_template_directory_uri() . '/inc/admin/img/3cm.png',
+                    '5'     => get_template_directory_uri() . '/inc/admin/img/3cl.png',
+                    '6'     => get_template_directory_uri() . '/inc/admin/img/3cr.png',
                 ),
                 'std' => 'default'
             ),

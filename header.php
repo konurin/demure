@@ -26,7 +26,6 @@
 			<div class="wrapper">
 				<div class="top-container">
 					<?php demure_get_branding(); ?>
-					<?php demure_get_header_buttons(); ?>
 				</div>
 				
 				<div class="header-container">
@@ -41,8 +40,6 @@
 							<span class="line"></span>
 						</div>
 					</div>
-					<?php demure_get_user_login_form(); ?>
-					<?php demure_get_register_form(); ?>
 				</div>
 			</div>
 		</div>	

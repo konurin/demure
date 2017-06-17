@@ -98,7 +98,7 @@ function demure_setup() {
 		'width'       => 150,
 		'flex-height' => true,
 		'flex-width'  => true,
-		'header-text' => fasle,
+		'header-text' => array( 'site-title', 'site-description' )
 	) );
 
 	/*
@@ -106,7 +106,6 @@ function demure_setup() {
 	 * to output valid HTML5.
 	 */
 	add_theme_support( 'html5', array(
-		'search-form',
 		'comment-form',
 		'comment-list',
 		'gallery',
@@ -135,7 +134,7 @@ function demure_widgets_init() {
 	register_sidebar( array(
 		'name'          => esc_html__( 'Main Sidebar (primary)', 'demure' ),
 		'id'            => 'main-primary',
-		'description'   => esc_html__( 'Add widgets here.', 'demure' ),
+		'description'   => esc_html__( 'Displayed on the main page (first sidebar)', 'demure' ),
 		'before_widget' => '<section id="%1$s" class="widget %2$s">',
 		'after_widget'  => '</section>',
 		'before_title'  => '<h2 class="widget-title">',
@@ -145,7 +144,7 @@ function demure_widgets_init() {
 	register_sidebar( array(
 		'name'          => esc_html__( 'Main Sidebar (secondary)', 'demure' ),
 		'id'            => 'main-secondary',
-		'description'   => esc_html__( 'Add widgets here.', 'demure' ),
+		'description'   => esc_html__( 'Displayed on the main page (second sidebar)', 'demure' ),
 		'before_widget' => '<section id="%1$s" class="widget %2$s">',
 		'after_widget'  => '</section>',
 		'before_title'  => '<h2 class="widget-title">',
@@ -155,7 +154,7 @@ function demure_widgets_init() {
 	register_sidebar( array(
 		'name'          => esc_html__( 'Blog Sidebar (primary)', 'demure' ),
 		'id'            => 'blog-primary',
-		'description'   => esc_html__( 'Add widgets here.', 'demure' ),
+		'description'   => esc_html__( 'Displayed on the blog page (first sidebar)', 'demure' ),
 		'before_widget' => '<section id="%1$s" class="widget %2$s">',
 		'after_widget'  => '</section>',
 		'before_title'  => '<h2 class="widget-title">',
@@ -165,7 +164,7 @@ function demure_widgets_init() {
 	register_sidebar( array(
 		'name'          => esc_html__( 'Blog Sidebar (secondary)', 'demure' ),
 		'id'            => 'blog-secondary',
-		'description'   => esc_html__( 'Add widgets here.', 'demure' ),
+		'description'   => esc_html__( 'Displayed on the blog page (second sidebar)', 'demure' ),
 		'before_widget' => '<section id="%1$s" class="widget %2$s">',
 		'after_widget'  => '</section>',
 		'before_title'  => '<h2 class="widget-title">',
@@ -175,7 +174,7 @@ function demure_widgets_init() {
 	register_sidebar( array(
 		'name'          => esc_html__( 'Single Sidebar (primary)', 'demure' ),
 		'id'            => 'single-primary',
-		'description'   => esc_html__( 'Add widgets here.', 'demure' ),
+		'description'   => esc_html__( 'Displayed on the post pages (first sidebar)', 'demure' ),
 		'before_widget' => '<section id="%1$s" class="widget %2$s">',
 		'after_widget'  => '</section>',
 		'before_title'  => '<h2 class="widget-title">',
@@ -185,7 +184,7 @@ function demure_widgets_init() {
 	register_sidebar( array(
 		'name'          => esc_html__( 'Single Sidebar (secondary)', 'demure' ),
 		'id'            => 'single-secondary',
-		'description'   => esc_html__( 'Add widgets here.', 'demure' ),
+		'description'   => esc_html__( 'Displayed on the post pages (second sidebar)', 'demure' ),
 		'before_widget' => '<section id="%1$s" class="widget %2$s">',
 		'after_widget'  => '</section>',
 		'before_title'  => '<h2 class="widget-title">',
@@ -196,7 +195,7 @@ function demure_widgets_init() {
 	register_sidebar( array(
 		'name'          => esc_html__( 'First column', 'demure' ),
 		'id'            => 'footer-first',
-		'description'   => esc_html__( 'Add widgets here.', 'demure' ),
+		'description'   => esc_html__( 'Displayed on the footer (First column)', 'demure' ),
 		'before_widget' => '<section id="%1$s" class="widget %2$s">',
 		'after_widget'  => '</section>',
 		'before_title'  => '<h2 class="widget-title">',
@@ -206,7 +205,7 @@ function demure_widgets_init() {
 	register_sidebar( array(
 		'name'          => esc_html__( 'Second column', 'demure' ),
 		'id'            => 'footer-second',
-		'description'   => esc_html__( 'Add widgets here.', 'demure' ),
+		'description'   => esc_html__( 'Displayed on the footer (Second column)', 'demure' ),
 		'before_widget' => '<section id="%1$s" class="widget %2$s">',
 		'after_widget'  => '</section>',
 		'before_title'  => '<h2 class="widget-title">',
@@ -216,7 +215,7 @@ function demure_widgets_init() {
 	register_sidebar( array(
 		'name'          => esc_html__( 'Third column', 'demure' ),
 		'id'            => 'footer-third',
-		'description'   => esc_html__( 'Add widgets here.', 'demure' ),
+		'description'   => esc_html__( 'Displayed on the footer (Third column)', 'demure' ),
 		'before_widget' => '<section id="%1$s" class="widget %2$s">',
 		'after_widget'  => '</section>',
 		'before_title'  => '<h2 class="widget-title">',
@@ -226,7 +225,7 @@ function demure_widgets_init() {
 	register_sidebar( array(
 		'name'          => esc_html__( 'Fourth column', 'demure' ),
 		'id'            => 'footer-fourth',
-		'description'   => esc_html__( 'Add widgets here.', 'demure' ),
+		'description'   => esc_html__( 'Displayed on the footer (Fourth column)', 'demure' ),
 		'before_widget' => '<section id="%1$s" class="widget %2$s">',
 		'after_widget'  => '</section>',
 		'before_title'  => '<h2 class="widget-title">',
@@ -236,7 +235,7 @@ function demure_widgets_init() {
 	register_sidebar( array(
 		'name'          => esc_html__( 'Fifth column', 'demure' ),
 		'id'            => 'footer-fifth',
-		'description'   => esc_html__( 'Add widgets here.', 'demure' ),
+		'description'   => esc_html__( 'Displayed on the footer (Fifth column)', 'demure' ),
 		'before_widget' => '<section id="%1$s" class="widget %2$s">',
 		'after_widget'  => '</section>',
 		'before_title'  => '<h2 class="widget-title">',
@@ -246,7 +245,7 @@ function demure_widgets_init() {
 	register_sidebar( array(
 		'name'          => esc_html__( 'Sixth column', 'demure' ),
 		'id'            => 'footer-sixth',
-		'description'   => esc_html__( 'Add widgets here.', 'demure' ),
+		'description'   => esc_html__( 'Displayed on the footer (Sixth column)', 'demure' ),
 		'before_widget' => '<section id="%1$s" class="widget %2$s">',
 		'after_widget'  => '</section>',
 		'before_title'  => '<h2 class="widget-title">',

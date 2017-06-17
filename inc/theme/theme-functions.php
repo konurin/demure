@@ -1,31 +1,5 @@
 <?php 
 
-if ( ! function_exists( 'demure_get_header_buttons' ) ) {
-	function demure_get_header_buttons() {
-		if ( !is_user_logged_in() ) {
-			?>
-			<div class="profile-navigation">
-				<a class="open-modal" name="login-form" href="#"><?php esc_html_e( 'Sign In', 'demure' ); ?></a>
-				<a class="open-modal" name="register-form" href="#"><?php esc_html_e( 'Register', 'demure' ); ?></a>
-			</div>
-			<?php
-		} else {
-			$user_id = get_current_user_id();
-			$user_avatar = get_user_meta( $user_id, 'demure_avatar', true );
-			
-			if ( empty( $user_avatar ) ) {
-				$user_avatar = get_avatar_url( $user_id, array( 'size' => 228 ) );
-			}
-			
-			?>
-			<div class="profile-navigation">
-				<a href="<?php echo esc_url( get_author_posts_url( $user_id ) ); ?>"><?php esc_html_e( 'My profile', 'demure' ); ?></a>
-			</div>
-			<?php
-		}
-	}
-}
-
 if ( ! function_exists( 'demure_before_content' ) ) {
 	function demure_before_content() {
 		global $post;
@@ -310,12 +284,12 @@ if ( ! function_exists( 'demure_get_branding' ) ) {
 	        $out .= '<div class="branding branding-image">';
 	            $out .= '<div class="container-branding-image">';
 	                    $out .= '<img src="' . esc_url( $image ) . '" />';
-	                $out .= '<a class="logotype-link" href="' . home_url() . '"></a>';
+	                $out .= '<a class="logotype-link" href="' . esc_url( home_url() ) . '"></a>';
 	            $out .= '</div>';
 	        $out .= '</div>';
 		} else {
 			$out .= '<div class="branding branding-text">';
-                $out .= '<h1><a href="' . home_url() . '">' . get_bloginfo('name') . '</a></h1>';
+                $out .= '<h1><a href="' . esc_url( home_url() ) . '">' . get_bloginfo('name') . '</a></h1>';
 				$out .= '<span>' . get_bloginfo('description') . '</span>';
             $out .= '</div>';
 		}
@@ -351,7 +325,7 @@ if ( ! function_exists( 'demure_post_content' ) ) {
     function demure_post_content() {
         $content = get_the_content( get_the_ID() );
         if ( ( !is_front_page() && is_home() ) || ( is_home() ) || is_author() ) {
-            $content = wp_trim_words( get_the_content( get_the_ID() ), 55, '<a class="read_more" href="' . get_permalink( get_the_ID() ) . '">' . esc_html__('Read More', 'demure') . '</a>' );
+            $content = wp_trim_words( get_the_content( get_the_ID() ), 55, '<a class="read_more" href="' . esc_url( get_permalink( get_the_ID() ) ) . '">' . esc_html__('Read More', 'demure') . '</a>' );
         }
         
         $post_content = apply_filters( 'the_content', $content );
@@ -496,108 +470,6 @@ function demure_ajax_load_posts(){
 add_action('wp_ajax_loadposts', 'demure_ajax_load_posts');
 add_action('wp_ajax_nopriv_loadposts', 'demure_ajax_load_posts');
 
-if ( ! function_exists( 'demure_user_authenticate' ) ) {
-    function demure_user_authenticate(){
-        if ( !empty( $_POST['form'] ) ) {
-            parse_str( $_POST['form'], $data );
-            $user_data = array();
-            $user_data['user_login'] =  sanitize_user( $data['user_login'] );
-            $user_data['user_password'] = $data['user_pass'];
-
-            $auth = wp_signon( $user_data, false );
-
-            if ( is_wp_error( $auth ) ) {
-                $error_string = $auth->get_error_message();
-                if ( !empty( $error_string ) ) {
-					$result = sprintf( '<div class="notification notification-warning"><p>%s</p></div>', $error_string );
-                }
-            } else {
-                $result = '<div class="notification notification-success"><p>' . esc_html__( 'Success!','demure' ) . '</p></div>';
-            }
-
-        }
-        echo $result;
-        die();
-    }
-}
-add_action('wp_ajax_user_authenticate', 'demure_user_authenticate');
-add_action('wp_ajax_nopriv_user_authenticate', 'demure_user_authenticate');
-
-if ( ! function_exists( 'demure_user_registration' ) ) {
-    function demure_user_registration(){
-        if ( !empty( $_POST['form'] ) && !empty( $_POST['action'] ) && $_POST['action'] == 'user_registration' ) {
-			$username = $password = $email = $first_name = $last_name = "";
-            parse_str( $_POST['form'], $data );
-            
-            $errors = new WP_Error;
-
-            $username   =   sanitize_user( $data['username'] );
-            $password   =   $data['password'];
-            $email      =   sanitize_email( $data['email'] );
-            $first_name =   sanitize_meta( 'first_name', $data['first_name'], 'user' );
-            $last_name  =   sanitize_meta( 'last_name', $data['last_name'], 'user' );
-
-            if ( empty( $username ) || empty( $password ) || empty( $email ) ) {
-                $errors->add( 'missing_field', esc_html__( 'Required form field is missing', 'demure' ) );
-            }
-
-            if ( 4 > strlen( $username ) ) {
-                $errors->add( 'username_length', esc_html__( 'Username too short. At least 4 characters is required', 'demure' ) );
-            }
-            
-            if ( $username != sanitize_key( $username ) ) {
-                $errors->add( 'invalid_username', esc_html__( 'Username contains invalid characters.', 'demure' ) );
-            }
-
-            if ( username_exists( $username ) ) {
-                $errors->add( 'user_name', esc_html__( 'Sorry, that username already exists!', 'demure' ) );
-            }
-
-            if ( ! validate_username( $username ) ) {
-                $errors->add( 'username_invalid', esc_html__( 'Sorry, the username you entered is not valid', 'demure' ) );
-            }
-
-            if ( 5 > strlen( $password ) ) {
-                $errors->add( 'password', esc_html__( 'Password length must be greater than 5', 'demure' ) );
-            }
-
-            if ( !is_email( $email ) ) {
-                $errors->add( 'email_invalid', esc_html__( 'Email is not valid', 'demure' ) );
-            }
-
-            if ( email_exists( $email ) ) {
-                $errors->add( 'email_use', esc_html__( 'Email Already in use', 'demure' ) );
-            }
-            
-            $userdata = array(
-                'user_login'    =>   $username,
-                'user_email'    =>   $email,
-                'user_pass'     =>   $password,
-                'first_name'    =>   $first_name,
-                'last_name'     =>   $last_name,
-            );
-            
-            $error_string = $errors->get_error_message();
-
-            if( empty( $error_string ) ) {
-                $user_id = wp_insert_user( $userdata );
-                $result = '<div class="notification notification-success"><p>'.esc_html__( 'Success!','demure' ).'</p></div>';
-            } else {
-                if ( !empty( $error_string ) ) {
-                    $result = sprintf( '<div class="notification notification-warning"><p>%s</p></div>', $error_string );
-                }
-            } 
-
-            
-        }
-        echo $result;
-        die();
-    }
-}
-
-add_action('wp_ajax_user_registration', 'demure_user_registration');
-add_action('wp_ajax_nopriv_user_registration', 'demure_user_registration');
-
 if ( ! function_exists( 'demure_get_homepage_slider' ) ) {
     function demure_get_homepage_slider(){
         global $demure_config;
@@ -644,7 +516,7 @@ if ( ! function_exists( 'demure_get_all_user_posts' ) ) {
         if ( have_posts() ) {
             
             ?>
-            <h3 class="heading"><?php esc_html_e( 'Posts:', 'demure' ); ?></h3>
+            <h3 class="heading"><?php printf( 'Posts by %s', get_the_author() ); ?></h3>
             <?php
 
             while ( have_posts() ) : the_post();
@@ -1061,18 +933,18 @@ if ( ! function_exists( 'footer_has_text_and_social' ) ) {
 	function footer_has_text_and_social() {
 		if ( ( 
 		!empty( $demure_config['facebook'] ) || 
-		!empty( $demure_config['facebook'] ) || 
-		!empty( $demure_config['facebook'] ) || 
-		!empty( $demure_config['facebook'] ) || 
-		!empty( $demure_config['facebook'] ) || 
-		!empty( $demure_config['facebook'] ) || 
-		!empty( $demure_config['facebook'] ) || 
-		!empty( $demure_config['facebook'] ) || 
-		!empty( $demure_config['facebook'] ) || 
-		!empty( $demure_config['facebook'] ) || 
-		!empty( $demure_config['facebook'] ) || 
-		!empty( $demure_config['facebook'] ) || 
-		!empty( $demure_config['facebook'] ) ) || ( !empty( $demure_config['footer-text'] ) ) ) {
+		!empty( $demure_config['twitter'] ) || 
+		!empty( $demure_config['vkontakte'] ) || 
+		!empty( $demure_config['linkedin'] ) || 
+		!empty( $demure_config['pinterest'] ) || 
+		!empty( $demure_config['youtube'] ) || 
+		!empty( $demure_config['instagram'] ) || 
+		!empty( $demure_config['googleplus'] ) || 
+		!empty( $demure_config['behance'] ) || 
+		!empty( $demure_config['flickr'] ) || 
+		!empty( $demure_config['skype'] ) || 
+		!empty( $demure_config['dribble'] ) || 
+		!empty( $demure_config['email'] ) ) || ( !empty( $demure_config['footer-text'] ) ) ) {
 			return true;
 		}
 	}

@@ -33,6 +33,11 @@ html {
 
 img {
 	max-width: 100%;
+	height: auto;
+}
+
+hr {
+	border-color: #edeef0;
 }
 
 body {
@@ -368,7 +373,6 @@ blockquote {
 	background: whitesmoke;
     margin: 10px 0px 10px;
     padding: 20px 40px 20px;
-    font-style: italic;
 }
 
 blockquote p {

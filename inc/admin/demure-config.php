@@ -549,8 +549,8 @@
                     '3' => esc_html__( 'Pages', 'demure' ),
                     '4' => esc_html__( 'Post and Pages', 'demure' )
                 ),
-                'std' => '2',
-                'default' => '2'
+                'std' => '4',
+                'default' => '4'
             ),
             array(         
                 'id'                    => 'article-background',
