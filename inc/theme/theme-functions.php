@@ -1,43 +1,18 @@
 <?php 
 
+if ( ! function_exists( 'demure_get_search_heading' ) ) {
+	function demure_get_search_heading() {
+		$search_result = get_search_query();
+		?>
+			<div class="search-section-heading"><h1><?php esc_html_e( 'Search result for', 'demure' ); ?>: <?php echo esc_html( $search_result ); ?></h1></div>
+		<?php
+	}
+}
+
 if ( ! function_exists( 'demure_before_content' ) ) {
 	function demure_before_content() {
 		global $post;
-		$style = $transparent_bg = $margin_top = $margin_bottom = $transparent_bg = $full_width = '';
-		$layout = 'container';
-		
-		if ( isset( $post->ID ) ) {
-			$margin_top = rwmb_meta( 'margin_top', null, $post->ID );
-			$margin_bottom = rwmb_meta( 'margin_bottom', null, $post->ID );
-			$full_width = rwmb_meta( 'full_width', null, $post->ID );
-			$transparent_bg = rwmb_meta( 'container_transparent', null, $post->ID );
-			$no_all_padding = rwmb_meta( 'no_paddings', null, $post->ID );
-			if ( !empty( $no_all_padding ) && $no_all_padding == 1 ) {
-				add_action( 'wp_enqueue_scripts', 'demure_add_custom_styles', 99 );
-			}
-		}
-	
-		if ( $margin_top != '' ) {
-			$margin_top = 'margin-top:' . $margin_top . 'px;';
-		}
-		
-		if ( $margin_bottom != '' ) {
-			$margin_bottom = 'margin-bottom:' . $margin_bottom . 'px;';
-		}
-		
-		if ( $margin_top != '' || $margin_bottom != '' ) {
-			$style = 'style="' . $margin_top . $margin_bottom . '"';
-		}
-		
-		if ( $full_width == 'on' ) {
-			$layout = 'container-fluid';
-		}
-		
-		if ( ! empty( $transparent_bg ) && $transparent_bg == 1 ) {
-			$transparent_bg = 'transparent-container';
-		}
-		
-		echo '<div id="content" ' . esc_attr( $style ) . ' class="site-content ' . esc_attr( $layout ) . ' ' . esc_attr( $transparent_bg ) . '">';
+		echo '<div id="content" class="site-content container">';
 	}
 }
 
@@ -119,14 +94,26 @@ if ( ! function_exists( 'demure_get_main_content' ) ) {
         $main_layout = 1;
 		
 		$page_layout_option = rwmb_meta( 'page_layout' );
-        
-        if ( is_front_page() && !empty( $demure_config['main_layout'] ) ) $main_layout = $demure_config['main_layout'];
-
-        if ( !is_single() && is_blog() && !empty( $demure_config['blog_layout'] ) ) $main_layout = $demure_config['blog_layout'];
-        
-        if ( is_single() && is_blog() && !empty( $demure_config['single_blog_layout'] ) ) $main_layout = $demure_config['single_blog_layout'];
-        
-        if ( ( isset( $page_layout_option ) && !empty( $page_layout_option ) ) && ( ( !is_single() && is_blog() ) || ( is_single() && is_blog() ) || ( !is_front_page() ) ) ) $main_layout = $page_layout_option;
+        if ( class_exists( 'Redux' ) ) {
+			if ( is_front_page() && !empty( $demure_config['main_layout'] ) ) $main_layout = $demure_config['main_layout'];
+	
+			if ( !is_single() && is_blog() && !empty( $demure_config['blog_layout'] ) ) $main_layout = $demure_config['blog_layout'];
+			
+			if ( is_single() && is_blog() && !empty( $demure_config['single_blog_layout'] ) ) $main_layout = $demure_config['single_blog_layout'];	
+        } elseif ( ( $page_layout_option == 1 || empty( $page_layout_option ) ) && ! class_exists( 'Redux' ) ) {
+        	if ( is_front_page() ) {
+				if ( is_active_sidebar( 'main-primary' ) ) $main_layout = 3;
+				if ( is_active_sidebar( 'main-secondary' ) ) $main_layout = 4;
+        	} elseif ( !is_single() && is_blog() ) {
+				if ( is_active_sidebar( 'blog-primary' ) ) $main_layout = 3;
+				if ( is_active_sidebar( 'blog-secondary' ) ) $main_layout = 4;
+			} elseif ( is_single() && is_blog() ) {
+				if ( is_active_sidebar( 'single-primary' ) ) $main_layout = 3;
+				if ( is_active_sidebar( 'single-secondary' ) ) $main_layout = 4;
+			}
+        }
+		
+		if ( ( isset( $page_layout_option ) && !empty( $page_layout_option ) && $page_layout_option != 1 ) && ( ( !is_single() && is_blog() ) || ( is_single() && is_blog() ) ) ) $main_layout = $page_layout_option;
 
         switch ( $main_layout ) {
             case 1:
@@ -216,11 +203,13 @@ if ( ! function_exists( 'demure_get_content' ) ) {
 
             while ( have_posts() ) : the_post();
 
-                if (is_page()) {
+                if ( is_page() ) {
                     get_template_part( 'template-parts/content', 'page' );
-                } else{
-                    get_template_part( 'template-parts/content', get_post_format() );
-                }
+                } elseif ( is_search() ) {
+                    get_template_part( 'template-parts/content', 'search' );
+                } else {
+					get_template_part( 'template-parts/content', get_post_format() );
+				}
 
             endwhile;
             
@@ -306,13 +295,16 @@ if ( ! function_exists( 'demure_post_header' ) ) {
         global $post;
         $out_header = $page_title = $out = '';
         $page_title = rwmb_meta( 'page_title');
-        
+		
         if ( !is_single() && !is_page() ) {
             $out_header .= '<h3><a href="' . get_the_permalink( $post_id ) . '">' . get_the_title( $post_id ) . '</a></h3>';
         } else {
             $out_header .= '<h1>' . get_the_title( $post_id ) . '</h1>';
         }
-        $out = '<header class="entry-header">';
+		
+		if ( isset( $page_title ) && $page_title == 'off' ) $out_header = '<div class="no-title-padding"></div>';
+		
+		$out = '<header class="entry-header">';
             $out .= $out_header;
         $out .= '</header><!-- .entry-header -->';
         
@@ -324,8 +316,8 @@ if ( ! function_exists( 'demure_post_header' ) ) {
 if ( ! function_exists( 'demure_post_content' ) ) {
     function demure_post_content() {
         $content = get_the_content( get_the_ID() );
-        if ( ( !is_front_page() && is_home() ) || ( is_home() ) || is_author() ) {
-            $content = wp_trim_words( get_the_content( get_the_ID() ), 55, '<a class="read_more" href="' . esc_url( get_permalink( get_the_ID() ) ) . '">' . esc_html__('Read More', 'demure') . '</a>' );
+        if ( ( !is_front_page() && is_home() ) || ( is_home() ) || is_author() || is_search() ) {
+            $content = wp_trim_words( get_the_content(), 55, '<a class="read_more" href="' . esc_url( get_permalink() ) . '">' . esc_html__('Read More', 'demure') . '</a>' );
         }
         
         $post_content = apply_filters( 'the_content', $content );
@@ -371,7 +363,8 @@ if ( ! function_exists( 'demure_get_post_meta' ) ) {
 			$display_date = $demure_config['display_date'];
 			$display_author = $demure_config['display_author'];
 		}
-		if ( $display_author != 1 && $display_date != 1 ) return false;
+
+		if ( ( $display_author != 1 && $display_date != 1 ) || ( get_post_type() == 'page' && is_search() ) ) return false;
 		$out .= '<div class="entry-meta">';
 			if ( isset( $display_author ) && $display_author == 1 ) {
 				$out .= '<div class="author">';

@@ -1,30 +1,18 @@
 <?php
 /**
- * Template part for displaying results in search pages.
+ * Template part for displaying posts.
  *
  * @link https://codex.wordpress.org/Template_Hierarchy
  *
  * @package demure
  */
-
+ 
 ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-	<header class="entry-header">
-		<?php the_title( sprintf( '<h2 class="entry-title"><a href="%s" rel="bookmark">', esc_url( get_permalink() ) ), '</a></h2>' ); ?>
-
-		<?php if ( 'post' === get_post_type() ) : ?>
-		<div class="entry-meta">
-			<?php demure_posted_on(); ?>
-		</div><!-- .entry-meta -->
-		<?php endif; ?>
-	</header><!-- .entry-header -->
-
-	<div class="entry-summary">
-		<?php the_excerpt(); ?>
-	</div><!-- .entry-summary -->
-
-	<footer class="entry-footer">
-		<?php demure_entry_footer(); ?>
-	</footer><!-- .entry-footer -->
+	<?php demure_post_thumbnail(); ?>
+	<?php demure_post_header(); ?>
+	<?php demure_get_post_meta(); ?>
+	<?php demure_post_content(); ?>
+	<?php demure_post_footer(); ?>
 </article><!-- #post-## -->

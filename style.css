@@ -926,6 +926,10 @@ article .entry-header h1 {
     padding: 20px 20px 0 20px;
 }
 
+article .entry-header .no-title-padding {
+	padding-top: 20px;
+}
+
 article .entry-content {
 	padding: 0 20px;
 }

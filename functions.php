@@ -39,11 +39,6 @@ function demure_setup() {
 	require_once locate_template(  'inc/admin/metaboxes.php', true, true ); 
 
 	/*
-	* Template tags
-	*/
-	require_once locate_template(  'inc/theme/template-tags.php', true, true ); 
-	
-	/*
 	* Theme functions
 	*/
 	require_once locate_template(  'inc/theme/theme-functions.php', true, true );
@@ -118,11 +113,6 @@ function demure_setup() {
 }
 endif;
 add_action( 'after_setup_theme', 'demure_setup' );
-
-function demure_add_editor_styles() {
-	add_editor_style( 'editor-styles.css' );
-}
-add_action( 'current_screen', 'demure_add_editor_styles' );
 
 /**
  * Register widget area.
@@ -279,11 +269,8 @@ function demure_scripts() {
 	wp_enqueue_script( 'smoothscroll', get_template_directory_uri() . '/inc/theme/assets/js/smooth-scroll.min.js', array( 'jquery' ), false, true );
 	
 	// comments reply
-	if ( is_singular() ) wp_enqueue_script( 'comment-reply' );
-	
-	// tabs js on author page
-	if ( is_author() ) {
-		wp_enqueue_script( 'jquery-ui-tabs' );
+	if ( is_singular() && comments_open() && get_option('thread_comments') ) {
+		wp_enqueue_script( 'comment-reply' );
 	}
 	
 	// main script
@@ -324,7 +311,7 @@ function demure_include_dynamic_css() {
 add_action('wp_ajax_demure_dynamic_css', 'demure_dynamic_css');
 add_action('wp_ajax_nopriv_demure_dynamic_css', 'demure_dynamic_css');
 function demure_dynamic_css() {
-	require( get_template_directory().'/inc/theme/assets/style.css.php' );
+	require( get_template_directory().'/inc/theme/dynamic-styles.php' );
 	exit;
 }
 
