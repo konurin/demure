@@ -1,7 +1,6 @@
 <?php
     /**
-     * ReduxFramework Sample Config File
-     * For full documentation, please visit: http://docs.reduxframework.com/
+     * Demure Theme options
      */
 
     if ( ! class_exists( 'Redux' ) ) {
@@ -21,13 +20,6 @@
 
     // This is your option name where all the Redux data is stored.
     $opt_name = "demure_config";
-
-    /*
-     *
-     * --> Used within different fields. Simply examples. Search for ACTUAL DECLARATION for field examples
-     *
-     */
-
 
     // Background Patterns Reader
     $sample_patterns_path = get_template_directory_uri() . '/inc/admin/patterns/';

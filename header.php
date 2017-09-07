@@ -25,12 +25,11 @@
 		<div class="container">
 			<div class="wrapper">
 				<div class="top-container">
-					<?php demure_get_branding(); ?>
+					<?php demure_branding(); ?>
 				</div>
 				
 				<div class="header-container">
 					<div class="menu-right-block">
-						<?php //demure_secondary_menu(); ?>
 						<nav id="site-navigation" class="main-navigation" role="navigation">
 							<?php wp_nav_menu( array( 'theme_location' => 'primary', 'menu_id' => 'primary-menu' ) ); ?>
 						</nav><!-- #site-navigation -->

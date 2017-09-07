@@ -3,7 +3,7 @@ Theme Name: demure
 Author: Vitaliy Konurin
 Author URI: http://konurin.tk
 Description: Demure is creative and minimal theme for wordpress.
-Version: 1.0.1
+Version: 1.0.3
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Text Domain: demure
@@ -641,10 +641,8 @@ blockquote p {
 }
 
 #masthead .branding {
-	display: inline-flex;
-	justify-content: center;
+	display: block;
 	position: relative;
-	flex-direction: column;
 	max-height: 100px;
 	overflow: hidden;
 	max-width: 100%;
@@ -792,12 +790,20 @@ blockquote p {
 }
 
 #masthead .top-container {
-	display: -webkit-flex;
-	display: -ms-flex;
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
+	display: block;
+}
+
+#masthead .top-container  a.custom-logo-link {
 	padding: 20px 0;
+	display: block;
+}
+
+#masthead .top-container .branding {
+	padding: 20px 0;
+}
+
+#masthead .top-container  a.custom-logo-link + .branding {
+	padding-top: 0;
 }
 
 /* #profile navigation */
@@ -1383,6 +1389,10 @@ form.search-form button::before {
 	font-weight: 600;
 }
 
+#comments .comments-container .comment-content-block .comment-header .comment-author {
+	color: #222;
+}
+
 #comments .comments-container .comment-content-block .date {
 	font-size: 0.9em;
 	color: #989898;
@@ -1941,6 +1951,7 @@ footer .footer-wrap .widget_calendar caption {
 
 	#masthead .menu-right-block {
 		flex: 1;
+		justify-content: flex-end;
 	}
 
 }
@@ -1949,6 +1960,9 @@ footer .footer-wrap .widget_calendar caption {
 	.homepage-slider .slide .slide-information {
 		max-width: 70%;
     	left: 15%;
+	}
+	.sidebar form.search-form .search-field {
+		max-width: 100%;
 	}
 	.homepage-slider .slide .slide-information h3 {
 		font-size: 1.4em;
