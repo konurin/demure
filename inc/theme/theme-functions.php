@@ -294,7 +294,7 @@ if ( ! function_exists( 'demure_branding' ) ) {
 			the_custom_logo();
 		}
 		
-		if ( get_theme_mod( 'header_text' ) === 1 ) {
+		if ( get_theme_mod( 'header_text', 1 ) === 1 ) {
 			echo '<div class="branding branding-text">';
 				echo '<h1><a href="' . esc_url( home_url() ) . '">' . get_bloginfo('name') . '</a></h1>';
 				echo '<span>' . get_bloginfo('description') . '</span>';
