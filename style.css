@@ -635,9 +635,10 @@ blockquote p {
 
 #masthead .branding h1 {
 	text-align: left;
-	margin: 0;
-	font-size: 1.4em;
-	display: block;
+    margin: 0;
+    font-size: 2em;
+    display: block;
+    letter-spacing: 0.05em;
 }
 
 #masthead .branding {

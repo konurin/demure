@@ -88,11 +88,6 @@ function demure_setup() {
 	add_theme_support( 'post-thumbnails' );
 	
 	/**
-	 * Add post formats
-	 */
-	add_theme_support( 'post-formats', array( 'image', 'gallery' ) );
-	
-	/**
 	 * Add custom logo support
 	 */
 	add_theme_support( 'custom-logo', array(
@@ -111,10 +106,9 @@ function demure_setup() {
 	) );
 	
 	/**
-	 * Register Primary and Secondary menus
+	 * Register Primary menu
 	 */
 	register_nav_menu( 'primary', 'Primary Menu' );
-	register_nav_menu( 'secondary', 'Secondary Menu' );
 	
 }
 endif;
