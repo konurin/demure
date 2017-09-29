@@ -3,14 +3,14 @@ msgid ""
 msgstr ""
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 "Project-Id-Version: demure\n"
-"POT-Creation-Date: 2017-04-20 17:11+0300\n"
+"POT-Creation-Date: 2017-09-29 21:21+0300\n"
 "PO-Revision-Date: 2017-04-20 17:10+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.0.1\n"
+"X-Generator: Poedit 2.0.4\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-Flags-xgettext: --add-comments=translators:\n"
 "X-Poedit-WPHeader: style.css\n"
@@ -35,102 +35,144 @@ msgid ""
 "search request."
 msgstr ""
 
-#: comments.php:55 comments.php:90
+#: comments.php:36 comments.php:71
 msgid "Comment navigation"
 msgstr ""
 
-#: comments.php:57 comments.php:93
+#: comments.php:38 comments.php:74
 msgid "Older Comments"
 msgstr ""
 
-#: comments.php:58 comments.php:94
+#: comments.php:39 comments.php:75
 msgid "Newer Comments"
 msgstr ""
 
-#: comments.php:106
+#: comments.php:87
 msgid "Comments are closed."
 msgstr ""
 
-#: functions.php:136
+#: functions.php:133
 msgid "Main Sidebar (primary)"
 msgstr ""
 
-#: functions.php:138 functions.php:148 functions.php:158 functions.php:168
-#: functions.php:178 functions.php:188 functions.php:199 functions.php:209
-#: functions.php:219 functions.php:229 functions.php:239 functions.php:249
-msgid "Add widgets here."
+#: functions.php:135
+msgid "Displayed on the main page (first sidebar)"
 msgstr ""
 
-#: functions.php:146
+#: functions.php:143
 msgid "Main Sidebar (secondary)"
+msgstr ""
+
+#: functions.php:145
+msgid "Displayed on the main page (second sidebar)"
 msgstr ""
 
 #: functions.php:156
 msgid "Blog Sidebar (primary)"
 msgstr ""
 
+#: functions.php:158
+msgid "Displayed on the blog page (first sidebar)"
+msgstr ""
+
 #: functions.php:166
 msgid "Blog Sidebar (secondary)"
 msgstr ""
 
-#: functions.php:176
+#: functions.php:168
+msgid "Displayed on the blog page (second sidebar)"
+msgstr ""
+
+#: functions.php:179
 msgid "Single Sidebar (primary)"
 msgstr ""
 
-#: functions.php:186
+#: functions.php:181
+msgid "Displayed on the post pages (first sidebar)"
+msgstr ""
+
+#: functions.php:189
 msgid "Single Sidebar (secondary)"
 msgstr ""
 
-#: functions.php:197
-msgid "First column"
+#: functions.php:191
+msgid "Displayed on the post pages (second sidebar)"
 msgstr ""
 
-#: functions.php:207
-msgid "Second column"
+#: functions.php:202
+msgid "First column (footer)"
 msgstr ""
 
-#: functions.php:217
-msgid "Third column"
+#: functions.php:204
+msgid "First column on the footer"
 msgstr ""
 
-#: functions.php:227
-msgid "Fourth column"
+#: functions.php:212
+msgid "Second column (footer)"
 msgstr ""
 
-#: functions.php:237
-msgid "Fifth column"
+#: functions.php:214
+msgid "Second column on the footer"
 msgstr ""
 
-#: functions.php:247
-msgid "Sixth column"
+#: functions.php:222
+msgid "Third column (footer)"
 msgstr ""
 
-#: inc/admin/TGM/class-tgm-plugin-activation.php:334
+#: functions.php:224
+msgid "Third column on the footer"
+msgstr ""
+
+#: functions.php:232
+msgid "Fourth column (footer)"
+msgstr ""
+
+#: functions.php:234
+msgid "Fourth column on the footer"
+msgstr ""
+
+#: functions.php:242
+msgid "Fifth column (footer)"
+msgstr ""
+
+#: functions.php:244
+msgid "Fifth column on the footer"
+msgstr ""
+
+#: functions.php:252
+msgid "Sixth column (footer)"
+msgstr ""
+
+#: functions.php:254
+msgid "Sixth column on the footer"
+msgstr ""
+
+#: inc/admin/TGM/class-tgm-plugin-activation.php:327
 msgid "Install Required Plugins"
 msgstr ""
 
-#: inc/admin/TGM/class-tgm-plugin-activation.php:335
+#: inc/admin/TGM/class-tgm-plugin-activation.php:328
 msgid "Install Plugins"
 msgstr ""
 
 #. translators: %s: plugin name.
-#: inc/admin/TGM/class-tgm-plugin-activation.php:337
+#: inc/admin/TGM/class-tgm-plugin-activation.php:330
 #, php-format
 msgid "Installing Plugin: %s"
 msgstr ""
 
 #. translators: %s: plugin name.
-#: inc/admin/TGM/class-tgm-plugin-activation.php:339
+#: inc/admin/TGM/class-tgm-plugin-activation.php:332
 #, php-format
 msgid "Updating Plugin: %s"
 msgstr ""
 
-#: inc/admin/TGM/class-tgm-plugin-activation.php:340
+#: inc/admin/TGM/class-tgm-plugin-activation.php:333
 msgid "Something went wrong with the plugin API."
 msgstr ""
 
 #. translators: 1: plugin name(s).
-#: inc/admin/TGM/class-tgm-plugin-activation.php:343
+#: inc/admin/TGM/class-tgm-plugin-activation.php:336
 #, php-format
 msgid "This theme requires the following plugin: %1$s."
 msgid_plural "This theme requires the following plugins: %1$s."
@@ -138,7 +180,7 @@ msgstr[0] ""
 msgstr[1] ""
 
 #. translators: 1: plugin name(s).
-#: inc/admin/TGM/class-tgm-plugin-activation.php:349
+#: inc/admin/TGM/class-tgm-plugin-activation.php:342
 #, php-format
 msgid "This theme recommends the following plugin: %1$s."
 msgid_plural "This theme recommends the following plugins: %1$s."
@@ -146,7 +188,7 @@ msgstr[0] ""
 msgstr[1] ""
 
 #. translators: 1: plugin name(s).
-#: inc/admin/TGM/class-tgm-plugin-activation.php:355
+#: inc/admin/TGM/class-tgm-plugin-activation.php:348
 #, php-format
 msgid ""
 "The following plugin needs to be updated to its latest version to ensure "
@@ -158,7 +200,7 @@ msgstr[0] ""
 msgstr[1] ""
 
 #. translators: 1: plugin name(s).
-#: inc/admin/TGM/class-tgm-plugin-activation.php:361
+#: inc/admin/TGM/class-tgm-plugin-activation.php:354
 #, php-format
 msgid "There is an update available for: %1$s."
 msgid_plural "There are updates available for the following plugins: %1$s."
@@ -166,7 +208,7 @@ msgstr[0] ""
 msgstr[1] ""
 
 #. translators: 1: plugin name(s).
-#: inc/admin/TGM/class-tgm-plugin-activation.php:367
+#: inc/admin/TGM/class-tgm-plugin-activation.php:360
 #, php-format
 msgid "The following required plugin is currently inactive: %1$s."
 msgid_plural "The following required plugins are currently inactive: %1$s."
@@ -174,62 +216,62 @@ msgstr[0] ""
 msgstr[1] ""
 
 #. translators: 1: plugin name(s).
-#: inc/admin/TGM/class-tgm-plugin-activation.php:373
+#: inc/admin/TGM/class-tgm-plugin-activation.php:366
 #, php-format
 msgid "The following recommended plugin is currently inactive: %1$s."
 msgid_plural "The following recommended plugins are currently inactive: %1$s."
 msgstr[0] ""
 msgstr[1] ""
 
-#: inc/admin/TGM/class-tgm-plugin-activation.php:378
+#: inc/admin/TGM/class-tgm-plugin-activation.php:371
 msgid "Begin installing plugin"
 msgid_plural "Begin installing plugins"
 msgstr[0] ""
 msgstr[1] ""
 
-#: inc/admin/TGM/class-tgm-plugin-activation.php:383
+#: inc/admin/TGM/class-tgm-plugin-activation.php:376
 msgid "Begin updating plugin"
 msgid_plural "Begin updating plugins"
 msgstr[0] ""
 msgstr[1] ""
 
-#: inc/admin/TGM/class-tgm-plugin-activation.php:388
+#: inc/admin/TGM/class-tgm-plugin-activation.php:381
 msgid "Begin activating plugin"
 msgid_plural "Begin activating plugins"
 msgstr[0] ""
 msgstr[1] ""
 
-#: inc/admin/TGM/class-tgm-plugin-activation.php:392
+#: inc/admin/TGM/class-tgm-plugin-activation.php:385
 msgid "Return to Required Plugins Installer"
 msgstr ""
 
-#: inc/admin/TGM/class-tgm-plugin-activation.php:393
-#: inc/admin/TGM/class-tgm-plugin-activation.php:916
-#: inc/admin/TGM/class-tgm-plugin-activation.php:2622
-#: inc/admin/TGM/class-tgm-plugin-activation.php:3669
+#: inc/admin/TGM/class-tgm-plugin-activation.php:386
+#: inc/admin/TGM/class-tgm-plugin-activation.php:827
+#: inc/admin/TGM/class-tgm-plugin-activation.php:2533
+#: inc/admin/TGM/class-tgm-plugin-activation.php:3580
 msgid "Return to the Dashboard"
 msgstr ""
 
-#: inc/admin/TGM/class-tgm-plugin-activation.php:394
-#: inc/admin/TGM/class-tgm-plugin-activation.php:3248
+#: inc/admin/TGM/class-tgm-plugin-activation.php:387
+#: inc/admin/TGM/class-tgm-plugin-activation.php:3159
 msgid "Plugin activated successfully."
 msgstr ""
 
-#: inc/admin/TGM/class-tgm-plugin-activation.php:395
-#: inc/admin/TGM/class-tgm-plugin-activation.php:3041
+#: inc/admin/TGM/class-tgm-plugin-activation.php:388
+#: inc/admin/TGM/class-tgm-plugin-activation.php:2952
 msgid "The following plugin was activated successfully:"
 msgid_plural "The following plugins were activated successfully:"
 msgstr[0] ""
 msgstr[1] ""
 
 #. translators: 1: plugin name.
-#: inc/admin/TGM/class-tgm-plugin-activation.php:397
+#: inc/admin/TGM/class-tgm-plugin-activation.php:390
 #, php-format
 msgid "No action taken. Plugin %1$s was already active."
 msgstr ""
 
 #. translators: 1: plugin name.
-#: inc/admin/TGM/class-tgm-plugin-activation.php:399
+#: inc/admin/TGM/class-tgm-plugin-activation.php:392
 #, php-format
 msgid ""
 "Plugin not activated. A higher version of %s is needed for this theme. "
@@ -237,121 +279,117 @@ msgid ""
 msgstr ""
 
 #. translators: 1: dashboard link.
-#: inc/admin/TGM/class-tgm-plugin-activation.php:401
+#: inc/admin/TGM/class-tgm-plugin-activation.php:394
 #, php-format
 msgid "All plugins installed and activated successfully. %1$s"
 msgstr ""
 
-#: inc/admin/TGM/class-tgm-plugin-activation.php:402
+#: inc/admin/TGM/class-tgm-plugin-activation.php:395
 msgid "Dismiss this notice"
 msgstr ""
 
-#: inc/admin/TGM/class-tgm-plugin-activation.php:403
+#: inc/admin/TGM/class-tgm-plugin-activation.php:396
 msgid ""
 "There are one or more required or recommended plugins to install, update or "
 "activate."
 msgstr ""
 
-#: inc/admin/TGM/class-tgm-plugin-activation.php:404
+#: inc/admin/TGM/class-tgm-plugin-activation.php:397
 msgid "Please contact the administrator of this site for help."
 msgstr ""
 
-#: inc/admin/TGM/class-tgm-plugin-activation.php:607
+#: inc/admin/TGM/class-tgm-plugin-activation.php:522
 msgid "This plugin needs to be updated to be compatible with your theme."
 msgstr ""
 
-#: inc/admin/TGM/class-tgm-plugin-activation.php:608
+#: inc/admin/TGM/class-tgm-plugin-activation.php:523
 msgid "Update Required"
 msgstr ""
 
-#: inc/admin/TGM/class-tgm-plugin-activation.php:725
-msgid "Set the parent_slug config variable instead."
-msgstr ""
-
-#: inc/admin/TGM/class-tgm-plugin-activation.php:1023
+#: inc/admin/TGM/class-tgm-plugin-activation.php:934
 msgid ""
 "The remote plugin package does not contain a folder with the desired slug "
 "and renaming did not work."
 msgstr ""
 
-#: inc/admin/TGM/class-tgm-plugin-activation.php:1023
-#: inc/admin/TGM/class-tgm-plugin-activation.php:1026
+#: inc/admin/TGM/class-tgm-plugin-activation.php:934
+#: inc/admin/TGM/class-tgm-plugin-activation.php:937
 msgid ""
 "Please contact the plugin provider and ask them to package their plugin "
 "according to the WordPress guidelines."
 msgstr ""
 
-#: inc/admin/TGM/class-tgm-plugin-activation.php:1026
+#: inc/admin/TGM/class-tgm-plugin-activation.php:937
 msgid ""
 "The remote plugin package consists of more than one file, but the files are "
 "not packaged in a folder."
 msgstr ""
 
-#: inc/admin/TGM/class-tgm-plugin-activation.php:1210
-#: inc/admin/TGM/class-tgm-plugin-activation.php:3037
+#: inc/admin/TGM/class-tgm-plugin-activation.php:1121
+#: inc/admin/TGM/class-tgm-plugin-activation.php:2948
 msgctxt "plugin A *and* plugin B"
 msgid "and"
 msgstr ""
 
 #. translators: %s: version number
-#: inc/admin/TGM/class-tgm-plugin-activation.php:2071
+#: inc/admin/TGM/class-tgm-plugin-activation.php:1982
 #, php-format
 msgid "TGMPA v%s"
 msgstr ""
 
-#: inc/admin/TGM/class-tgm-plugin-activation.php:2362
+#: inc/admin/TGM/class-tgm-plugin-activation.php:2273
 msgid "Required"
 msgstr ""
 
-#: inc/admin/TGM/class-tgm-plugin-activation.php:2365
+#: inc/admin/TGM/class-tgm-plugin-activation.php:2276
 msgid "Recommended"
 msgstr ""
 
-#: inc/admin/TGM/class-tgm-plugin-activation.php:2381
+#: inc/admin/TGM/class-tgm-plugin-activation.php:2292
 msgid "WordPress Repository"
 msgstr ""
 
-#: inc/admin/TGM/class-tgm-plugin-activation.php:2384
+#: inc/admin/TGM/class-tgm-plugin-activation.php:2295
 msgid "External Source"
 msgstr ""
 
-#: inc/admin/TGM/class-tgm-plugin-activation.php:2387
+#: inc/admin/TGM/class-tgm-plugin-activation.php:2298
 msgid "Pre-Packaged"
 msgstr ""
 
-#: inc/admin/TGM/class-tgm-plugin-activation.php:2404
+#: inc/admin/TGM/class-tgm-plugin-activation.php:2315
 msgid "Not Installed"
 msgstr ""
 
-#: inc/admin/TGM/class-tgm-plugin-activation.php:2408
+#: inc/admin/TGM/class-tgm-plugin-activation.php:2319
 msgid "Installed But Not Activated"
 msgstr ""
 
-#: inc/admin/TGM/class-tgm-plugin-activation.php:2410
+#: inc/admin/TGM/class-tgm-plugin-activation.php:2321
 msgid "Active"
 msgstr ""
 
-#: inc/admin/TGM/class-tgm-plugin-activation.php:2416
+#: inc/admin/TGM/class-tgm-plugin-activation.php:2327
 msgid "Required Update not Available"
 msgstr ""
 
-#: inc/admin/TGM/class-tgm-plugin-activation.php:2419
+#: inc/admin/TGM/class-tgm-plugin-activation.php:2330
 msgid "Requires Update"
 msgstr ""
 
-#: inc/admin/TGM/class-tgm-plugin-activation.php:2422
+#: inc/admin/TGM/class-tgm-plugin-activation.php:2333
 msgid "Update recommended"
 msgstr ""
 
 #. translators: 1: install status, 2: update status
-#: inc/admin/TGM/class-tgm-plugin-activation.php:2431
+#: inc/admin/TGM/class-tgm-plugin-activation.php:2342
 #, php-format
 msgctxt "Install/Update Status"
 msgid "%1$s, %2$s"
 msgstr ""
 
 #. translators: 1: number of plugins.
-#: inc/admin/TGM/class-tgm-plugin-activation.php:2477
+#: inc/admin/TGM/class-tgm-plugin-activation.php:2388
 #, php-format
 msgctxt "plugins"
 msgid "All <span class=\"count\">(%s)</span>"
@@ -360,7 +398,7 @@ msgstr[0] ""
 msgstr[1] ""
 
 #. translators: 1: number of plugins.
-#: inc/admin/TGM/class-tgm-plugin-activation.php:2481
+#: inc/admin/TGM/class-tgm-plugin-activation.php:2392
 #, php-format
 msgid "To Install <span class=\"count\">(%s)</span>"
 msgid_plural "To Install <span class=\"count\">(%s)</span>"
@@ -368,7 +406,7 @@ msgstr[0] ""
 msgstr[1] ""
 
 #. translators: 1: number of plugins.
-#: inc/admin/TGM/class-tgm-plugin-activation.php:2485
+#: inc/admin/TGM/class-tgm-plugin-activation.php:2396
 #, php-format
 msgid "Update Available <span class=\"count\">(%s)</span>"
 msgid_plural "Update Available <span class=\"count\">(%s)</span>"
@@ -376,657 +414,657 @@ msgstr[0] ""
 msgstr[1] ""
 
 #. translators: 1: number of plugins.
-#: inc/admin/TGM/class-tgm-plugin-activation.php:2489
+#: inc/admin/TGM/class-tgm-plugin-activation.php:2400
 #, php-format
 msgid "To Activate <span class=\"count\">(%s)</span>"
 msgid_plural "To Activate <span class=\"count\">(%s)</span>"
 msgstr[0] ""
 msgstr[1] ""
 
-#: inc/admin/TGM/class-tgm-plugin-activation.php:2571
+#: inc/admin/TGM/class-tgm-plugin-activation.php:2482
 msgctxt "as in: \"version nr unknown\""
 msgid "unknown"
 msgstr ""
 
-#: inc/admin/TGM/class-tgm-plugin-activation.php:2579
+#: inc/admin/TGM/class-tgm-plugin-activation.php:2490
 msgid "Installed version:"
 msgstr ""
 
-#: inc/admin/TGM/class-tgm-plugin-activation.php:2587
+#: inc/admin/TGM/class-tgm-plugin-activation.php:2498
 msgid "Minimum required version:"
 msgstr ""
 
-#: inc/admin/TGM/class-tgm-plugin-activation.php:2599
+#: inc/admin/TGM/class-tgm-plugin-activation.php:2510
 msgid "Available version:"
 msgstr ""
 
-#: inc/admin/TGM/class-tgm-plugin-activation.php:2622
+#: inc/admin/TGM/class-tgm-plugin-activation.php:2533
 msgid "No plugins to install, update or activate."
 msgstr ""
 
-#: inc/admin/TGM/class-tgm-plugin-activation.php:2636
+#: inc/admin/TGM/class-tgm-plugin-activation.php:2547
 msgid "Plugin"
 msgstr ""
 
-#: inc/admin/TGM/class-tgm-plugin-activation.php:2637
+#: inc/admin/TGM/class-tgm-plugin-activation.php:2548
 msgid "Source"
 msgstr ""
 
-#: inc/admin/TGM/class-tgm-plugin-activation.php:2638
+#: inc/admin/TGM/class-tgm-plugin-activation.php:2549
 msgid "Type"
 msgstr ""
 
-#: inc/admin/TGM/class-tgm-plugin-activation.php:2642
+#: inc/admin/TGM/class-tgm-plugin-activation.php:2553
 msgid "Version"
 msgstr ""
 
-#: inc/admin/TGM/class-tgm-plugin-activation.php:2643
+#: inc/admin/TGM/class-tgm-plugin-activation.php:2554
 msgid "Status"
 msgstr ""
 
 #. translators: %2$s: plugin name in screen reader markup
-#: inc/admin/TGM/class-tgm-plugin-activation.php:2692
+#: inc/admin/TGM/class-tgm-plugin-activation.php:2603
 #, php-format
 msgid "Install %2$s"
 msgstr ""
 
 #. translators: %2$s: plugin name in screen reader markup
-#: inc/admin/TGM/class-tgm-plugin-activation.php:2697
+#: inc/admin/TGM/class-tgm-plugin-activation.php:2608
 #, php-format
 msgid "Update %2$s"
 msgstr ""
 
 #. translators: %2$s: plugin name in screen reader markup
-#: inc/admin/TGM/class-tgm-plugin-activation.php:2703
+#: inc/admin/TGM/class-tgm-plugin-activation.php:2614
 #, php-format
 msgid "Activate %2$s"
 msgstr ""
 
-#: inc/admin/TGM/class-tgm-plugin-activation.php:2773
+#: inc/admin/TGM/class-tgm-plugin-activation.php:2684
 msgid "Upgrade message from the plugin author:"
 msgstr ""
 
-#: inc/admin/TGM/class-tgm-plugin-activation.php:2806
+#: inc/admin/TGM/class-tgm-plugin-activation.php:2717
 msgid "Install"
 msgstr ""
 
-#: inc/admin/TGM/class-tgm-plugin-activation.php:2812
+#: inc/admin/TGM/class-tgm-plugin-activation.php:2723
 msgid "Update"
 msgstr ""
 
-#: inc/admin/TGM/class-tgm-plugin-activation.php:2815
+#: inc/admin/TGM/class-tgm-plugin-activation.php:2726
 msgid "Activate"
 msgstr ""
 
-#: inc/admin/TGM/class-tgm-plugin-activation.php:2846
+#: inc/admin/TGM/class-tgm-plugin-activation.php:2757
 msgid "No plugins were selected to be installed. No action taken."
 msgstr ""
 
-#: inc/admin/TGM/class-tgm-plugin-activation.php:2848
+#: inc/admin/TGM/class-tgm-plugin-activation.php:2759
 msgid "No plugins were selected to be updated. No action taken."
 msgstr ""
 
-#: inc/admin/TGM/class-tgm-plugin-activation.php:2889
+#: inc/admin/TGM/class-tgm-plugin-activation.php:2800
 msgid "No plugins are available to be installed at this time."
 msgstr ""
 
-#: inc/admin/TGM/class-tgm-plugin-activation.php:2891
+#: inc/admin/TGM/class-tgm-plugin-activation.php:2802
 msgid "No plugins are available to be updated at this time."
 msgstr ""
 
-#: inc/admin/TGM/class-tgm-plugin-activation.php:2997
+#: inc/admin/TGM/class-tgm-plugin-activation.php:2908
 msgid "No plugins were selected to be activated. No action taken."
 msgstr ""
 
-#: inc/admin/TGM/class-tgm-plugin-activation.php:3023
+#: inc/admin/TGM/class-tgm-plugin-activation.php:2934
 msgid "No plugins are available to be activated at this time."
 msgstr ""
 
-#: inc/admin/TGM/class-tgm-plugin-activation.php:3247
+#: inc/admin/TGM/class-tgm-plugin-activation.php:3158
 msgid "Plugin activation failed."
 msgstr ""
 
 #. translators: 1: plugin name, 2: action number 3: total number of actions.
-#: inc/admin/TGM/class-tgm-plugin-activation.php:3587
+#: inc/admin/TGM/class-tgm-plugin-activation.php:3498
 #, php-format
 msgid "Updating Plugin %1$s (%2$d/%3$d)"
 msgstr ""
 
 #. translators: 1: plugin name, 2: error message.
-#: inc/admin/TGM/class-tgm-plugin-activation.php:3590
+#: inc/admin/TGM/class-tgm-plugin-activation.php:3501
 #, php-format
 msgid "An error occurred while installing %1$s: <strong>%2$s</strong>."
 msgstr ""
 
 #. translators: 1: plugin name.
-#: inc/admin/TGM/class-tgm-plugin-activation.php:3592
+#: inc/admin/TGM/class-tgm-plugin-activation.php:3503
 #, php-format
 msgid "The installation of %1$s failed."
 msgstr ""
 
-#: inc/admin/TGM/class-tgm-plugin-activation.php:3596
+#: inc/admin/TGM/class-tgm-plugin-activation.php:3507
 msgid ""
 "The installation and activation process is starting. This process may take a "
 "while on some hosts, so please be patient."
 msgstr ""
 
 #. translators: 1: plugin name.
-#: inc/admin/TGM/class-tgm-plugin-activation.php:3598
+#: inc/admin/TGM/class-tgm-plugin-activation.php:3509
 #, php-format
 msgid "%1$s installed and activated successfully."
 msgstr ""
 
-#: inc/admin/TGM/class-tgm-plugin-activation.php:3598
-#: inc/admin/TGM/class-tgm-plugin-activation.php:3606
+#: inc/admin/TGM/class-tgm-plugin-activation.php:3509
+#: inc/admin/TGM/class-tgm-plugin-activation.php:3517
 msgid "Show Details"
 msgstr ""
 
-#: inc/admin/TGM/class-tgm-plugin-activation.php:3598
-#: inc/admin/TGM/class-tgm-plugin-activation.php:3606
+#: inc/admin/TGM/class-tgm-plugin-activation.php:3509
+#: inc/admin/TGM/class-tgm-plugin-activation.php:3517
 msgid "Hide Details"
 msgstr ""
 
-#: inc/admin/TGM/class-tgm-plugin-activation.php:3599
+#: inc/admin/TGM/class-tgm-plugin-activation.php:3510
 msgid "All installations and activations have been completed."
 msgstr ""
 
 #. translators: 1: plugin name, 2: action number 3: total number of actions.
-#: inc/admin/TGM/class-tgm-plugin-activation.php:3601
+#: inc/admin/TGM/class-tgm-plugin-activation.php:3512
 #, php-format
 msgid "Installing and Activating Plugin %1$s (%2$d/%3$d)"
 msgstr ""
 
-#: inc/admin/TGM/class-tgm-plugin-activation.php:3604
+#: inc/admin/TGM/class-tgm-plugin-activation.php:3515
 msgid ""
 "The installation process is starting. This process may take a while on some "
 "hosts, so please be patient."
 msgstr ""
 
 #. translators: 1: plugin name.
-#: inc/admin/TGM/class-tgm-plugin-activation.php:3606
+#: inc/admin/TGM/class-tgm-plugin-activation.php:3517
 #, php-format
 msgid "%1$s installed successfully."
 msgstr ""
 
-#: inc/admin/TGM/class-tgm-plugin-activation.php:3607
+#: inc/admin/TGM/class-tgm-plugin-activation.php:3518
 msgid "All installations have been completed."
 msgstr ""
 
 #. translators: 1: plugin name, 2: action number 3: total number of actions.
-#: inc/admin/TGM/class-tgm-plugin-activation.php:3609
+#: inc/admin/TGM/class-tgm-plugin-activation.php:3520
 #, php-format
 msgid "Installing Plugin %1$s (%2$d/%3$d)"
 msgstr ""
 
-#: inc/admin/demure-config.php:78 inc/admin/demure-config.php:79
+#: inc/admin/demure-config.php:70 inc/admin/demure-config.php:71
 msgid "Demure Options"
 msgstr ""
 
-#: inc/admin/demure-config.php:167
+#: inc/admin/demure-config.php:159
 msgid "General"
 msgstr ""
 
-#: inc/admin/demure-config.php:175
+#: inc/admin/demure-config.php:167
 msgid "Smooth transition between pages"
 msgstr ""
 
-#: inc/admin/demure-config.php:176
+#: inc/admin/demure-config.php:168
 msgid "Enable"
 msgstr ""
 
-#: inc/admin/demure-config.php:177
+#: inc/admin/demure-config.php:169
 msgid "Disable"
 msgstr ""
 
-#: inc/admin/demure-config.php:185
+#: inc/admin/demure-config.php:177
 msgid "Header"
 msgstr ""
 
-#: inc/admin/demure-config.php:193
+#: inc/admin/demure-config.php:185
 msgid "Header Background"
 msgstr ""
 
-#: inc/admin/demure-config.php:209
+#: inc/admin/demure-config.php:201
 msgid "Transparency for header items"
 msgstr ""
 
-#: inc/admin/demure-config.php:210
+#: inc/admin/demure-config.php:202
 msgid "Set the opacity for the text logotype and menu items"
 msgstr ""
 
-#: inc/admin/demure-config.php:223
+#: inc/admin/demure-config.php:215
 msgid "Footer"
 msgstr ""
 
-#: inc/admin/demure-config.php:231
+#: inc/admin/demure-config.php:223
 msgid "Footer Text"
 msgstr ""
 
-#: inc/admin/demure-config.php:232
+#: inc/admin/demure-config.php:224
 msgid "Enter footer text."
 msgstr ""
 
-#: inc/admin/demure-config.php:242
+#: inc/admin/demure-config.php:234
 msgid "Footer columns"
 msgstr ""
 
-#: inc/admin/demure-config.php:244
+#: inc/admin/demure-config.php:236
 msgid "One column"
 msgstr ""
 
-#: inc/admin/demure-config.php:245
+#: inc/admin/demure-config.php:237
 msgid "Two columns"
 msgstr ""
 
-#: inc/admin/demure-config.php:246
+#: inc/admin/demure-config.php:238
 msgid "Three columns"
 msgstr ""
 
-#: inc/admin/demure-config.php:247
+#: inc/admin/demure-config.php:239
 msgid "Four columns"
 msgstr ""
 
-#: inc/admin/demure-config.php:248
+#: inc/admin/demure-config.php:240
 msgid "Six columns"
 msgstr ""
 
-#: inc/admin/demure-config.php:256
+#: inc/admin/demure-config.php:248
 msgid "Footer background"
 msgstr ""
 
-#: inc/admin/demure-config.php:257
+#: inc/admin/demure-config.php:249
 msgid "Pick a background color for footer (default: #333)."
 msgstr ""
 
-#: inc/admin/demure-config.php:264
+#: inc/admin/demure-config.php:256
 msgid "Site info background"
 msgstr ""
 
-#: inc/admin/demure-config.php:265
+#: inc/admin/demure-config.php:257
 msgid "Pick a background color for site info background (default: #222)."
 msgstr ""
 
-#: inc/admin/demure-config.php:272
+#: inc/admin/demure-config.php:264
 msgid "Site info text color"
 msgstr ""
 
-#: inc/admin/demure-config.php:273
+#: inc/admin/demure-config.php:265
 msgid "Pick a background color for site info text (default: #fff)."
 msgstr ""
 
-#: inc/admin/demure-config.php:283
+#: inc/admin/demure-config.php:275
 msgid "Social"
 msgstr ""
 
-#: inc/admin/demure-config.php:292
+#: inc/admin/demure-config.php:284
 msgid "Social Links Color"
 msgstr ""
 
-#: inc/admin/demure-config.php:293
+#: inc/admin/demure-config.php:285
 msgid "Pick a social links color for the theme (default: #fff)."
 msgstr ""
 
-#: inc/admin/demure-config.php:303
+#: inc/admin/demure-config.php:295
 msgid "Facebook"
 msgstr ""
 
-#: inc/admin/demure-config.php:308
+#: inc/admin/demure-config.php:300
 msgid "Twitter"
 msgstr ""
 
-#: inc/admin/demure-config.php:313
+#: inc/admin/demure-config.php:305
 msgid "Vkontakte"
 msgstr ""
 
-#: inc/admin/demure-config.php:318
+#: inc/admin/demure-config.php:310
 msgid "LinkedIn"
 msgstr ""
 
-#: inc/admin/demure-config.php:323
+#: inc/admin/demure-config.php:315
 msgid "Pinterest"
 msgstr ""
 
-#: inc/admin/demure-config.php:328
+#: inc/admin/demure-config.php:320
 msgid "YouTube"
 msgstr ""
 
-#: inc/admin/demure-config.php:333
+#: inc/admin/demure-config.php:325
 msgid "Instagram"
 msgstr ""
 
-#: inc/admin/demure-config.php:338
+#: inc/admin/demure-config.php:330
 msgid "Google+"
 msgstr ""
 
-#: inc/admin/demure-config.php:343
+#: inc/admin/demure-config.php:335
 msgid "Behance"
 msgstr ""
 
-#: inc/admin/demure-config.php:348
+#: inc/admin/demure-config.php:340
 msgid "Flickr"
 msgstr ""
 
-#: inc/admin/demure-config.php:353
+#: inc/admin/demure-config.php:345
 msgid "Skype"
 msgstr ""
 
-#: inc/admin/demure-config.php:358
+#: inc/admin/demure-config.php:350
 msgid "E-mail"
 msgstr ""
 
-#: inc/admin/demure-config.php:363
+#: inc/admin/demure-config.php:355
 msgid "Dribbble"
 msgstr ""
 
-#: inc/admin/demure-config.php:371
+#: inc/admin/demure-config.php:363
 msgid "Menu"
 msgstr ""
 
-#: inc/admin/demure-config.php:379
+#: inc/admin/demure-config.php:371
 msgid "Font style for main menu"
 msgstr ""
 
-#: inc/admin/demure-config.php:402
+#: inc/admin/demure-config.php:394
 msgid "Font color for menu"
 msgstr ""
 
-#: inc/admin/demure-config.php:413
+#: inc/admin/demure-config.php:405
 msgid "Font color for submenu items"
 msgstr ""
 
-#: inc/admin/demure-config.php:424
+#: inc/admin/demure-config.php:416
 msgid "Menu background"
 msgstr ""
 
-#: inc/admin/demure-config.php:440
+#: inc/admin/demure-config.php:432
 msgid "Menu sub item background"
 msgstr ""
 
-#: inc/admin/demure-config.php:456
+#: inc/admin/demure-config.php:448
 msgid "Menu sub item hover background"
 msgstr ""
 
-#: inc/admin/demure-config.php:472
+#: inc/admin/demure-config.php:464
 msgid "Font color for submenu"
 msgstr ""
 
-#: inc/admin/demure-config.php:486
+#: inc/admin/demure-config.php:478
 msgid "Submenu width"
 msgstr ""
 
-#: inc/admin/demure-config.php:487
+#: inc/admin/demure-config.php:479
 msgid "Set widht for submenu block items (max width 300px)"
 msgstr ""
 
-#: inc/admin/demure-config.php:497
+#: inc/admin/demure-config.php:489
 msgid "Blog options"
 msgstr ""
 
-#: inc/admin/demure-config.php:505
+#: inc/admin/demure-config.php:497
 msgid "Post navigation"
 msgstr ""
 
-#: inc/admin/demure-config.php:507
+#: inc/admin/demure-config.php:499
 msgid "Default"
 msgstr ""
 
-#: inc/admin/demure-config.php:508
+#: inc/admin/demure-config.php:500
 msgid "Load More button"
 msgstr ""
 
-#: inc/admin/demure-config.php:509
+#: inc/admin/demure-config.php:501
 msgid "Infinite Scroll"
 msgstr ""
 
-#: inc/admin/demure-config.php:517
+#: inc/admin/demure-config.php:509
 msgid "Display author for posts"
 msgstr ""
 
-#: inc/admin/demure-config.php:524
+#: inc/admin/demure-config.php:516
 msgid "Display date for posts"
 msgstr ""
 
-#: inc/admin/demure-config.php:531
+#: inc/admin/demure-config.php:523
 msgid "Display categories for posts"
 msgstr ""
 
-#: inc/admin/demure-config.php:538
+#: inc/admin/demure-config.php:530
 msgid "Display tags for posts"
 msgstr ""
 
-#: inc/admin/demure-config.php:545
+#: inc/admin/demure-config.php:537
 msgid "Show comments for"
 msgstr ""
 
-#: inc/admin/demure-config.php:547
+#: inc/admin/demure-config.php:539
 msgid "Hide"
 msgstr ""
 
-#: inc/admin/demure-config.php:548 inc/theme/template-tags.php:104
+#: inc/admin/demure-config.php:540
 msgid "Posts"
 msgstr ""
 
-#: inc/admin/demure-config.php:549
+#: inc/admin/demure-config.php:541
 msgid "Pages"
 msgstr ""
 
-#: inc/admin/demure-config.php:550
+#: inc/admin/demure-config.php:542
 msgid "Post and Pages"
 msgstr ""
 
-#: inc/admin/demure-config.php:558
+#: inc/admin/demure-config.php:550
 msgid "Post container background"
 msgstr ""
 
-#: inc/admin/demure-config.php:560
+#: inc/admin/demure-config.php:552
 msgid "Set custom background color for post container"
 msgstr ""
 
-#: inc/admin/demure-config.php:577
+#: inc/admin/demure-config.php:569
 msgid "Style"
 msgstr ""
 
-#: inc/admin/demure-config.php:585
+#: inc/admin/demure-config.php:577
 msgid "Body Background"
 msgstr ""
 
-#: inc/admin/demure-config.php:595
+#: inc/admin/demure-config.php:587
 msgid "Accent color"
 msgstr ""
 
-#: inc/admin/demure-config.php:605
+#: inc/admin/demure-config.php:597
 msgid "Links Color Option"
 msgstr ""
 
-#: inc/admin/demure-config.php:606
+#: inc/admin/demure-config.php:598
 msgid "Only color validation can be done on this field type"
 msgstr ""
 
-#: inc/admin/demure-config.php:607
+#: inc/admin/demure-config.php:599
 msgid "This is the description field, again good for additional info."
 msgstr ""
 
-#: inc/admin/demure-config.php:619
+#: inc/admin/demure-config.php:611
 msgid "Sidebar widgets container background"
 msgstr ""
 
-#: inc/admin/demure-config.php:621
+#: inc/admin/demure-config.php:613
 msgid "Set custom background color for widgets container"
 msgstr ""
 
-#: inc/admin/demure-config.php:638
+#: inc/admin/demure-config.php:630
 msgid "Pages layout"
 msgstr ""
 
-#: inc/admin/demure-config.php:646
+#: inc/admin/demure-config.php:638
 msgid "Main Layout"
 msgstr ""
 
-#: inc/admin/demure-config.php:647
+#: inc/admin/demure-config.php:639
 msgid ""
 "Select main content and sidebar alignment. Choose between 1, 2 or 3 column "
 "layout."
 msgstr ""
 
-#: inc/admin/demure-config.php:679
+#: inc/admin/demure-config.php:671
 msgid "Blog posts layout"
 msgstr ""
 
-#: inc/admin/demure-config.php:680
+#: inc/admin/demure-config.php:672
 msgid "Select main content and sidebar alignment for blog posts page."
 msgstr ""
 
-#: inc/admin/demure-config.php:712
+#: inc/admin/demure-config.php:704
 msgid "Single Blog Layout"
 msgstr ""
 
-#: inc/admin/demure-config.php:713
+#: inc/admin/demure-config.php:705
 msgid "Select main content and sidebar alignment for single blog post."
 msgstr ""
 
-#: inc/admin/demure-config.php:745
+#: inc/admin/demure-config.php:737
 msgid "Page container background"
 msgstr ""
 
-#: inc/admin/demure-config.php:747
+#: inc/admin/demure-config.php:739
 msgid "Set custom background color for page container"
 msgstr ""
 
-#: inc/admin/demure-config.php:764
+#: inc/admin/demure-config.php:756
 msgid "Slider"
 msgstr ""
 
-#: inc/admin/demure-config.php:772
+#: inc/admin/demure-config.php:764
 msgid "Slider on front page"
 msgstr ""
 
-#: inc/admin/demure-config.php:773
+#: inc/admin/demure-config.php:765
 msgid "Use slider on front page"
 msgstr ""
 
-#: inc/admin/demure-config.php:779
+#: inc/admin/demure-config.php:771
 msgid "Slides Options"
 msgstr ""
 
-#: inc/admin/demure-config.php:780
+#: inc/admin/demure-config.php:772
 msgid "Unlimited slides with drag and drop sortings."
 msgstr ""
 
-#: inc/admin/demure-config.php:781
+#: inc/admin/demure-config.php:773
 msgid ""
 "This field will store all slides values into a multidimensional array to use "
 "into a foreach loop."
 msgstr ""
 
-#: inc/admin/demure-config.php:783
+#: inc/admin/demure-config.php:775
 msgid "This is a title"
 msgstr ""
 
-#: inc/admin/demure-config.php:784
+#: inc/admin/demure-config.php:776
 msgid "Description Here"
 msgstr ""
 
-#: inc/admin/demure-config.php:785
+#: inc/admin/demure-config.php:777
 msgid "Give us a link!"
 msgstr ""
 
-#: inc/admin/demure-config.php:792
+#: inc/admin/demure-config.php:784
 msgid "Font Style for heading slider"
 msgstr ""
 
-#: inc/admin/demure-config.php:801
+#: inc/admin/demure-config.php:793
 msgid "Select typography for slider heading."
 msgstr ""
 
-#: inc/admin/demure-config.php:815
+#: inc/admin/demure-config.php:807
 msgid "Font Style for subheading slider"
 msgstr ""
 
-#: inc/admin/demure-config.php:824
+#: inc/admin/demure-config.php:816
 msgid "Select typography for slider subheading."
 msgstr ""
 
-#: inc/admin/demure-config.php:838
+#: inc/admin/demure-config.php:830
 msgid "Slider info background"
 msgstr ""
 
-#: inc/admin/demure-config.php:857
+#: inc/admin/demure-config.php:849
 msgid "Font styles"
 msgstr ""
 
-#: inc/admin/demure-config.php:865
+#: inc/admin/demure-config.php:857
 msgid "General Text Font Style"
 msgstr ""
 
-#: inc/admin/demure-config.php:874
+#: inc/admin/demure-config.php:866
 msgid "Select typography for main text."
 msgstr ""
 
-#: inc/admin/demure-config.php:888
+#: inc/admin/demure-config.php:880
 msgid "H1 Font Style."
 msgstr ""
 
-#: inc/admin/demure-config.php:898
+#: inc/admin/demure-config.php:890
 msgid "Select the typography you want for header H1."
 msgstr ""
 
-#: inc/admin/demure-config.php:912
+#: inc/admin/demure-config.php:904
 msgid "H2 Font Style."
 msgstr ""
 
-#: inc/admin/demure-config.php:922
+#: inc/admin/demure-config.php:914
 msgid "Select the typography you want for header H2."
 msgstr ""
 
-#: inc/admin/demure-config.php:936
+#: inc/admin/demure-config.php:928
 msgid "H3 Font Style."
 msgstr ""
 
-#: inc/admin/demure-config.php:946
+#: inc/admin/demure-config.php:938
 msgid "Select the typography you want for header H3."
 msgstr ""
 
-#: inc/admin/demure-config.php:961
+#: inc/admin/demure-config.php:953
 msgid "H4 Font Style."
 msgstr ""
 
-#: inc/admin/demure-config.php:971
+#: inc/admin/demure-config.php:963
 msgid "Select the typography you want for header H4."
 msgstr ""
 
-#: inc/admin/demure-config.php:985
+#: inc/admin/demure-config.php:977
 msgid "H5 Font Style."
 msgstr ""
 
-#: inc/admin/demure-config.php:995
+#: inc/admin/demure-config.php:987
 msgid "Select the typography you want for header H5."
 msgstr ""
 
-#: inc/admin/demure-config.php:1010
+#: inc/admin/demure-config.php:1002
 msgid "H6 Font Style."
 msgstr ""
 
-#: inc/admin/demure-config.php:1020
+#: inc/admin/demure-config.php:1012
 msgid "Select the typography you want for header H6."
 msgstr ""
 
-#: inc/admin/demure-config.php:1035
+#: inc/admin/demure-config.php:1027
 msgid "\"p\" Font Style."
 msgstr ""
 
-#: inc/admin/demure-config.php:1044
+#: inc/admin/demure-config.php:1036
 msgid "Select the typography you want for tag \"p\"."
 msgstr ""
 
-#: inc/admin/demure-config.php:1066
+#: inc/admin/demure-config.php:1058
 msgid "Documentation"
 msgstr ""
 
-#: inc/admin/demure-config.php:1181
+#: inc/admin/demure-config.php:1173
 msgid "Section via hook"
 msgstr ""
 
-#: inc/admin/demure-config.php:1182
+#: inc/admin/demure-config.php:1174
 msgid ""
 "<p class=\"description\">This is a section created by adding a filter to the "
 "sections array. Can be used by child themes to add/remove sections from the "
@@ -1041,42 +1079,16 @@ msgstr ""
 msgid "Show title"
 msgstr ""
 
-#: inc/admin/metaboxes.php:14 inc/admin/metaboxes.php:55
-#: inc/admin/metaboxes/inc/fields/checkbox.php:53
+#: inc/admin/metaboxes.php:14 inc/admin/metaboxes/inc/fields/checkbox.php:53
 msgid "Yes"
 msgstr ""
 
-#: inc/admin/metaboxes.php:15 inc/admin/metaboxes.php:56
-#: inc/admin/metaboxes/inc/fields/checkbox.php:53
+#: inc/admin/metaboxes.php:15 inc/admin/metaboxes/inc/fields/checkbox.php:53
 msgid "No"
 msgstr ""
 
 #: inc/admin/metaboxes.php:21
 msgid "Page layout"
-msgstr ""
-
-#: inc/admin/metaboxes.php:36
-msgid "Margin top (px)"
-msgstr ""
-
-#: inc/admin/metaboxes.php:37 inc/admin/metaboxes.php:45
-msgid "Default: 30"
-msgstr ""
-
-#: inc/admin/metaboxes.php:44
-msgid "Margin bottom (px)"
-msgstr ""
-
-#: inc/admin/metaboxes.php:52
-msgid "Full width"
-msgstr ""
-
-#: inc/admin/metaboxes.php:62
-msgid "Transparent background"
-msgstr ""
-
-#: inc/admin/metaboxes.php:69
-msgid "Disable paddings"
 msgstr ""
 
 #: inc/admin/metaboxes/inc/clone.php:91
@@ -1103,7 +1115,6 @@ msgid "Select"
 msgstr ""
 
 #: inc/admin/metaboxes/inc/fields/file-input.php:41
-#: inc/theme/theme-functions.php:833
 msgid "Remove"
 msgstr ""
 
@@ -1243,176 +1254,32 @@ msgstr ""
 msgid "Please correct the errors highlighted below and try again."
 msgstr ""
 
-#: inc/theme/template-tags.php:10
-msgid "Username or email"
-msgstr ""
-
-#: inc/theme/template-tags.php:14 inc/theme/template-tags.php:44
-msgid "Password"
-msgstr ""
-
-#: inc/theme/template-tags.php:18 inc/theme/template-tags.php:79
-msgid "Log in"
-msgstr ""
-
-#: inc/theme/template-tags.php:36
-msgid "Username"
-msgstr ""
-
-#: inc/theme/template-tags.php:40 inc/theme/theme-functions.php:706
-msgid "Email"
-msgstr ""
-
-#: inc/theme/template-tags.php:48 inc/theme/theme-functions.php:698
-msgid "First Name"
-msgstr ""
-
-#: inc/theme/template-tags.php:52 inc/theme/theme-functions.php:702
-msgid "Last Name"
-msgstr ""
-
-#: inc/theme/template-tags.php:56 inc/theme/theme-functions.php:9
-msgid "Register"
-msgstr ""
-
-#: inc/theme/template-tags.php:74 inc/theme/theme-functions.php:22
-msgid "My profile"
-msgstr ""
-
-#: inc/theme/template-tags.php:75
-msgid "Logout"
-msgstr ""
-
-#: inc/theme/template-tags.php:80
-msgid "Registration"
-msgstr ""
-
-#: inc/theme/template-tags.php:92
+#: inc/theme/theme-functions.php:16
 msgid "Search result for"
 msgstr ""
 
-#: inc/theme/template-tags.php:103
-msgid "Author info"
-msgstr ""
-
-#: inc/theme/theme-functions.php:8
-msgid "Sign In"
-msgstr ""
-
-#: inc/theme/theme-functions.php:256
+#: inc/theme/theme-functions.php:249
 msgid "Pages:"
 msgstr ""
 
-#: inc/theme/theme-functions.php:277 inc/theme/theme-functions.php:665
+#: inc/theme/theme-functions.php:270 inc/theme/theme-functions.php:569
 msgid "Loading ..."
 msgstr ""
 
-#: inc/theme/theme-functions.php:277 inc/theme/theme-functions.php:665
+#: inc/theme/theme-functions.php:270 inc/theme/theme-functions.php:569
 msgid "Load More"
 msgstr ""
 
-#: inc/theme/theme-functions.php:354
+#: inc/theme/theme-functions.php:338
 msgid "Read More"
 msgstr ""
 
-#: inc/theme/theme-functions.php:515 inc/theme/theme-functions.php:584
-msgid "Success!"
-msgstr ""
-
-#: inc/theme/theme-functions.php:541
-msgid "Required form field is missing"
-msgstr ""
-
-#: inc/theme/theme-functions.php:545
-msgid "Username too short. At least 4 characters is required"
-msgstr ""
-
-#: inc/theme/theme-functions.php:549
-msgid "Username contains invalid characters."
-msgstr ""
-
-#: inc/theme/theme-functions.php:553
-msgid "Sorry, that username already exists!"
-msgstr ""
-
-#: inc/theme/theme-functions.php:557
-msgid "Sorry, the username you entered is not valid"
-msgstr ""
-
-#: inc/theme/theme-functions.php:561
-msgid "Password length must be greater than 5"
-msgstr ""
-
-#: inc/theme/theme-functions.php:565
-msgid "Email is not valid"
-msgstr ""
-
-#: inc/theme/theme-functions.php:569
-msgid "Email Already in use"
-msgstr ""
-
-#: inc/theme/theme-functions.php:647
-msgid "Posts:"
-msgstr ""
-
-#: inc/theme/theme-functions.php:694
-msgid "Nickname"
-msgstr ""
-
-#: inc/theme/theme-functions.php:710
-msgid "Website"
-msgstr ""
-
-#: inc/theme/theme-functions.php:714
-msgid "Biographical Info"
-msgstr ""
-
-#: inc/theme/theme-functions.php:718
-msgid "Save changes"
-msgstr ""
-
-#: inc/theme/theme-functions.php:735
-msgid "Author information"
-msgstr ""
-
-#: inc/theme/theme-functions.php:741
-msgid "Nickname:"
-msgstr ""
-
-#: inc/theme/theme-functions.php:748
-msgid "First name:"
-msgstr ""
-
-#: inc/theme/theme-functions.php:755
-msgid "Last Name:"
-msgstr ""
-
-#: inc/theme/theme-functions.php:762
-msgid "Email:"
-msgstr ""
-
-#: inc/theme/theme-functions.php:769
-msgid "Website:"
-msgstr ""
-
-#: inc/theme/theme-functions.php:778
-msgid "About Me"
-msgstr ""
-
-#: inc/theme/theme-functions.php:830
-msgid "Upload"
-msgstr ""
-
-#: inc/theme/theme-functions.php:869
-msgid "Avatar removed"
-msgstr ""
-
-#: inc/theme/theme-functions.php:927
+#: inc/theme/theme-functions.php:628
 #, php-format
 msgid "Reply to %s"
 msgstr ""
 
-#: inc/theme/theme-functions.php:940
+#: inc/theme/theme-functions.php:641
 msgid "Reply"
 msgstr ""
 
@@ -1508,7 +1375,12 @@ msgid "demure"
 msgstr ""
 
 #. Description of the plugin/theme
-msgid "Demure is creative and minimal theme for wordpress."
+msgid ""
+"Demure is a wonderful multipurpose WordPress theme for business, portfolio, "
+"creative and blog websites. With its great number of features and "
+"customizations like color and font options, different pages layouts, "
+"beautiful slider and theme options it brings everything to create an "
+"expressive website."
 msgstr ""
 
 #. Author of the plugin/theme
