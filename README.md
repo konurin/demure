@@ -28,7 +28,7 @@ Demure is a wonderful multipurpose WordPress theme for business, portfolio, crea
 **smooth-scroll** - http://github.com/cferdinandi/smooth-scroll v10.2.1 · Code licensed MIT<br />
 
 # Image used in screenshot 
-Resource URI: https://unsplash.com/photos/LIHiWVXaUyM
-Copyright: Daniel Frank
-License: CC0
+Resource URI: https://unsplash.com/photos/LIHiWVXaUyM<br />
+Copyright: Daniel Frank<br />
+License: CC0<br />
 License URI: https://creativecommons.org/publicdomain/zero/1.0/
