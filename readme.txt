@@ -2,10 +2,10 @@
 Contributors: Vitaliy Konurin 
 Requires at least: WordPress 4.4
 Tested up to: WordPress 4.8.2
-Version: 1.0.3
-License: GPLv2 or later
-License URI: http://www.gnu.org/licenses/gpl-2.0.html
-Tags: grid-layout, one-column, two-columns, three-columns, left-sidebar, right-sidebar, custom-colors, custom-header, featured-images, footer-widgets, sticky-post, theme-options, threaded-comments, translation-ready, accessibility-ready, blog, news
+Version: 1.0.4
+License: GNU General Public License v3 or later
+License URI: http://www.gnu.org/licenses/gpl-3.0.html
+Tags: one-column, two-columns, three-columns, left-sidebar, right-sidebar, custom-colors, featured-images, footer-widgets, sticky-post, theme-options, threaded-comments, translation-ready, blog, news
 
 === Description === 
 Demure is a wonderful multipurpose WordPress theme for business, portfolio, creative and blog websites. With its great number of features and customizations like color and font options, different pages layouts, beautiful slider and theme options it brings everything to create an expressive website.

@@ -16,7 +16,7 @@
 	<footer id="colophon" class="site-footer" role="contentinfo">
 		<div class="container">
 			<?php demure_get_footer_columns(); ?>
-			<?php if ( footer_has_text_and_social() ): ?>
+			<?php if ( demure_footer_has_text_and_social() ): ?>
 				<div class="site-info">
 					<?php demure_footer_text(); ?>
 					<?php demure_get_social(); ?>

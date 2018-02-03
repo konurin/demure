@@ -3059,3 +3059,7 @@ textarea:focus {
 .redux-main .redux-select-item {
     width: 100%!important;
 }
+
+.redux-dev-mode-notice {
+    display: none !important;
+}

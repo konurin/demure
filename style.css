@@ -1,18 +1,43 @@
 /*
-Theme Name: demure
+Theme Name: Demure
+Theme URI: https://github.com/konurin/demure
 Author: Vitaliy Konurin
-Author URI: http://nevo.solutions
+Author URI: https://github.com/konurin
 Description: Demure is a wonderful multipurpose WordPress theme for business, portfolio, creative and blog websites. With its great number of features and customizations like color and font options, different pages layouts, beautiful slider and theme options it brings everything to create an expressive website.
-Version: 1.0.3
-License: GNU General Public License v2 or later
-License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Version: 1.0.4
+License: GNU General Public License v3 or later
+License URI: http://www.gnu.org/licenses/gpl-3.0.html
 Text Domain: demure
-Tags: grid-layout, one-column, two-columns, three-columns, left-sidebar, right-sidebar, custom-colors, custom-header, featured-images, footer-widgets, sticky-post, theme-options, threaded-comments, translation-ready, accessibility-ready, blog, news
-This theme, like WordPress, is licensed under the GPL.
-Use it to make something cool, have fun, and share what you've learned with others.
-*/
+Tags: one-column, two-columns, three-columns, left-sidebar, right-sidebar, custom-colors, featured-images, footer-widgets, sticky-post, theme-options, threaded-comments, translation-ready, blog, news
 
-/* xdebug */
+Demure WordPress Theme, Copyright 2018 Vitaliy Konurin
+Demure is distributed under the terms of the GNU GPL
+
+/*--------------------------------------------------------------
+>>> TABLE OF CONTENTS:
+----------------------------------------------------------------
+# Xdebug
+# General
+# Html tags and formatting
+# Preloader
+# Header
+# Navigation
+# Profile navigation
+# Content
+# Pagination and navigation links
+# Post format
+# Sidebar
+# Demure widgets
+# User sidebar
+# Comments
+# Modal
+# Slider
+# Footer
+# Social icons
+# Media queries
+--------------------------------------------------------------*/
+
+/* # Xdebug */
 .xdebug-error {
 	padding: 20px;
 	background: #fff;
@@ -24,7 +49,7 @@ input[type="file"] {
 	transition: .3s;
 }
 
-/* #general */
+/* # General */
 html {
 	font-size: 100%;
 	font-family: sans-serif;
@@ -301,8 +326,8 @@ input[type="submit"],
 	display: flex;
 	align-items: center;
 	justify-content: center;
-    background-color:#f5f5f5; /* change if the mask should have another color then white */
-    z-index:99; /* makes sure it stays on top */
+    background-color:#f5f5f5;
+    z-index:99;
 	opacity: 1;
 	transition: 0.2s;
 	will-change: transform;
@@ -312,7 +337,7 @@ input[type="submit"],
 	transition: all 0.5s;
 }
 
-/* html tags and formatting */
+/* # Html tags and formatting */
 .wp-caption {
 	margin-bottom: 1.75em;
 	max-width: 100%;
@@ -404,7 +429,7 @@ blockquote p {
     font-size: 0.9em;
 }
 
-/* preloader */
+/* # Preloader */
 .uil-cube-css {
   background: none;
   position: relative;
@@ -595,7 +620,7 @@ blockquote p {
   animation-delay: 0.2s;
 }
 
-/* #header */
+/* # Header */
 #masthead {
 	background: #3c5267;
 	display: block;
@@ -690,7 +715,7 @@ blockquote p {
 	z-index: 1;
 }
 
-/* #navigation */
+/* # Navigation */
 .main-navigation {
 	display: none;
 	transition: .3s;
@@ -807,7 +832,7 @@ blockquote p {
 	padding-top: 0;
 }
 
-/* #profile navigation */
+/* # Profile navigation */
 .profile-navigation {
 	display: -webkit-flex;
 	display: -ms-flex;
@@ -835,7 +860,7 @@ blockquote p {
 	background: #328CC1;
 }
 
-/* #content */
+/* # Content */
 .site-content {
 	margin-top: 30px;
 	margin-bottom: 30px;
@@ -1014,7 +1039,7 @@ article .entry-content a.read_more {
 	justify-content: center;
 }
 
-/* #pagination and navigation */
+/* # Pagination and navigation links */
 .nav-links {
     display: -webkit-flex;
     display: -ms-flex;
@@ -1052,7 +1077,7 @@ article .entry-content a.read_more {
 	display: block;
 }
 
-/* #post format */
+/* # Post format */
 
 article.sticky header h3 a:before {
 	content: "\f08d";
@@ -1176,7 +1201,7 @@ article.sticky header h3 a:before {
 	font-size: 0.9em;
 }
 
-/* #sidebar */
+/* # Sidebar */
 .sidebar > section {
 	background: #f9f9f9;
 	padding: 20px;
@@ -1266,7 +1291,7 @@ form.search-form button::before {
 	display: block;
 }
 
-/* demure widgets */
+/* # Demure widgets */
 .widget_demure_popular_widget .demure-popular-item {
 	display: -webkit-flex;
 	display: -ms-flex;
@@ -1300,7 +1325,7 @@ form.search-form button::before {
 	text-overflow: ellipsis;
 }
 
-/* #user sidebar */
+/* # User sidebar */
 .user_menu li a {
 	color: #fff!important;
 	padding: 7px;
@@ -1321,7 +1346,7 @@ form.search-form button::before {
 }
 
 
-/* #comments */
+/* # Comments */
 #comments {
 	background: #fff;
 	border-left: 1px solid #efefef;
@@ -1431,7 +1456,7 @@ form.search-form button::before {
 	width: 100%;
 }
 
-/* #modal */
+/* # Modal */
 body.admin-bar .de_modal {
 	margin-top: 32px;
 }
@@ -1507,7 +1532,7 @@ body.admin-bar .de_modal {
 	color: #fff;
 }
 
-/* #slider */
+/* # Slider */
 .homepage-slider .slide img {
 	display: block;
     width: 100%!important;
@@ -1613,7 +1638,7 @@ body.admin-bar .de_modal {
 	background-color: #2b2b2b;
 }
 
-/* #footer */
+/* # Footer */
 footer .site-info {
 	padding: 20px;
 	display: -webkit-flex;
@@ -1653,98 +1678,7 @@ footer .footer-wrap .widget_calendar caption {
 	color: #fff;
 }
 
-/* #profile page */
-.profile-avatar,
-.profile-tabs,
-.profile-informations {
-	background: #fff;
-	border: 1px solid #efefef;
-	padding: 20px;
-}
-
-.profile-avatar .profile-avatar-src {
-	width: 228px;
-	height: 228px;
-}
-
-.profile-avatar form {
-	overflow: hidden;
-	position: relative;
-	transition: .3s;
-    max-width: 228px;
-}
-
-.profile-avatar form input[name="save_profile_avatar"] {
-	display: block;
-	width: 100%;
-}
-
-.profile-avatar form .button-container {
-	display: -webkit-flex;
-	display: -ms-flex;
-	display: flex;
-	clear: both;
-    align-items: baseline;
-}
-
-.profile-avatar .input-file-container label {
-	width: 100%;
-}
-
-.profile-avatar .input-file-container input[type="file"] {
-	position: absolute;
-	display: none;
-}
-
-.profile-avatar form .input-file-container,
-.profile-avatar form .button-container input[type="button"] {
-	width: 50%;
-}
-
-.profile-avatar form img {
-	object-fit: cover;
-	height: 100%;
-	width: 100%;
-}
-
-.tabs-menu {
-	padding: 20px;
-	margin-top: 20px;
-	background: #fff;
-	border: 1px solid #efefef;
-}
-
-.tabs-menu ul {
-	list-style-type: none;
-}
-
-.tabs-menu ul li a {
-	width: 100%;
-    text-align: left;
-    color: #fff;
-    font-size: 14px;
-}
-
-.tabs-menu ul li a i {
-	width: 25px;
-	text-align: center;
-}
-
-.profile-tabs .posts-container .post-container {
-	background: rgba(60, 82, 103, 0.06);
-    color: #333;
-    padding: 5px 20px;
-    margin-bottom: 10px;
-    font-size: 15px;
-	display: -webkit-flex;
-	display: -ms-flex;
-	display: flex;
-	display: flex;
-	flex-direction: row;
-	justify-content: space-between;
-}
-
-/* social icons */
+/* # Social icons */
 .social-links-wrapper {
 	display: -webkit-flex;
 	display: -ms-flex;
@@ -1769,43 +1703,7 @@ footer .footer-wrap .widget_calendar caption {
 	color: #aaaaaa;
 }
 
-/* woocommerce */
-.cart-items {
-	padding: 20px;
-	background: #fff;
-	overflow-y: auto;
-    max-height: 80vh;
-	min-width: 600px;
-}
-
-.cart-items .cart-item > td {
-	padding: 20px;
-	font-weight: 600;
-	border: 1px solid #e6e6e6;
-	text-align: center;
-}
-
-.cart-items .cart-item .product-image {
-	width: 150px;
-}
-
-.cart-items .cart-item .product-remove a.remove {
-	font-size: 26px;
-    height: 42px;
-    width: 42px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 0;
-    font-weight: 600;
-    color: #fff!important;
-}
-
-.cart-items .cart-item .product-remove a.remove:hover {
-	background: red;
-}
-
-/* #media */
+/* # Media queries */
 @media (min-width: 1026px) {
 	.main-navigation {
 		display: block!important;

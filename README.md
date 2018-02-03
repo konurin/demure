@@ -2,10 +2,10 @@
 **Contributors:** Vitaliy Konurin <br />
 **Requires at least:** WordPress 4.4<br />
 **Tested up to:** WordPress 4.8.2<br />
-**Version:** 1.0.3<br />
-**License:** GPLv2 or later<br />
-**License URI:** http://www.gnu.org/licenses/gpl-2.0.html<br />
-**Tags:** grid-layout, one-column, two-columns, three-columns, left-sidebar, right-sidebar, custom-colors, custom-header, featured-images, footer-widgets, sticky-post, theme-options, threaded-comments, translation-ready, accessibility-ready, blog, news
+**Version:** 1.0.4<br />
+**License:** GNU General Public License v3 or later<br />
+**License URI:** http://www.gnu.org/licenses/gpl-3.0.html<br />
+**Tags:** one-column, two-columns, three-columns, left-sidebar, right-sidebar, custom-colors, featured-images, footer-widgets, sticky-post, theme-options, threaded-comments, translation-ready, blog, news
 <br />
 
 # Description

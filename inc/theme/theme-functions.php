@@ -767,8 +767,8 @@ if ( ! function_exists( 'demure_get_social' ) ) {
 /**
  * Check if footer has footer text or social
  */
-if ( ! function_exists( 'footer_has_text_and_social' ) ) {
-	function footer_has_text_and_social() {
+if ( ! function_exists( 'demure_footer_has_text_and_social' ) ) {
+	function demure_footer_has_text_and_social() {
 		if ( ( 
 		!empty( $demure_config['facebook'] ) || 
 		!empty( $demure_config['twitter'] ) || 

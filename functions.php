@@ -265,19 +265,19 @@ function demure_scripts() {
 	/**
 	 * Colorbox
 	 */
-	wp_enqueue_script( 'colorbox', get_template_directory_uri() . '/inc/theme/assets/js/jquery.colorbox-min.js', array('jquery'), false, true );
+	wp_enqueue_script( 'colorbox', get_template_directory_uri() . '/inc/theme/assets/js/jquery.colorbox.js', array('jquery'), false, true );
 	wp_enqueue_style( 'colorbox', get_template_directory_uri() . '/inc/theme/assets/css/colorbox.css' );
 	
 	/**
 	 * Holder js
 	 */
-	wp_enqueue_script( 'holder', get_template_directory_uri() . '/inc/theme/assets/js/holder.min.js', array('jquery'), false, true );
+	wp_enqueue_script( 'holder', get_template_directory_uri() . '/inc/theme/assets/js/holder.js', array('jquery'), false, true );
 
 	/**
 	 * Owl carousel
 	 */
 	if ( ( isset( $demure_config['home_slider'] ) && !empty( $demure_config['home_slider'] ) ) && is_front_page() && !is_home() ) {
-		wp_enqueue_script( 'owl-carousel', get_template_directory_uri() . '/inc/theme/assets/js/owl.carousel.min.js', array('jquery'), false, true );
+		wp_enqueue_script( 'owl-carousel', get_template_directory_uri() . '/inc/theme/assets/js/owl.carousel.js', array('jquery'), false, true );
 		wp_enqueue_style( 'owl-carousel', get_template_directory_uri() . '/inc/theme/assets/css/owl.carousel.css' );
 		wp_enqueue_style( 'owl-transitions', get_template_directory_uri() . '/inc/theme/assets/css/owl.transitions.css' );
 	}
@@ -285,7 +285,7 @@ function demure_scripts() {
 	/**
 	 * Smoothscroll
 	 */
-	wp_enqueue_script( 'smoothscroll', get_template_directory_uri() . '/inc/theme/assets/js/smooth-scroll.min.js', array( 'jquery' ), false, true );
+	wp_enqueue_script( 'smoothscroll', get_template_directory_uri() . '/inc/theme/assets/js/smooth-scroll.js', array( 'jquery' ), false, true );
 	
 	/**
 	 * Comment reply
@@ -314,18 +314,18 @@ function demure_scripts() {
 	/**
 	 * Selectize
 	 */		 
-	wp_enqueue_script( 'selectize', get_template_directory_uri() . '/inc/theme/assets/js/selectize.min.js', array( 'jquery' ), false, true );
+	wp_enqueue_script( 'selectize', get_template_directory_uri() . '/inc/theme/assets/js/selectize.js', array( 'jquery' ), false, true );
 	wp_enqueue_style( 'selectize', get_template_directory_uri() . '/inc/theme/assets/css/selectize.css' );
 	
 	/**
 	 * Bootstrap
 	 */		
-	wp_enqueue_style( 'bootstrap', get_template_directory_uri() . '/inc/theme/assets/css/bootstrap.min.css' );
+	wp_enqueue_style( 'bootstrap', get_template_directory_uri() . '/inc/theme/assets/css/bootstrap.css' );
 	
 	/**
 	 * Font Awesome
 	 */		
-	wp_enqueue_style( 'font-awesome', get_template_directory_uri() . '/inc/theme/assets/css/fonts/font-awesome.min.css' );
+	wp_enqueue_style( 'font-awesome', get_template_directory_uri() . '/inc/theme/assets/css/fonts/font-awesome.css' );
 	
 	/**
 	 * Main styles
@@ -367,7 +367,7 @@ add_action( 'customize_register', 'demure_customize_register' );
 /**
  * Change redux plugin admin dashboard styles
  */
-function addAndOverridePanelCSS() {
+function DemureAddAndOverridePanelCSS() {
   wp_deregister_style( 'redux-admin-css' );
   wp_register_style(
     'demure-redux',
@@ -375,7 +375,7 @@ function addAndOverridePanelCSS() {
   );    
   wp_enqueue_style('demure-redux');
 }
-add_action( 'redux/page/demure_config/enqueue', 'addAndOverridePanelCSS' );
+add_action( 'redux/page/demure_config/enqueue', 'DemureAddAndOverridePanelCSS' );
 
 /**
  * Enqueue Metaboxes css
