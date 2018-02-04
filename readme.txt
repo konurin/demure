@@ -2,7 +2,7 @@
 Contributors: Vitaliy Konurin 
 Requires at least: WordPress 4.4
 Tested up to: WordPress 4.8.2
-Version: 1.0.5
+Version: 1.0.6
 License: GNU General Public License v3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 Tags: one-column, two-columns, three-columns, left-sidebar, right-sidebar, custom-colors, featured-images, footer-widgets, sticky-post, theme-options, threaded-comments, translation-ready, blog, news

@@ -2,7 +2,7 @@
 **Contributors:** Vitaliy Konurin <br />
 **Requires at least:** WordPress 4.4<br />
 **Tested up to:** WordPress 4.8.2<br />
-**Version:** 1.0.5<br />
+**Version:** 1.0.6<br />
 **License:** GNU General Public License v3 or later<br />
 **License URI:** http://www.gnu.org/licenses/gpl-3.0.html<br />
 **Tags:** one-column, two-columns, three-columns, left-sidebar, right-sidebar, custom-colors, featured-images, footer-widgets, sticky-post, theme-options, threaded-comments, translation-ready, blog, news
