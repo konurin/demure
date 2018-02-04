@@ -11,7 +11,7 @@ function demure_add_metabox( $post_type ) {
     if ( in_array( $post_type, $post_types ) ) {
 		add_meta_box(
 			'demure_page_metabox'
-			,esc_html__( 'Options', 'meteorite' )
+			,esc_html__( 'Options', 'demure' )
 			,'demure_render_meta_box_content'
 			,$post_type
 			,'advanced'
