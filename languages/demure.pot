@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 "Project-Id-Version: demure\n"
-"POT-Creation-Date: 2018-02-04 13:15+0200\n"
+"POT-Creation-Date: 2018-02-04 15:29+0200\n"
 "PO-Revision-Date: 2017-04-20 17:10+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -51,99 +51,99 @@ msgstr ""
 msgid "Comments are closed."
 msgstr ""
 
-#: functions.php:127
+#: functions.php:126
 msgid "Main Sidebar (primary)"
 msgstr ""
 
-#: functions.php:129
+#: functions.php:128
 msgid "Displayed on the main page (first sidebar)"
 msgstr ""
 
-#: functions.php:137
+#: functions.php:136
 msgid "Main Sidebar (secondary)"
 msgstr ""
 
-#: functions.php:139
+#: functions.php:138
 msgid "Displayed on the main page (second sidebar)"
 msgstr ""
 
-#: functions.php:150
+#: functions.php:149
 msgid "Blog Sidebar (primary)"
 msgstr ""
 
-#: functions.php:152
+#: functions.php:151
 msgid "Displayed on the blog page (first sidebar)"
 msgstr ""
 
-#: functions.php:160
+#: functions.php:159
 msgid "Blog Sidebar (secondary)"
 msgstr ""
 
-#: functions.php:162
+#: functions.php:161
 msgid "Displayed on the blog page (second sidebar)"
 msgstr ""
 
-#: functions.php:173
+#: functions.php:172
 msgid "Single Sidebar (primary)"
 msgstr ""
 
-#: functions.php:175
+#: functions.php:174
 msgid "Displayed on the post pages (first sidebar)"
 msgstr ""
 
-#: functions.php:183
+#: functions.php:182
 msgid "Single Sidebar (secondary)"
 msgstr ""
 
-#: functions.php:185
+#: functions.php:184
 msgid "Displayed on the post pages (second sidebar)"
 msgstr ""
 
-#: functions.php:196
+#: functions.php:195
 msgid "First column (footer)"
 msgstr ""
 
-#: functions.php:198
+#: functions.php:197
 msgid "First column on the footer"
 msgstr ""
 
-#: functions.php:206
+#: functions.php:205
 msgid "Second column (footer)"
 msgstr ""
 
-#: functions.php:208
+#: functions.php:207
 msgid "Second column on the footer"
 msgstr ""
 
-#: functions.php:216
+#: functions.php:215
 msgid "Third column (footer)"
 msgstr ""
 
-#: functions.php:218
+#: functions.php:217
 msgid "Third column on the footer"
 msgstr ""
 
-#: functions.php:226
+#: functions.php:225
 msgid "Fourth column (footer)"
 msgstr ""
 
-#: functions.php:228
+#: functions.php:227
 msgid "Fourth column on the footer"
 msgstr ""
 
-#: functions.php:236
+#: functions.php:235
 msgid "Fifth column (footer)"
 msgstr ""
 
-#: functions.php:238
+#: functions.php:237
 msgid "Fifth column on the footer"
 msgstr ""
 
-#: functions.php:246
+#: functions.php:245
 msgid "Sixth column (footer)"
 msgstr ""
 
-#: functions.php:248
+#: functions.php:247
 msgid "Sixth column on the footer"
 msgstr ""
 
@@ -1071,187 +1071,24 @@ msgid ""
 "options.</p>"
 msgstr ""
 
-#: inc/admin/metaboxes.php:6
-msgid "Page options"
+#: inc/admin/page-options.php:14
+msgid "Options"
 msgstr ""
 
-#: inc/admin/metaboxes.php:11
+#: inc/admin/page-options.php:58
 msgid "Show title"
 msgstr ""
 
-#: inc/admin/metaboxes.php:14 inc/admin/metaboxes/inc/fields/checkbox.php:53
+#: inc/admin/page-options.php:63
 msgid "Yes"
 msgstr ""
 
-#: inc/admin/metaboxes.php:15 inc/admin/metaboxes/inc/fields/checkbox.php:53
+#: inc/admin/page-options.php:67
 msgid "No"
 msgstr ""
 
-#: inc/admin/metaboxes.php:21
+#: inc/admin/page-options.php:73
 msgid "Page layout"
-msgstr ""
-
-#: inc/admin/metaboxes/inc/clone.php:91
-msgid "+ Add more"
-msgstr ""
-
-#: inc/admin/metaboxes/inc/fields/autocomplete.php:15
-#: inc/admin/metaboxes/inc/fields/autocomplete.php:74
-#: inc/admin/metaboxes/inc/fields/autocomplete.php:89
-msgid "Delete"
-msgstr ""
-
-#: inc/admin/metaboxes/inc/fields/button.php:27
-msgid "Click me"
-msgstr ""
-
-#: inc/admin/metaboxes/inc/fields/file-input.php:17
-msgid "Select File"
-msgstr ""
-
-#: inc/admin/metaboxes/inc/fields/file-input.php:39
-#: inc/admin/metaboxes/inc/fields/select.php:84
-msgid "Select"
-msgstr ""
-
-#: inc/admin/metaboxes/inc/fields/file-input.php:41
-msgid "Remove"
-msgstr ""
-
-#: inc/admin/metaboxes/inc/fields/file.php:16
-#, php-format
-msgid "You may only upload maximum %d file"
-msgstr ""
-
-#: inc/admin/metaboxes/inc/fields/file.php:17
-#, php-format
-msgid "You may only upload maximum %d files"
-msgstr ""
-
-#: inc/admin/metaboxes/inc/fields/file.php:73
-msgid "Error: Cannot delete file"
-msgstr ""
-
-#: inc/admin/metaboxes/inc/fields/file.php:85
-msgctxt "file upload"
-msgid "Upload Files"
-msgstr ""
-
-#: inc/admin/metaboxes/inc/fields/file.php:86
-msgctxt "file upload"
-msgid "+ Add new file"
-msgstr ""
-
-#: inc/admin/metaboxes/inc/fields/file.php:150
-msgctxt "file upload"
-msgid "Delete"
-msgstr ""
-
-#: inc/admin/metaboxes/inc/fields/file.php:151
-msgctxt "file upload"
-msgid "Edit"
-msgstr ""
-
-#: inc/admin/metaboxes/inc/fields/map.php:57
-msgid "Find Address"
-msgstr ""
-
-#: inc/admin/metaboxes/inc/fields/media.php:17
-msgctxt "media"
-msgid "+ Add Media"
-msgstr ""
-
-#: inc/admin/metaboxes/inc/fields/media.php:18
-msgctxt "media"
-msgid " file"
-msgstr ""
-
-#: inc/admin/metaboxes/inc/fields/media.php:19
-msgctxt "media"
-msgid " files"
-msgstr ""
-
-#: inc/admin/metaboxes/inc/fields/media.php:20
-msgctxt "media"
-msgid "Remove"
-msgstr ""
-
-#: inc/admin/metaboxes/inc/fields/media.php:21
-msgctxt "media"
-msgid "Edit"
-msgstr ""
-
-#: inc/admin/metaboxes/inc/fields/media.php:22
-msgctxt "media"
-msgid "View"
-msgstr ""
-
-#: inc/admin/metaboxes/inc/fields/media.php:23
-msgctxt "media"
-msgid "No Title"
-msgstr ""
-
-#: inc/admin/metaboxes/inc/fields/media.php:26
-msgctxt "media"
-msgid "Select Files"
-msgstr ""
-
-#: inc/admin/metaboxes/inc/fields/media.php:27
-msgctxt "media"
-msgid "or"
-msgstr ""
-
-#: inc/admin/metaboxes/inc/fields/media.php:28
-msgctxt "media"
-msgid "Drop files here to upload"
-msgstr ""
-
-#: inc/admin/metaboxes/inc/fields/oembed.php:60
-msgid "Embed HTML not available."
-msgstr ""
-
-#: inc/admin/metaboxes/inc/fields/oembed.php:75
-msgid "Preview"
-msgstr ""
-
-#: inc/admin/metaboxes/inc/fields/post.php:33
-msgid "Select a post"
-msgstr ""
-
-#: inc/admin/metaboxes/inc/fields/post.php:36
-#: inc/admin/metaboxes/inc/fields/taxonomy.php:51
-#, php-format
-msgid "Select a %s"
-msgstr ""
-
-#: inc/admin/metaboxes/inc/fields/select-advanced.php:41
-msgid "Select an item"
-msgstr ""
-
-#: inc/admin/metaboxes/inc/fields/select.php:84
-msgid "All"
-msgstr ""
-
-#: inc/admin/metaboxes/inc/fields/select.php:84
-#: inc/widgets/popular-widget.php:93
-msgid "None"
-msgstr ""
-
-#: inc/admin/metaboxes/inc/fields/taxonomy.php:48
-msgid "Select a term"
-msgstr ""
-
-#: inc/admin/metaboxes/inc/fields/thickbox-image.php:51
-msgctxt "image upload"
-msgid "Upload Images"
-msgstr ""
-
-#: inc/admin/metaboxes/inc/fields/user.php:33
-msgid "Select an user"
-msgstr ""
-
-#: inc/admin/metaboxes/inc/validation.php:47
-msgid "Please correct the errors highlighted below and try again."
 msgstr ""
 
 #: inc/theme/theme-functions.php:16
@@ -1262,29 +1099,29 @@ msgstr ""
 msgid "Pages:"
 msgstr ""
 
-#: inc/theme/theme-functions.php:270 inc/theme/theme-functions.php:579
+#: inc/theme/theme-functions.php:270 inc/theme/theme-functions.php:580
 msgid "Loading ..."
 msgstr ""
 
-#: inc/theme/theme-functions.php:270 inc/theme/theme-functions.php:579
+#: inc/theme/theme-functions.php:270 inc/theme/theme-functions.php:580
 msgid "Load More"
 msgstr ""
 
-#: inc/theme/theme-functions.php:360
+#: inc/theme/theme-functions.php:361
 msgid "Read More"
 msgstr ""
 
-#: inc/theme/theme-functions.php:561
+#: inc/theme/theme-functions.php:562
 #, php-format
 msgid "Posts by %s"
 msgstr ""
 
-#: inc/theme/theme-functions.php:638
+#: inc/theme/theme-functions.php:639
 #, php-format
 msgid "Reply to %s"
 msgstr ""
 
-#: inc/theme/theme-functions.php:651
+#: inc/theme/theme-functions.php:652
 msgid "Reply"
 msgstr ""
 
@@ -1310,6 +1147,10 @@ msgstr ""
 
 #: inc/widgets/popular-widget.php:91
 msgid "Order by:"
+msgstr ""
+
+#: inc/widgets/popular-widget.php:93
+msgid "None"
 msgstr ""
 
 #: inc/widgets/popular-widget.php:94

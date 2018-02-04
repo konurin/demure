@@ -26,8 +26,11 @@ Holder.js - http://holderjs.com ver. 2.9.0 · Code licensed MIT
 Selectize - https://github.com/selectize/selectize.js ver. 0.12.4 · Licensed under the Apache License, Version 2.0
 smooth-scroll - http://github.com/cferdinandi/smooth-scroll v10.2.1 · Code licensed MIT
 
-=== Image used in screenshot  ===
-Resource URI: https://unsplash.com/photos/LIHiWVXaUyM
-Copyright: Daniel Frank
-License: CC0
-License URI: https://creativecommons.org/publicdomain/zero/1.0/
+Font Awesome icons, Copyright Dave Gandy
+License: SIL Open Font License, version 1.1.
+Source: http://fontawesome.io/
+
+Image used in screenshot
+Resource URI: https://pixabay.com/ru/волк-волки-снег-волк-пейзаж-2234511/
+License: CC0 Creative Commons
+License URI: https://pixabay.com/ru/service/terms/#usage

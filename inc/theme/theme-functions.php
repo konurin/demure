@@ -120,7 +120,10 @@ if ( ! function_exists( 'demure_get_main_content' ) ) {
         global $demure_config, $post;
         $main_layout = 1;
 		
-		$page_layout_option = get_post_meta( $post->ID, 'demure_page_layout', true );
+		if (!is_home()) {
+			$page_layout_option = get_post_meta( $post->ID, 'demure_page_layout', true );
+		}
+		
         if ( class_exists( 'Redux' ) ) {
 			if ( is_front_page() && !empty( $demure_config['main_layout'] ) ) $main_layout = $demure_config['main_layout'];
 	
@@ -310,8 +313,10 @@ if ( ! function_exists( 'demure_post_header' ) ) {
     function demure_post_header( $post_id = '' ) {
         global $post;
         $out_header = $page_title = $out = '';
-
-		$demure_page_title = get_post_meta( $post->ID, 'demure_page_title', true );
+		if (!is_home()) {
+			$demure_page_title = get_post_meta( $post->ID, 'demure_page_title', true );
+		}
+		
 		
         if ( !is_single() && !is_page() ) {
             $out_header .= '<h3><a href="' . esc_url( get_the_permalink( $post_id ) ) . '">' . get_the_title( $post_id ) . '</a></h3>';

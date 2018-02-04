@@ -33,8 +33,7 @@ Font Awesome icons, Copyright Dave Gandy
 License: SIL Open Font License, version 1.1.
 Source: http://fontawesome.io/
 
-# Image used in screenshot 
-Resource URI: https://unsplash.com/photos/LIHiWVXaUyM<br />
-Copyright: Daniel Frank<br />
-License: CC0<br />
-License URI: https://creativecommons.org/publicdomain/zero/1.0/
+## Image used in screenshot 
+Resource URI: https://pixabay.com/ru/волк-волки-снег-волк-пейзаж-2234511/<br />
+License: CC0 Creative Commons<br />
+License URI: https://pixabay.com/ru/service/terms/#usage
