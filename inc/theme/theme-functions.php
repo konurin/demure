@@ -117,10 +117,10 @@ if ( ! function_exists( 'demure_get_sidebar_layout' ) ) {
  */
 if ( ! function_exists( 'demure_get_main_content' ) ) {
     function demure_get_main_content() {
-        global $demure_config;
+        global $demure_config, $post;
         $main_layout = 1;
 		
-		$page_layout_option = rwmb_meta( 'page_layout' );
+		$page_layout_option = get_post_meta( $post->ID, 'demure_page_layout', true );
         if ( class_exists( 'Redux' ) ) {
 			if ( is_front_page() && !empty( $demure_config['main_layout'] ) ) $main_layout = $demure_config['main_layout'];
 	
@@ -140,7 +140,7 @@ if ( ! function_exists( 'demure_get_main_content' ) ) {
 			}
         }
 		
-		if ( ( isset( $page_layout_option ) && !empty( $page_layout_option ) && $page_layout_option != 1 ) && ( ( !is_single() && is_blog() ) || ( is_single() && is_blog() ) ) ) $main_layout = $page_layout_option;
+		if ( isset( $page_layout_option ) && !empty( $page_layout_option ) ) $main_layout = $page_layout_option;
 
         switch ( $main_layout ) {
             case 1:
@@ -260,14 +260,14 @@ if ( ! function_exists( 'demure_get_content' ) ) {
                 if ( $demure_config['post_navigation'] == '2' || $demure_config['post_navigation'] == '3' ) {
                     if (  $wp_query->max_num_pages > 1 ) : ?>
                         <script id="true_loadmore">
-                        var ajaxurl = '<?php echo site_url() ?>/wp-admin/admin-ajax.php';
+                        var ajaxurl = '<?php echo admin_url( 'admin-ajax.php' ); ?>';
                         var true_posts = '<?php echo serialize( $wp_query->query_vars ); ?>';
                         var current_page = <?php echo ( get_query_var( 'paged' ) ) ? get_query_var( 'paged' ) : 1; ?>;
                         var max_pages = '<?php echo $wp_query->max_num_pages; ?>';
                         </script>
                         <?php if ( $demure_config['post_navigation'] == '2' ) { ?>
                             <div id="loadmore">
-                                <span data-loading="<?php esc_html_e( 'Loading ...', 'demure' ); ?>" data-load-more="<?php esc_html_e( 'Load More', 'demure' ); ?>" class="button"><?php esc_html_e( 'Load More', 'demure' ); ?></span>
+                                <span data-loading="<?php esc_attr_e( 'Loading ...', 'demure' ); ?>" data-load-more="<?php esc_attr_e( 'Load More', 'demure' ); ?>" class="button"><?php esc_html_e( 'Load More', 'demure' ); ?></span>
                             </div>
                         <?php } ?>
                     <?php endif;
@@ -310,15 +310,16 @@ if ( ! function_exists( 'demure_post_header' ) ) {
     function demure_post_header( $post_id = '' ) {
         global $post;
         $out_header = $page_title = $out = '';
-        $page_title = rwmb_meta( 'page_title');
+
+		$demure_page_title = get_post_meta( $post->ID, 'demure_page_title', true );
 		
         if ( !is_single() && !is_page() ) {
-            $out_header .= '<h3><a href="' . get_the_permalink( $post_id ) . '">' . get_the_title( $post_id ) . '</a></h3>';
+            $out_header .= '<h3><a href="' . esc_url( get_the_permalink( $post_id ) ) . '">' . get_the_title( $post_id ) . '</a></h3>';
         } else {
             $out_header .= '<h1>' . get_the_title( $post_id ) . '</h1>';
         }
 		
-		if ( isset( $page_title ) && $page_title == 'off' ) $out_header = '<div class="no-title-padding"></div>';
+		if ( isset( $page_title ) && $demure_page_title == 'off' ) $out_header = '<div class="no-title-padding"></div>';
 		
 		$out = '<header class="entry-header">';
             $out .= $out_header;
@@ -333,10 +334,12 @@ if ( ! function_exists( 'demure_post_header' ) ) {
  */
 if ( ! function_exists( 'demure_post_content' ) ) {
     function demure_post_content() {
-        $content = get_the_content( get_the_ID() );
+
         if ( ( !is_front_page() && is_home() ) || ( is_home() ) || is_author() || is_search() ) {
-            $content = wp_trim_words( get_the_content(), 55, '<a class="read_more" href="' . esc_url( get_permalink() ) . '">' . esc_html__('Read More', 'demure') . '</a>' );
-        }
+			$content = get_the_excerpt( get_the_ID() );
+        } else {
+			$content = get_the_content( get_the_ID() );
+		}
         
         $post_content = apply_filters( 'the_content', $content );
         
@@ -348,6 +351,18 @@ if ( ! function_exists( 'demure_post_content' ) ) {
         echo $out;
     }
 }
+
+/**
+ * New excerpt more
+ */
+if ( ! function_exists( 'demure_new_excerpt_more' ) ) {
+	function demure_new_excerpt_more($more) {
+		global $post;
+		return '<a class="read_more" href="'. esc_url( get_permalink( $post->ID ) ) . '">' . esc_html__('Read More', 'demure') . '</a>';
+	}
+	add_filter('excerpt_more', 'demure_new_excerpt_more');
+}
+
 
 /**
  * Post Thumbail
@@ -503,7 +518,6 @@ if ( ! function_exists( 'demure_get_homepage_slider' ) ) {
     function demure_get_homepage_slider(){
         global $demure_config;
         if ( ( !empty( $demure_config['switch_slider'] ) && $demure_config['switch_slider']  == '1' ) && ( !is_home() && is_front_page() ) ) {
-
             $slides = $demure_config['home_slider'];
             ?>
             <div class="homepage-slider-wrapper">
@@ -516,13 +530,10 @@ if ( ! function_exists( 'demure_get_homepage_slider' ) ) {
                                         <h3><?php echo esc_html( $slide['title'] ); ?></h3>
                                     <?php endif ?>
                                     <?php if ( !empty( $slide['description'] ) ): ?>
-                                        <div class="description"><?php echo esc_textarea( $slide['description'] ); ?></div>
+                                        <div class="description"><?php echo wp_kses( stripslashes( $slide['description'] ), 'post' ); ?></div>
                                     <?php endif ?>   
                                 </div>
-                               
-                                
                             <?php endif ?>
-                            
                             
                             <img data-src="holder.js/1980x1080?text=image" src="<?php echo esc_url( $slide['image'] ); ?>" alt="">
                             <?php if ( !empty( $slide['url'] ) ): ?>
@@ -548,7 +559,7 @@ if ( ! function_exists( 'demure_get_all_user_posts' ) ) {
         if ( have_posts() ) {
             
             ?>
-            <h3 class="heading"><?php printf( 'Posts by %s', get_the_author() ); ?></h3>
+            <h3 class="heading"><?php printf( esc_html__( 'Posts by %s', 'demure' ), get_the_author() ); ?></h3>
             <?php
 
             while ( have_posts() ) : the_post();
@@ -559,14 +570,14 @@ if ( ! function_exists( 'demure_get_all_user_posts' ) ) {
                 global $wp_query;
                 if (  $wp_query->max_num_pages > 1 ) : ?>
                     <script id="true_loadmore">
-                    var ajaxurl = '<?php echo site_url() ?>/wp-admin/admin-ajax.php';
+                    var ajaxurl = '<?php echo admin_url( 'admin-ajax.php' ); ?>';
                     var true_posts = '<?php echo serialize( $wp_query->query_vars ); ?>';
                     var current_page = <?php echo ( get_query_var('paged') ) ? get_query_var('paged') : 1; ?>;
                     var max_pages = '<?php echo $wp_query->max_num_pages; ?>';
                     </script>
                     <?php if ( $demure_config['post_navigation'] == '2' ) { ?>
                         <div id="loadmore">
-                            <span data-loading="<?php esc_html_e( 'Loading ...', 'demure' ); ?>" data-load-more="<?php esc_html_e( 'Load More', 'demure' ); ?>" class="button"><?php esc_html_e( 'Load More', 'demure' ); ?></span>
+                            <span data-loading="<?php esc_attr_e( 'Loading ...', 'demure' ); ?>" data-load-more="<?php esc_attr_e( 'Load More', 'demure' ); ?>" class="button"><?php esc_html_e( 'Load More', 'demure' ); ?></span>
                         </div>
                     <?php } ?>
                 <?php endif;

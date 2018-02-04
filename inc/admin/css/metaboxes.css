@@ -1,14 +1,66 @@
-#demure-page-metaboxes > h2 {
-    background: #536d86;
+.demure-meta-wrapper .demure-meta-section {
+    display: -webkit-flex;
+    display: -ms-flex;
+    display: flex;
+    -ms-align-items: center;
+    align-items: center;
+}
+
+.demure-meta-wrapper .demure-meta-section .demure-field-description {
+    -webkit-flex: 0 0 150px;
+    -ms-flex: 0 0 150px;
+    flex: 0 0 150px;
+    max-width: 150px;
+    width: 100%;
+}
+
+.demure-meta-wrapper .demure-meta-section .demure-switch-field-content {
+    display: -webkit-flex;
+    display: -ms-flex;
+    display: flex;
+}
+
+.demure-meta-wrapper .demure-meta-section .demure-switch-field-content .demure-switcher label {
+    width: 50px;
+    display: inline-block;
+    background: #f5f5f5;
+    padding: 5px 10px;
+    text-align: center;
+    box-sizing: border-box;
+    text-transform: uppercase;
+    border: 1px solid #ececec;
+}
+
+.demure-meta-wrapper .demure-meta-section .demure-switch-field-content .demure-switcher + .demure-switcher label {
+    border-left: 0;
+}
+
+.demure-meta-wrapper .demure-meta-section .demure-image-radio-field-content .demure-image-switcher input,
+.demure-meta-wrapper .demure-meta-section .demure-switch-field-content .demure-switcher input {
+    display: none !important;
+}
+
+.demure-meta-wrapper .demure-meta-section .demure-switch-field-content .demure-switcher input:checked + label {
+    background: #3c5267;
+    border-color: #3c5267;
     color: #fff;
 }
 
-#demure-page-metaboxes .rwmb-label label {
-    color: #333;
-    font-size: 16px;
+.demure-meta-wrapper .demure-meta-section .demure-image-radio-field-content {
+    display: -webkit-flex;
+    display: -ms-flex;
+    display: flex;
+    align-items: center;
 }
 
-#demure-page-metaboxes .rwmb-field {
-    padding: 20px;
-    border: 1px solid #eeeeee!important;
+.demure-meta-wrapper .demure-meta-section .demure-image-radio-field-content label {
+    display: -webkit-inline-flex;
+    display: -ms-inline-flex;
+    display: inline-flex;
+    border: 3px solid #d8d8d8;
+    margin: 2px;
+}
+
+.demure-meta-wrapper .demure-meta-section .demure-image-radio-field-content input:checked + label {
+    border-color: #3c5267;
 }

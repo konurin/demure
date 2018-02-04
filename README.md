@@ -27,6 +27,12 @@ Demure is a wonderful multipurpose WordPress theme for business, portfolio, crea
 **Selectize** - https://github.com/selectize/selectize.js ver. 0.12.4 · Licensed under the Apache License, Version 2.0<br />
 **smooth-scroll** - http://github.com/cferdinandi/smooth-scroll v10.2.1 · Code licensed MIT<br />
 
+## Fonts
+**Font Awesome**
+Font Awesome icons, Copyright Dave Gandy
+License: SIL Open Font License, version 1.1.
+Source: http://fontawesome.io/
+
 # Image used in screenshot 
 Resource URI: https://unsplash.com/photos/LIHiWVXaUyM<br />
 Copyright: Daniel Frank<br />

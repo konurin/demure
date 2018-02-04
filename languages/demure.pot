@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 "Project-Id-Version: demure\n"
-"POT-Creation-Date: 2017-09-29 21:21+0300\n"
+"POT-Creation-Date: 2018-02-04 13:15+0200\n"
 "PO-Revision-Date: 2017-04-20 17:10+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -51,99 +51,99 @@ msgstr ""
 msgid "Comments are closed."
 msgstr ""
 
-#: functions.php:133
+#: functions.php:127
 msgid "Main Sidebar (primary)"
 msgstr ""
 
-#: functions.php:135
+#: functions.php:129
 msgid "Displayed on the main page (first sidebar)"
 msgstr ""
 
-#: functions.php:143
+#: functions.php:137
 msgid "Main Sidebar (secondary)"
 msgstr ""
 
-#: functions.php:145
+#: functions.php:139
 msgid "Displayed on the main page (second sidebar)"
 msgstr ""
 
-#: functions.php:156
+#: functions.php:150
 msgid "Blog Sidebar (primary)"
 msgstr ""
 
-#: functions.php:158
+#: functions.php:152
 msgid "Displayed on the blog page (first sidebar)"
 msgstr ""
 
-#: functions.php:166
+#: functions.php:160
 msgid "Blog Sidebar (secondary)"
 msgstr ""
 
-#: functions.php:168
+#: functions.php:162
 msgid "Displayed on the blog page (second sidebar)"
 msgstr ""
 
-#: functions.php:179
+#: functions.php:173
 msgid "Single Sidebar (primary)"
 msgstr ""
 
-#: functions.php:181
+#: functions.php:175
 msgid "Displayed on the post pages (first sidebar)"
 msgstr ""
 
-#: functions.php:189
+#: functions.php:183
 msgid "Single Sidebar (secondary)"
 msgstr ""
 
-#: functions.php:191
+#: functions.php:185
 msgid "Displayed on the post pages (second sidebar)"
 msgstr ""
 
-#: functions.php:202
+#: functions.php:196
 msgid "First column (footer)"
 msgstr ""
 
-#: functions.php:204
+#: functions.php:198
 msgid "First column on the footer"
 msgstr ""
 
-#: functions.php:212
+#: functions.php:206
 msgid "Second column (footer)"
 msgstr ""
 
-#: functions.php:214
+#: functions.php:208
 msgid "Second column on the footer"
 msgstr ""
 
-#: functions.php:222
+#: functions.php:216
 msgid "Third column (footer)"
 msgstr ""
 
-#: functions.php:224
+#: functions.php:218
 msgid "Third column on the footer"
 msgstr ""
 
-#: functions.php:232
+#: functions.php:226
 msgid "Fourth column (footer)"
 msgstr ""
 
-#: functions.php:234
+#: functions.php:228
 msgid "Fourth column on the footer"
 msgstr ""
 
-#: functions.php:242
+#: functions.php:236
 msgid "Fifth column (footer)"
 msgstr ""
 
-#: functions.php:244
+#: functions.php:238
 msgid "Fifth column on the footer"
 msgstr ""
 
-#: functions.php:252
+#: functions.php:246
 msgid "Sixth column (footer)"
 msgstr ""
 
-#: functions.php:254
+#: functions.php:248
 msgid "Sixth column on the footer"
 msgstr ""
 
@@ -1262,24 +1262,29 @@ msgstr ""
 msgid "Pages:"
 msgstr ""
 
-#: inc/theme/theme-functions.php:270 inc/theme/theme-functions.php:569
+#: inc/theme/theme-functions.php:270 inc/theme/theme-functions.php:579
 msgid "Loading ..."
 msgstr ""
 
-#: inc/theme/theme-functions.php:270 inc/theme/theme-functions.php:569
+#: inc/theme/theme-functions.php:270 inc/theme/theme-functions.php:579
 msgid "Load More"
 msgstr ""
 
-#: inc/theme/theme-functions.php:338
+#: inc/theme/theme-functions.php:360
 msgid "Read More"
 msgstr ""
 
-#: inc/theme/theme-functions.php:628
+#: inc/theme/theme-functions.php:561
+#, php-format
+msgid "Posts by %s"
+msgstr ""
+
+#: inc/theme/theme-functions.php:638
 #, php-format
 msgid "Reply to %s"
 msgstr ""
 
-#: inc/theme/theme-functions.php:641
+#: inc/theme/theme-functions.php:651
 msgid "Reply"
 msgstr ""
 
@@ -1371,7 +1376,11 @@ msgid ""
 msgstr ""
 
 #. Theme Name of the plugin/theme
-msgid "demure"
+msgid "Demure"
+msgstr ""
+
+#. Theme URI of the plugin/theme
+msgid "https://github.com/konurin/demure"
 msgstr ""
 
 #. Description of the plugin/theme
@@ -1388,5 +1397,5 @@ msgid "Vitaliy Konurin"
 msgstr ""
 
 #. Author URI of the plugin/theme
-msgid "http://konurin.tk"
+msgid "https://github.com/konurin"
 msgstr ""

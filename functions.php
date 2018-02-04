@@ -33,10 +33,9 @@ function demure_setup() {
 	require_once locate_template(  'inc/admin/demure-config.php', true, true ); 
 	
 	/**
-	 * Load metaboxes
+	 * Page options
 	 */
-	require_once locate_template(  'inc/admin/metaboxes/meta-box.php', true, true ); 
-	require_once locate_template(  'inc/admin/metaboxes.php', true, true ); 
+	require_once locate_template(  'inc/admin/page-options.php', true, true ); 
 
 	/**
 	 * Load theme functions
